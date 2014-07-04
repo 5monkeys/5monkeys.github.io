@@ -1,1 +1,32 @@
-<a href="http://www.5monkeys.se/">5 Monkeys</a>
+---
+layout: default
+---
+
+<article class="content">
+    <section>
+        <h1 class="logo">5 Monkeys Agency</h1>
+        <cite>This is how we do it</cite>
+        <nav>
+            <a href="#">Contact</a>
+            <a href="#">Projects</a>
+        </nav>
+    </section>
+</article>
+
+<aside class="contact">
+    <section>
+        {% capture contact %}
+            {% include contact.md %}
+        {% endcapture %}
+        {{ contact | markdownify }}
+    </section>
+</aside>
+
+<aside class="projects">
+    <section>
+        {% capture projects %}
+            {% include projects.md %}
+        {% endcapture %}
+        {{ projects | markdownify }}
+    </section>
+</aside>

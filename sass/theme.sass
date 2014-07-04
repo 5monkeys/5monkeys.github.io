@@ -1,0 +1,135 @@
+//@import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/variables"
+@import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/mixins"
+@import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/normalize"
+//@import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/type"
+@import "mixins"
+@import "fonts/lato"
+
+
+body
+    //@include antialias()
+    color: #fff
+    //background-color: #666
+    background: url('../img/san-rafael-falls1.jpg') no-repeat
+    font-family: 'latolight'
+
+
+h1, h2, h3
+    font-family: 'latoregular'
+
+
+.content
+    background-color: rgba(0,50,50,0.3)
+    display: table
+    overflow: hidden
+    position: absolute
+
+    width: 100%
+    height: 100%
+
+    > section
+        display: table-cell
+        vertical-align: middle
+        text-align: center
+
+        > h1.logo
+            background: url('../img/logo.svg') no-repeat center center
+            background-size: auto 100%
+            height: 130px
+            margin: 0 0 20px 0
+            text-indent: -99999px
+
+        > cite
+            font-family: 'latolight'
+            font-size: 2.2em
+            font-weight: normal
+            font-style: normal
+            text-transform: uppercase
+
+        > nav
+            display: none
+            margin-top: 50px
+
+            a
+                display: inline-block
+                color: #fff
+
+                border: 2px solid #fff
+                margin: 0 10px
+                padding: 10px 0
+                width: 230px
+
+                font-size: 18px
+                font-family: 'latolight', sans-serif
+                letter-spacing: 1px
+
+                text-align: center
+                text-transform: uppercase
+                text-decoration: none
+
+                -webkit-transition: color .4s ease,background .4s ease,opacity .2s ease
+                -moz-transition: color .4s ease,background .4s ease,opacity .2s ease
+                -o-transition: color .4s ease,background .4s ease,opacity .2s ease
+                transition: color .4s ease,background .4s ease,opacity .2s ease
+
+                &:hover
+                    color: #444
+                    background-color: #fff
+                    text-decoration: none
+
+
+aside
+    @include box-sizing(border-box)
+
+    display: table
+    overflow: hidden
+
+    position: absolute
+    top: 0
+
+    width: 200px
+    height: 100%
+
+    padding: 10px
+
+    color: #fff
+    font-size: 0.9em
+    font-family: 'latolight'
+
+    &.contact
+        left: 0
+        padding-left: 20px
+        @include gradient-horizontal($start-color: rgba(0,0,0,0.666), $end-color: rgba(0,0,0,.0001))
+
+    &.projects
+        right: 0
+        padding-right: 20px
+        text-align: right
+        @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,0.666))
+
+    > section
+        display: table-cell
+        vertical-align: middle
+
+        > h2
+            font-size: 0.7em
+            text-transform: uppercase
+            margin: 1.3em 0 0.3em 0
+
+        > p
+            margin: 0
+
+        > ul
+            @extend .list-unstyled
+            margin: 0
+
+            > li
+                > a
+                    color: #fff
+                    text-decoration: none
+                    text-transform: uppercase
+                    line-height: 2em
+                    display: inline-block
+
+                    &:hover
+                        color: #f1ef1f
