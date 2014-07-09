@@ -206,7 +206,8 @@ th {
 body {
   color: white;
   background-color: #222222;
-  font-family: "latolight"; }
+  font-family: "latolight";
+  overflow: hidden; }
 
 h1, h2, h3 {
   font-family: "latoregular"; }
@@ -288,18 +289,18 @@ aside {
   aside.contact {
     left: 0;
     padding-left: 20px;
-    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.666) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.666) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.333) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.333) 0%, rgba(0, 0, 0, 0.0001) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#AA000000', endColorstr='#00000000', GradientType=1); }
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#55000000', endColorstr='#00000000', GradientType=1); }
   aside.projects {
-    right: 0;
+    left: 0;
     padding-right: 20px;
     text-align: right;
-    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.666) 100%));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.666) 100%);
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.333) 100%));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.333) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#AA000000', GradientType=1); }
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#55000000', GradientType=1); }
   aside > section {
     display: table-cell;
     vertical-align: middle; }

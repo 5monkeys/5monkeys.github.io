@@ -2,17 +2,29 @@
 class Layer
 
     constructor: (element, options) ->
+        defaults =
+            x: 0.0
+            k: 100.0
+            offset: 0.0
+
+        options = $.extend defaults, options
+
         @$el = $ element
         @el = @$el[0]
-        @offset = @x = options.x
-        @origin = {x: @x}
+        @width = @$el.outerWidth()
+
+        @offset = options.offset
         @k = options.k
+        @x = options.x or @offset
+
+        console.log @el.className, 'offset:', @offset, 'k:', @k, 'x:', @x
+
         @initialize()
 
     update: (p) ->
-        x = @k * p + @origin.x
-        if Math.abs(x - @x) >= 0
-            @x = x
+        offset = @k * -p  # + @origin.x
+        if Math.abs(offset - @offset) >= 0
+            @offset = offset
             @transform()
 
     initialize: () ->
@@ -20,17 +32,6 @@ class Layer
 
     transform: () ->
         return
-
-
-class TranslationLayer extends Layer
-
-    initialize: () ->
-        @el.style.left = "#{@offset}px"
-
-    transform: () ->
-#        @el.style.webkitTransform = "translate(#{-@x}px, 0)"
-        @$el.css
-            'transform': "translate(#{@offset-@x}px, 0)"
 
 
 class ImageLayer extends Layer
@@ -42,29 +43,42 @@ class ImageLayer extends Layer
 
 
     transform: () ->
-        @el.style.backgroundPosition = "#{-@x}px top"
+        offset = Math.floor @x + @offset
+        @el.style.backgroundPosition = "#{offset}px top"
 
 
-class TranslationRightLayer extends Layer
+class TranslationLayer extends Layer
 
     initialize: () ->
-        @offset = @x
-        @el.style.left = "#{@offset}px"
+        @$el.css
+            left: "#{@x}px"
 
     transform: () ->
-#        @el.style.webkitTransform = "translate(#{@offset-@x}px, 0)"
+        offset = Math.floor @offset
+
+#        console.log @el.className, 'offset:', @offset, 'k:', @k, 'x:', @x
+
+        # TODO: Don't transform non visible layers
+#        if @x + @offset + @width < 0
+#            console.log 'skipping', @el.className
+#            return
+
+#        else if @x + offset > pageWidth
+#            console.log 'skipping', @el.className
+#            return
+
         @$el.css
-            'transform': "translate(#{@offset-@x}px, 0)"
+            'transform': "translate(#{offset}px, 0)"
 
 
 pageWidth = $('body').outerWidth()
 parallaxWidth = pageWidth * 0.6
 
 layers = [
-    new ImageLayer '.background', {x: 30.0, k: 30.0}
-    new TranslationLayer '.content', {x: 0.0, k: 40.0}
+    new ImageLayer '.background', {x: -20.0, k: 20.0}
+    new TranslationLayer '.content', {k: 40.0}
     new TranslationLayer '.contact', {x: -200.0, k: 200.0}
-    new TranslationRightLayer '.projects', {x: pageWidth, k: 200.0}
+    new TranslationLayer '.projects', {x: pageWidth, k: 200.0}
 ]
 
 pendingAnimFrame = false
@@ -85,11 +99,11 @@ $(document).on 'mousemove', (event) ->
 
     pendingAnimFrame = true
 
-    window.requestAnimationFrame ->
-        pendingAnimFrame = false
+#    window.requestAnimationFrame ->
+    pendingAnimFrame = false
 
-        p = Math.min(+1.0, Math.max(-1.0, (mouseX - pageWidth / 2) / parallaxWidth * 2))
-        pEased = (p/Math.abs(p)) * easing(Math.abs(p))
+    p = Math.min(+1.0, Math.max(-1.0, (mouseX - pageWidth / 2) / parallaxWidth * 2))
+    pEased = (p/Math.abs(p)) * easing(Math.abs(p))
 
-        for layer in layers
-            layer.update pEased
+    for layer in layers
+        layer.update pEased
