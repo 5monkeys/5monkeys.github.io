@@ -9,20 +9,32 @@
 body
     //@include antialias()
     color: #fff
-    //background-color: #666
-    background: url('../img/san-rafael-falls1.jpg') no-repeat
+    background-color: #222
     font-family: 'latolight'
+
 
 
 h1, h2, h3
     font-family: 'latoregular'
 
 
+.background
+    position: absolute
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+    background: url('../img/background.png') no-repeat
+    background-size: auto auto
+    background-position: 50% top
+
+
 .content
-    background-color: rgba(0,50,50,0.3)
     display: table
     overflow: hidden
     position: absolute
+    top: 0
+    left: 0
 
     width: 100%
     height: 100%
@@ -33,8 +45,9 @@ h1, h2, h3
         text-align: center
 
         > h1.logo
-            background: url('../img/logo.svg') no-repeat center center
+            background: url('../img/logo.svg') no-repeat
             background-size: auto 100%
+            background-position: 50% top
             height: 130px
             margin: 0 0 20px 0
             text-indent: -99999px
@@ -97,12 +110,12 @@ aside
     font-family: 'latolight'
 
     &.contact
-        left: 0
+        left: 0 //-200px
         padding-left: 20px
         @include gradient-horizontal($start-color: rgba(0,0,0,0.666), $end-color: rgba(0,0,0,.0001))
 
     &.projects
-        right: 0
+        right: 0 //-200px
         padding-right: 20px
         text-align: right
         @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,0.666))

@@ -205,17 +205,28 @@ th {
 
 body {
   color: white;
-  background: url("../img/san-rafael-falls1.jpg") no-repeat;
+  background-color: #222222;
   font-family: "latolight"; }
 
 h1, h2, h3 {
   font-family: "latoregular"; }
 
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: url("../img/background.png") no-repeat;
+  background-size: auto auto;
+  background-position: 50% top; }
+
 .content {
-  background-color: rgba(0, 50, 50, 0.3);
   display: table;
   overflow: hidden;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%; }
   .content > section {
@@ -223,8 +234,9 @@ h1, h2, h3 {
     vertical-align: middle;
     text-align: center; }
     .content > section > h1.logo {
-      background: url("../img/logo.svg") no-repeat center center;
+      background: url("../img/logo.svg") no-repeat;
       background-size: auto 100%;
+      background-position: 50% top;
       height: 130px;
       margin: 0 0 20px 0;
       text-indent: -99999px; }
