@@ -21,17 +21,23 @@ class Layer
 
         @initialize()
 
-    update: (p) ->
-        offset = @k * -p  # + @origin.x
-        if Math.abs(offset - @offset) >= 0
-            @offset = offset
-            @transform()
+    update: (event, p) =>
+        offset = @k * -p  # Negate p % to move opposite direction as mouse
+        if Math.abs(offset - @offset) >= 1  # Only transform layer if offset changed a pixel or more
+            @offset = Math.floor offset
+            @render()
 
     initialize: () ->
-        return
+        """
+        Initialize layer such as position and related styling etc.
+        """
+        throw Error('Not implemented')
 
-    transform: () ->
-        return
+    render: () ->
+        """
+        Render updated layer position
+        """
+        throw Error('Not implemented')
 
 
 class ImageLayer extends Layer
@@ -39,26 +45,29 @@ class ImageLayer extends Layer
     initialize: () ->
         @$el.css
             'background-size': "#{@$el.outerWidth() + @k * 2.0}px auto"
-        @transform()
+        @render()
+
+    render: () ->
+        @el.style.backgroundPosition = "#{@x + @offset}px top"
 
 
-    transform: () ->
-        offset = Math.floor @x + @offset
-        @el.style.backgroundPosition = "#{offset}px top"
-
-
-class TranslationLayer extends Layer
+class PositionLayer extends Layer
 
     initialize: () ->
         @$el.css
             left: "#{@x}px"
 
-    transform: () ->
-        offset = Math.floor @offset
+    render: () ->
+        @$el.css
+            left: "#{@x + @offset}px"
 
+
+class TranslationLayer extends PositionLayer
+
+    render: () ->
 #        console.log @el.className, 'offset:', @offset, 'k:', @k, 'x:', @x
 
-        # TODO: Don't transform non visible layers
+#        # TODO: Don't transform non visible layers
 #        if @x + @offset + @width < 0
 #            console.log 'skipping', @el.className
 #            return
@@ -68,42 +77,53 @@ class TranslationLayer extends Layer
 #            return
 
         @$el.css
-            'transform': "translate(#{offset}px, 0)"
+            'transform': "translate(#{@offset}px, 0)"
 
 
-pageWidth = $('body').outerWidth()
-parallaxWidth = pageWidth * 0.6
+class World
 
-layers = [
-    new ImageLayer '.background', {x: -20.0, k: 20.0}
-    new TranslationLayer '.content', {k: 40.0}
-    new TranslationLayer '.contact', {x: -200.0, k: 200.0}
-    new TranslationLayer '.projects', {x: pageWidth, k: 200.0}
-]
+    constructor: (options) ->
+        @page =
+            width: $('body').outerWidth()
+        @parallax =
+            width: @page.width * 0.6
+        @layers = []
+        @mouse =
+            x: undefined
 
-pendingAnimFrame = false
-mouseX = undefined
+        @$document = $ document
+        @$document.on 'mousemove', @mousemove
 
-# En snel easing funktion :))
-easeOutQuart = (d) -> (t) -> - (Math.pow(t/d-1, 4) - 1);
-easing = easeOutQuart(1.8)
+    addLayer: (layer) ->
+        @layers.push layer
+        @$document.on 'world:changed', layer.update
 
-$(document).on 'mousemove', (event) ->
-    if mouseX is undefined
-        mouseX = mouseX  # TODO: animate to cursor but still react on mouse move to update animation endpoint
+    mousemove: (event) =>
+        x = event.pageX
+#        console.log x
 
-    mouseX = event.pageX
+        if @mouse.x is undefined
+            # First mouse event
+            # TODO: animate-to/catch cursor but still react on mouse move to update animation endpoint?
+            @mouse.x = x
+        else if Math.abs(x - @mouse.x) < 1.0
+            # Experimental: Ignore mouse delta less than a pixel
+            return
+        else
+            @mouse.x = x
 
-    if pendingAnimFrame
-        return
+        p = Math.min(+1.0, Math.max(-1.0, (@mouse.x - @page.width / 2) / @parallax.width * 2))
+        pEased = (p / Math.abs p) * easing(Math.abs p)
 
-    pendingAnimFrame = true
+        @$document.trigger 'world:changed', [pEased]
 
-#    window.requestAnimationFrame ->
-    pendingAnimFrame = false
 
-    p = Math.min(+1.0, Math.max(-1.0, (mouseX - pageWidth / 2) / parallaxWidth * 2))
-    pEased = (p/Math.abs(p)) * easing(Math.abs(p))
+easeOutQuart = (d) -> (t) -> - (Math.pow(t / d - 1, 4) - 1)
+easing = easeOutQuart 1.8
 
-    for layer in layers
-        layer.update pEased
+world = new World
+
+world.addLayer new ImageLayer '.background', {x: -20.0, k: 20.0}
+world.addLayer new TranslationLayer '.content', {k: 40.0}
+world.addLayer new TranslationLayer '.contact', {x: -200.0, k: 200.0}
+world.addLayer new TranslationLayer '.projects', {x: world.page.width, k: 200.0}
