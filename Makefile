@@ -1,4 +1,4 @@
-.PHONY: css
+.PHONY: css serve
 
 serve:
 	bundle exec jekyll serve --watch
