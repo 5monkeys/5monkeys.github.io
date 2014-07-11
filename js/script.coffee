@@ -1,5 +1,5 @@
 # En snel easing funktion :))
-easeOutQuart = (d) -> (t) -> - (Math.pow(t/d-1, 4) - 1);
+easeOutQuart = (d) -> (t) -> 1 - (t/d-1)*(t/d-1)*(t/d-1)*(t/d-1)
 easing = easeOutQuart(1.8)
 
 # measurements in pixels
@@ -65,10 +65,13 @@ update = (x) ->
   for own name, plane of planes
     updatePlane(name, plane, x)
 
+sgn = (v) -> v / Math.abs(v)
+
 updatePlane = (name, plane, x) ->
-  xt = tiltWidth * Math.min(+1.0, Math.max(-1.0, (x ? prevX) / parallaxWidth * 2))
+  xt = Math.min(+1.0, Math.max(-1.0, (x ? prevX) / parallaxWidth * 2))
+  xtEased = sgn(xt) * easing(Math.abs(xt))
   plane.el = document.querySelector('.' + name) unless plane.el?
-  transform  = 'translate3d(' + Math.floor((plane.x ? 0) - xt) + 'px, ' \
+  transform  = 'translate3d(' + Math.floor((plane.x ? 0) - tiltWidth*xt) + 'px, ' \
                               + Math.floor(plane.y ? 0) + 'px, ' \
                               + Math.floor(plane.z ? 0) + 'px)'
   transform += ' scale(' + (1.0 - plane.z / depth) + ')' if plane.rescale?
@@ -83,6 +86,11 @@ $(document).mousemove (event) ->
   prevX = x
 
 $(document).resize(resize)
+
+# In case browser restores state
+$(document).ready ->
+  resize()
+  update(prevX ? 0)
 
 resize()
 update(0)
@@ -102,42 +110,39 @@ $.fn.konami = (callback) ->
         $(this).unbind 'keydown', arguments.callee
         callback()
 
-$(document).konami ->
-
+goCrazy = ->
   secondsPerBanana = 1/10  # second per 10 bananas
   maxBananas = 200
   bananas = []
 
+  bananaContainer = document.body
+  $(bananaContainer).addClass 'bananas'
+
   banana = ->
+    ratio = 1.0 - planes.background.z / depth
     plane = {
-      el: document.createElement('img')
-      x: (pageWidth + 2*tiltWidth)*Math.random() - tiltWidth
-      y: (pageHeight + 2*tiltHeight)*Math.random() - tiltHeight
+      el: document.createElement('banana')
+      x: ratio*pageWidth*(Math.random() - 0.5)
+      y: ratio*pageHeight*(Math.random() - 0.5)
       z: planes.background.z
-      dx:  100*(2*Math.random() - 1)
+      dx: +100*(2*Math.random() - 1)
       dy: -100*(Math.random() + 1)
-      dz:  200*(Math.random() + 1)
-      ddy: 50
+      dz: +200*(Math.random() + 1)
+      ddy: 80
       ddx: 0
       ddz: -2
     }
-    console.log plane.dx, plane.dy, plane.dz
-    plane.el.style.position = 'absolute'
-    plane.el.style.left = '0'
-    plane.el.style.top = '0'
-    plane.el.style.height = '25px'
-    plane.el.src = 'img/banan.png'
-    document.body.appendChild plane.el
+    bananaContainer.appendChild plane.el
 
     planes['banana' + bananas.length] = plane
     bananas.push plane
-    updatePlane('banana', plane)
+    updatePlane 'banana', plane
 
   clean = ->
     bananas = bananas.filter (plane, i) ->
-      if plane.y < 2*pageHeight
+      if plane.y < 2*pageHeight and plane.z < depth
         return true
-      plane.el.parentNode.removeChild plane.el
+      bananaContainer.removeChild(plane.el)
       delete planes['banana' + i]
       return false
 
@@ -172,3 +177,11 @@ $(document).konami ->
     t0 = t1
 
   , 50)
+
+$(document).konami goCrazy
+$(document).on 'dblclick', (ev) ->
+  console.log ev.target
+  if $(ev.target.parentNode).hasClass('content')
+    $(document).unbind 'dblclick', arguments.callee
+    goCrazy()
+
