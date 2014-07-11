@@ -258,7 +258,6 @@ body {
       font-style: normal;
       text-transform: uppercase; }
     .content > section > nav {
-      display: none;
       margin-top: 50px; }
       .content > section > nav a {
         display: inline-block;
@@ -273,10 +272,8 @@ body {
         text-align: center;
         text-transform: uppercase;
         text-decoration: none;
-        -webkit-transition: color 0.4s ease, background 0.4s ease, opacity 0.2s ease;
-        -moz-transition: color 0.4s ease, background 0.4s ease, opacity 0.2s ease;
-        -o-transition: color 0.4s ease, background 0.4s ease, opacity 0.2s ease;
-        transition: color 0.4s ease, background 0.4s ease, opacity 0.2s ease; }
+        -webkit-transition: color, background-color, 0.4s ease;
+        transition: color, background-color, 0.4s ease; }
         .content > section > nav a:hover {
           color: #444444;
           background-color: white;
@@ -298,19 +295,19 @@ aside {
   font-family: "latolight"; }
   aside.contact {
     left: 0;
-    padding-left: 20px;
-    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.333) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.333) 0%, rgba(0, 0, 0, 0.0001) 100%);
+    padding-left: 40px;
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(20, 0, 20, 0.666) 0%), color-stop(rgba(0, 0, 0, 0.0001) 100%));
+    background-image: linear-gradient(to right, rgba(20, 0, 20, 0.666) 0%, rgba(0, 0, 0, 0.0001) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#55000000', endColorstr='#00000000', GradientType=1); }
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#AA140014', endColorstr='#00000000', GradientType=1); }
   aside.projects {
     right: 0;
-    padding-right: 20px;
+    padding-right: 40px;
     text-align: right;
-    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(0, 0, 0, 0.333) 100%));
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.333) 100%);
+    background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0%), color-stop(rgba(20, 0, 20, 0.666) 100%));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(20, 0, 20, 0.666) 100%);
     background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#55000000', GradientType=1); }
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#AA140014', GradientType=1); }
   aside > section {
     display: table-cell;
     vertical-align: middle; }
@@ -327,6 +324,9 @@ aside {
         text-decoration: none;
         text-transform: uppercase;
         line-height: 2em;
-        display: inline-block; }
+        display: inline-block;
+        -webkit-transition: color, padding-right 50ms ease-in-out;
+        transition: color, padding-right 50ms ease-in-out; }
         aside > section > ul > li > a:hover {
-          color: #f1ef1f; }
+          color: #f1ef1f;
+          padding-right: 5px; }

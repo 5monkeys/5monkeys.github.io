@@ -79,7 +79,7 @@ body
             text-transform: uppercase
 
         > nav
-            display: none
+            //display: none
             margin-top: 50px
 
             a
@@ -99,10 +99,7 @@ body
                 text-transform: uppercase
                 text-decoration: none
 
-                -webkit-transition: color .4s ease,background .4s ease,opacity .2s ease
-                -moz-transition: color .4s ease,background .4s ease,opacity .2s ease
-                -o-transition: color .4s ease,background .4s ease,opacity .2s ease
-                transition: color .4s ease,background .4s ease,opacity .2s ease
+                @include transition(color, background-color, .4s ease)
 
                 &:hover
                     color: #444
@@ -130,15 +127,15 @@ aside
 
     &.contact
         left: 0 //-200px
-        padding-left: 20px
-        @include gradient-horizontal($start-color: rgba(0,0,0,0.333), $end-color: rgba(0,0,0,.0001))
+        padding-left: 40px
+        @include gradient-horizontal($start-color: rgba(20,0,20,0.666), $end-color: rgba(0,0,0,.0001))
 
     &.projects
         //left: 0
         right: 0 //-200px
-        padding-right: 20px
+        padding-right: 40px
         text-align: right
-        @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(0,0,0,0.333))
+        @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(20,0,20,0.666))
 
     > section
         display: table-cell
@@ -163,6 +160,10 @@ aside
                     text-transform: uppercase
                     line-height: 2em
                     display: inline-block
+                    @include transition(color,padding-right 50ms ease-in-out)
 
                     &:hover
                         color: #f1ef1f
+                        padding-right: 5px
+
+
