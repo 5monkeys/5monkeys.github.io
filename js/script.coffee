@@ -5,7 +5,7 @@ easing = easeOutQuart(1.8)
 # measurements in pixels
 depth = 1000
 tiltWidth = 200
-tiltHeight = 0
+tiltHeight = 0  # not implemented properly
 
 planes =
   contact:    {z:  +500, offset: -tiltWidth, align: 'left'}
@@ -52,15 +52,6 @@ resize = ->
       plane.el.style.left = pageWidth * (1.0 - ratio) / 2  - tiltWidth  + 'px'
       plane.el.style.top  = pageHeight * (1.0 - ratio) / 2 - tiltHeight + 'px'
 
-    # pw + offset = w/2
-    #      offset = w/2 - pw
-    #      offset = w(pz/d)/2
-
-    # offset           = pw (d / (d - pz) - 1)
-    # (1 - pz/d)/(w/2)
-    # offset           = (1 - pz/d)/(w/2) * (d / (d - pz) - 1)
-    # 
-
     if plane.align?
 
       if plane.rescale
@@ -71,14 +62,18 @@ resize = ->
 
 # set x coordinate, where x=0 is the middle of the viewport
 update = (x) ->
-  xt = Math.floor(-tiltWidth * Math.min(+1.0, Math.max(-1.0, x / parallaxWidth * 2)))
-
   for own name, plane of planes
-    plane.el = document.querySelector('.' + name) unless plane.el?
-    transform  = 'translate3d(' + xt + 'px, 0, ' + plane.z + 'px)'
-    transform += ' scale(' + (1.0 - plane.z / depth) + ')' if plane.rescale?
-    transform += ' ' + plane.transform if plane.transform?
-    plane.el.style[transformKey] = transform
+    updatePlane(name, plane, x)
+
+updatePlane = (name, plane, x) ->
+  xt = tiltWidth * Math.min(+1.0, Math.max(-1.0, (x ? prevX) / parallaxWidth * 2))
+  plane.el = document.querySelector('.' + name) unless plane.el?
+  transform  = 'translate3d(' + Math.floor((plane.x ? 0) - xt) + 'px, ' \
+                              + Math.floor(plane.y ? 0) + 'px, ' \
+                              + Math.floor(plane.z ? 0) + 'px)'
+  transform += ' scale(' + (1.0 - plane.z / depth) + ')' if plane.rescale?
+  transform += ' ' + plane.transform if plane.transform?
+  plane.el.style[transformKey] = transform
 
 prevX = undefined
 
@@ -108,20 +103,58 @@ $.fn.konami = (callback) ->
         callback()
 
 $(document).konami ->
-  console.log 'raise your donger!'
-  plane = {
-    z: 300*(Math.random()-1),
-    el: document.createElement 'img'
-  }
-  $(document.body).addClass 'rustle'
-  plane.el.style.position = 'absolute'
-  plane.el.style.left = Math.random() * pageWidth + 'px'
-  plane.el.style.top = Math.random() * pageHeight + 'px'
-  plane.el.src = 'static/banana.png'
-  plane.transform = 'rotateX(45deg)'
-  setInterval(->
-    planes.content.z -= 1
-    update(prevX)
-  , 100)
-  document.body.appendChild plane.el
-  planes['rustler'] = plane
+  pixelsPerMeter = Math.sqrt(72)
+  bananas = []
+  banana = ->
+    plane = {
+      el: document.createElement('img')
+      transform: 'scale(0.25)'
+      x: Math.random() * (pageWidth + 2*tiltWidth) - tiltWidth
+      y: Math.random() * (pageHeight + 2*tiltHeight) - tiltHeight - pageHeight
+      z: planes.background.z*(1 - Math.random())
+      dx: 50*(Math.random() - 1)
+      dy: 50*(Math.random() - 1)
+      dz: 50*(Math.random() - 1)
+      ddy: 9.82 * pixelsPerMeter
+      ddx: 0
+      ddz: 0
+    }
+    plane.el.style.position = 'absolute'
+    plane.el.style.left = '0'
+    plane.el.style.top = '0'
+    plane.el.src = 'img/banan.png'
+    document.body.appendChild plane.el
+
+    planes['banana' + bananas.length] = plane
+    bananas.push plane
+    updatePlane('banana', plane)
+
+    # Clean up spilled bananas
+    bananas = bananas.filter (plane, i) ->
+      if plane.y < 2*pageHeight
+        return true
+      plane.el.parentNode.removeChild plane.el
+      delete planes['banana' + i]
+      return false
+
+    return plane
+
+  setInterval(banana, 10/1e3)
+  banana()
+
+  t0 = Number(new Date())/1e3
+  simulate = ->
+    t = Number(new Date())/1e3 - t0
+    t0 += t
+    for own i, plane of bananas
+      plane.x  += t*(plane.dx + plane.ddx*t/2)
+      plane.y  += t*(plane.dy + plane.ddy*t/2)
+      plane.z  += t*(plane.dz + plane.ddz*t/2)
+      plane.dx += t*plane.ddx
+      plane.dy += t*plane.ddy
+      plane.dz += t*plane.ddz
+      updatePlane('banana', plane)
+
+    requestAnimationFrame simulate
+
+  simulate()
