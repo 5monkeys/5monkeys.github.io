@@ -217,21 +217,23 @@ h1, h2, h3 {
   background: url("../img/background.png") no-repeat;
   background-size: 100% 100%;
   background-position: 0% top;
-  transform: translateZ(50px);
-  -webkit-transform: translateZ(50px); }
+  transform: translateZ(10px);
+  -webkit-transform: translateZ(10px); }
 
 html, body {
   height: 100%; }
 
 body {
   -moz-transform: translate3d(0, 0, 0);
-  perspective: 5000px;
-  -webkit-perspective: 5000px;
-  perspective-origin: 50%; }
+  perspective: 100px;
+  -webkit-perspective: 100px;
+  perspective-origin: 50%;
+  -webkit-perspective-origin: 50%; }
 
 .foreground {
-  transform: translateZ(500px);
-  -webkit-transform: translateZ(500px); }
+  transform: translateZ(100px);
+  -webkit-transform: translateZ(100px);
+  height: 100%; }
 
 .content {
   display: table;
