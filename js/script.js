@@ -152,33 +152,37 @@
   };
 
   $(document).konami(function() {
-    var banana, bananas, pixelsPerMeter, simulate, t0;
-    pixelsPerMeter = Math.sqrt(72);
+    var banana, bananas, clean, maxBananas, secondsPerBanana, simulate, t0, tBanana, tClean;
+    secondsPerBanana = 1 / 10;
+    maxBananas = 200;
     bananas = [];
     banana = function() {
       var plane;
       plane = {
         el: document.createElement('img'),
-        transform: 'scale(0.25)',
-        x: Math.random() * (pageWidth + 2 * tiltWidth) - tiltWidth,
-        y: Math.random() * (pageHeight + 2 * tiltHeight) - tiltHeight - pageHeight,
-        z: planes.background.z * (1 - Math.random()),
-        dx: 50 * (Math.random() - 1),
-        dy: 50 * (Math.random() - 1),
-        dz: 50 * (Math.random() - 1),
-        ddy: 9.82 * pixelsPerMeter,
+        x: (pageWidth + 2 * tiltWidth) * Math.random() - tiltWidth,
+        y: (pageHeight + 2 * tiltHeight) * Math.random() - tiltHeight,
+        z: planes.background.z,
+        dx: 100 * (2 * Math.random() - 1),
+        dy: -100 * (Math.random() + 1),
+        dz: 200 * (Math.random() + 1),
+        ddy: 50,
         ddx: 0,
-        ddz: 0
+        ddz: -2
       };
+      console.log(plane.dx, plane.dy, plane.dz);
       plane.el.style.position = 'absolute';
       plane.el.style.left = '0';
       plane.el.style.top = '0';
+      plane.el.style.height = '25px';
       plane.el.src = 'img/banan.png';
       document.body.appendChild(plane.el);
       planes['banana' + bananas.length] = plane;
       bananas.push(plane);
-      updatePlane('banana', plane);
-      bananas = bananas.filter(function(plane, i) {
+      return updatePlane('banana', plane);
+    };
+    clean = function() {
+      return bananas = bananas.filter(function(plane, i) {
         if (plane.y < 2 * pageHeight) {
           return true;
         }
@@ -186,15 +190,10 @@
         delete planes['banana' + i];
         return false;
       });
-      return plane;
     };
-    setInterval(banana, 10 / 1e3);
-    banana();
-    t0 = Number(new Date()) / 1e3;
-    simulate = function() {
-      var i, plane, t;
-      t = Number(new Date()) / 1e3 - t0;
-      t0 += t;
+    simulate = function(t) {
+      var i, plane, _results;
+      _results = [];
       for (i in bananas) {
         if (!__hasProp.call(bananas, i)) continue;
         plane = bananas[i];
@@ -204,11 +203,27 @@
         plane.dx += t * plane.ddx;
         plane.dy += t * plane.ddy;
         plane.dz += t * plane.ddz;
-        updatePlane('banana', plane);
+        _results.push(updatePlane('banana', plane));
       }
-      return requestAnimationFrame(simulate);
+      return _results;
     };
-    return simulate();
+    t0 = Number(new Date()) / 1e3;
+    tBanana = t0;
+    tClean = t0;
+    return setInterval(function() {
+      var t1;
+      t1 = Number(new Date()) / 1e3;
+      if ((t1 - tBanana) >= secondsPerBanana && bananas.length < maxBananas) {
+        banana();
+        tBanana = t1;
+      }
+      if ((t1 - tClean) >= 5 * secondsPerBanana) {
+        clean();
+        tClean = t1;
+      }
+      simulate(t1 - t0);
+      return t0 = t1;
+    }, 50);
   });
 
 }).call(this);

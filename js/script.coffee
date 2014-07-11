@@ -103,25 +103,29 @@ $.fn.konami = (callback) ->
         callback()
 
 $(document).konami ->
-  pixelsPerMeter = Math.sqrt(72)
+
+  secondsPerBanana = 1/10  # second per 10 bananas
+  maxBananas = 200
   bananas = []
+
   banana = ->
     plane = {
       el: document.createElement('img')
-      transform: 'scale(0.25)'
-      x: Math.random() * (pageWidth + 2*tiltWidth) - tiltWidth
-      y: Math.random() * (pageHeight + 2*tiltHeight) - tiltHeight - pageHeight
-      z: planes.background.z*(1 - Math.random())
-      dx: 50*(Math.random() - 1)
-      dy: 50*(Math.random() - 1)
-      dz: 50*(Math.random() - 1)
-      ddy: 9.82 * pixelsPerMeter
+      x: (pageWidth + 2*tiltWidth)*Math.random() - tiltWidth
+      y: (pageHeight + 2*tiltHeight)*Math.random() - tiltHeight
+      z: planes.background.z
+      dx:  100*(2*Math.random() - 1)
+      dy: -100*(Math.random() + 1)
+      dz:  200*(Math.random() + 1)
+      ddy: 50
       ddx: 0
-      ddz: 0
+      ddz: -2
     }
+    console.log plane.dx, plane.dy, plane.dz
     plane.el.style.position = 'absolute'
     plane.el.style.left = '0'
     plane.el.style.top = '0'
+    plane.el.style.height = '25px'
     plane.el.src = 'img/banan.png'
     document.body.appendChild plane.el
 
@@ -129,7 +133,7 @@ $(document).konami ->
     bananas.push plane
     updatePlane('banana', plane)
 
-    # Clean up spilled bananas
+  clean = ->
     bananas = bananas.filter (plane, i) ->
       if plane.y < 2*pageHeight
         return true
@@ -137,15 +141,7 @@ $(document).konami ->
       delete planes['banana' + i]
       return false
 
-    return plane
-
-  setInterval(banana, 10/1e3)
-  banana()
-
-  t0 = Number(new Date())/1e3
-  simulate = ->
-    t = Number(new Date())/1e3 - t0
-    t0 += t
+  simulate = (t) ->
     for own i, plane of bananas
       plane.x  += t*(plane.dx + plane.ddx*t/2)
       plane.y  += t*(plane.dy + plane.ddy*t/2)
@@ -155,6 +151,24 @@ $(document).konami ->
       plane.dz += t*plane.ddz
       updatePlane('banana', plane)
 
-    requestAnimationFrame simulate
+  t0 = Number(new Date())/1e3
+  tBanana = t0
+  tClean = t0
 
-  simulate()
+  setInterval(->
+
+    t1 = Number(new Date())/1e3
+
+    if (t1 - tBanana) >= secondsPerBanana and bananas.length < maxBananas
+      banana()
+      tBanana = t1
+
+    if (t1 - tClean) >= 5*secondsPerBanana
+      clean()
+      tClean = t1
+
+    simulate(t1 - t0)
+
+    t0 = t1
+
+  , 50)
