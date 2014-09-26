@@ -1,8 +1,6 @@
-
 - [Bolist](https://bolist.se/)
 - [DN Kampanj](https://campaigner.dn.se/prenumerera/prova/)
 - [DN Service](http://kund.dn.se/)
-- [Expressen](http://magasin.expressen.se/)
 - [Glassbyrån](http://www.glassbyran.se/)
 - [Pressbyrån](http://www.pressbyran.se/)
 - [Propellerhead](https://shop.propellerheads.se/)
@@ -10,4 +8,3 @@
 - [Sportamore](http://www.sportamore.se/)
 - [Spring](http://www.springmoves.com/)
 - [Toborrow](https://toborrow.se/sv/)
-- 
