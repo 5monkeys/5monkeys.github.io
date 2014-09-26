@@ -5,8 +5,7 @@ Org. 556712-4143
 
 ## Contact
 +46-8-5000 66 53
-
-[info@5monkeys.se](mailto:info@5monkeys.se)
+info@5monkeys.se
 
 ## Office
 Stadsgården 10
