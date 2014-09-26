@@ -1,7 +1,6 @@
 
-- [Bolist](https://bolist.se/)
+- [BOLIST](https://bolist.se/)
 - [DN Kundservice](http://kund.dn.se/)
-- [Glassbyrån](http://www.glassbyran.se/)
 - [Pressbyrån](http://www.pressbyran.se/)
 - [Propellerhead](https://shop.propellerheads.se/)
 - [Shareville](https://www.shareville.se/)
