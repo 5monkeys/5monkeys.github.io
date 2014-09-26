@@ -1,7 +1,6 @@
 
 - [Bolist](https://bolist.se/)
-- [DN Kampanj](https://campaigner.dn.se/prenumerera/prova/)
-- [DN Service](http://kund.dn.se/)
+- [DN Kundservice](http://kund.dn.se/)
 - [Glassbyrån](http://www.glassbyran.se/)
 - [Pressbyrån](http://www.pressbyran.se/)
 - [Propellerhead](https://shop.propellerheads.se/)
