@@ -179,9 +179,9 @@ goCrazy = ->
   , 50)
 
 $(document).konami goCrazy
-$(document).on 'dblclick', (ev) ->
+$(document).on 'click', (ev) ->
   console.log ev.target
   if $(ev.target.parentNode).hasClass('content')
-    $(document).unbind 'dblclick', arguments.callee
+    $(document).unbind 'click', arguments.callee
     goCrazy()
 
