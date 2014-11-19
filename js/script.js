@@ -235,10 +235,10 @@
 
   $(document).konami(goCrazy);
 
-  $(document).on('click', function(ev) {
+  $(document).on('dblclick', function(ev) {
     console.log(ev.target);
     if ($(ev.target.parentNode).hasClass('content')) {
-      $(document).unbind('click', arguments.callee);
+      $(document).unbind('dblclick', arguments.callee);
       return goCrazy();
     }
   });
