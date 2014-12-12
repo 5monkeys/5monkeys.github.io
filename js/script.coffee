@@ -1,5 +1,5 @@
 # En snel easing funktion :))
-easeOutQuart = (d) -> (t) -> 1 - (t/d-1)*(t/d-1)*(t/d-1)*(t/d-1)
+easeOutQuart = (d) -> (t) -> 1 - (t/d-1) ** 4
 easing = easeOutQuart(1.8)
 
 # measurements in pixels
@@ -35,7 +35,7 @@ resize = ->
   # mathematics. The ratio of the screen plane's width and the distance from
   # the viewer is the same as the ratio of the "full" background width and the
   # distance from the viewer. i.e
-  # 
+  #
   #    screen distance / screen width = (screen distance - plane z) / plane width
   # => plane width = screen width * (screen distance - plane z) / screen distance
   # => plane width = screen width * (1 - plane z / screen distance)
