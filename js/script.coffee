@@ -35,7 +35,7 @@ resize = ->
   # mathematics. The ratio of the screen plane's width and the distance from
   # the viewer is the same as the ratio of the "full" background width and the
   # distance from the viewer. i.e
-  # 
+  #
   #    screen distance / screen width = (screen distance - plane z) / plane width
   # => plane width = screen width * (screen distance - plane z) / screen distance
   # => plane width = screen width * (1 - plane z / screen distance)
@@ -80,20 +80,25 @@ updatePlane = (name, plane, x) ->
 
 prevX = undefined
 
-$(document).mousemove (event) ->
-  x = event.pageX - pageWidth/2
-  update(x) if x != prevX
-  prevX = x
+# This check sucks, but can be used at least for testing.
+supportsMouse = -> $(document).outerWidth() > 400
 
-$(document).resize(resize)
+if supportsMouse()
+  $(document.documentElement).addClass 'supportsMouse'
+  $(document).mousemove (event) ->
+    x = event.pageX - pageWidth/2
+    update(x) if x != prevX
+    prevX = x
 
-# In case browser restores state
-$(document).ready ->
+  $(document).resize(resize)
+
+  # In case browser restores state
+  $(document).ready ->
+    resize()
+    update(prevX ? 0)
+
   resize()
-  update(prevX ? 0)
-
-resize()
-update(0)
+  update(0)
 
 ### KONAMI CODE ###
 

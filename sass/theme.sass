@@ -11,7 +11,6 @@ body
     color: #fff
     background-color: #222
     font-family: 'latolight'
-    overflow: hidden
 
 
 h1, h2, h3
@@ -23,25 +22,13 @@ html, body
 $depth: 1000px
 $background_z: -1500px
 
-body
-    -moz-transform: translate3d(0, 0, 0)
-
-    perspective: $depth
-    -webkit-perspective: $depth
-
 aside, .background
     -webkit-font-smoothing: subpixel-antialiased
     -webkit-backface-visibility: hidden
 
-.foreground
-    height: 100%
-
 .background
-    position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
+    height: 300px // fallback
+    height: 100vh
     background: url('../img/background.png') no-repeat
     background-size: cover
     background-position: 50% 50%
@@ -67,12 +54,14 @@ aside, .background
             background-size: auto 100%
             background-position: 50% top
             height: 130px
+            height: 20vmin
             margin: 0 0 20px 0
             text-indent: -99999px
 
         > cite
             font-family: 'latolight'
             font-size: 2.2em
+            font-size: 5vmin
             font-weight: normal
             font-style: normal
             text-transform: uppercase
@@ -105,20 +94,15 @@ aside, .background
                     background-color: #fff
                     text-decoration: none
 
-
 aside
     @include box-sizing(border-box)
 
     display: table
     overflow: hidden
 
-    position: absolute
-    top: 0
-
-    width: 200px
     height: 100%
 
-    padding: 0 10px
+    padding: 10px
 
     color: #fff
     font-size: 0.9em
@@ -126,12 +110,12 @@ aside
 
     &.contact
         left: 0
-        padding-left: 40px
+        padding-left: 20px
         @include gradient-horizontal($start-color: rgba(20,0,20,0.666), $end-color: rgba(0,0,0,.0001))
 
     &.projects
         right: 0
-        padding-right: 40px
+        padding-right: 20px
         text-align: right
         @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(20,0,20,0.666))
 
@@ -163,6 +147,46 @@ aside
                     &:hover
                         color: #f1ef1f
                         padding-right: 5px
+
+.contact
+    float: left
+
+.projects
+    float: right
+
+
+
+
+.supportsMouse
+    body
+        overflow: hidden
+
+        -moz-transform: translate3d(0, 0, 0)
+
+        perspective: $depth
+        -webkit-perspective: $depth
+
+    .foreground
+        height: 100%
+
+    .background
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+
+    aside
+        position: absolute
+        top: 0
+        width: 200px
+
+
+    .contact
+        padding-left: 40px
+
+    .projects
+        padding-right: 40px
 
 // banana for scale
 .bananas banana
