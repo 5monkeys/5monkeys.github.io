@@ -1,34 +1,51 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="background"></div>
+        <title>5 Monkeys</title>
 
-<div class="foreground">
+        <link rel="shortcut icon" href="img/monkey.png">
+        <link rel="stylesheet" href="style.css">
 
-    <article class="content">
-        <section>
-            <h1 class="logo">5 Monkeys Agency</h1>
-            <cite>+46-8-5000 66 53</cite>
-        </section>
-    </article>
+        <style>
+            /* Adjust according to the height of the content. */
+            body { height: 18em; }
+        </style>
+    </head>
+    <body>
+        <img src="img/logo.svg" alt="5 Monkeys" class="logo">
 
-    <aside class="contact">
-        <section>
-            {% capture contact %}
-                {% include contact.md %}
-            {% endcapture %}
-            {{ contact | markdownify }}
-        </section>
-    </aside>
+        <div class="contact">
+            <h1>5 Monkeys Agency AB</h1>
+            <p>Org. 556712-4143</p>
 
-    <aside class="projects">
-        <section>
-            {% capture projects %}
-                {% include projects.md %}
-            {% endcapture %}
-            {{ projects | markdownify }}
-        </section>
-    </aside>
+            <h2>Contact</h2>
+            <p>+46-8-5000 66 53</p>
+            <p>info@5monkeys.se</p>
 
-</div>
+            <h2>Office</h2>
+            <p>Stadsgården 10</p>
+            <p>Floor 12</p>
+            <p>116 45  STOCKHOLM</p>
+
+            <h2>Post</h2>
+            <p>Box 55666</p>
+            <p>102 15  STOCKHOLM</p>
+        </div>
+
+        <ul class="projects">
+            <li><a href="https://bolist.se/">BOLIST</a></li>
+            <li><a href="http://kund.dn.se/">DN Kundservice</a></li>
+            <li><a href="http://www.pressbyran.se/">Pressbyrån</a></li>
+            <li><a href="https://shop.propellerheads.se/">Propellerhead</a></li>
+            <li><a href="https://www.shareville.se/">Shareville</a></li>
+            <li><a href="http://www.sportamore.se/">Sportamore</a></li>
+            <li><a href="http://www.springmoves.com/">Spring</a></li>
+            <li><a href="https://toborrow.se/sv/">Toborrow</a></li>
+        </ul>
+
+    </body>
+</html>
