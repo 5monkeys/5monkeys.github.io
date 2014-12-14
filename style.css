@@ -1,0 +1,132 @@
+body {
+    background-color: #222;
+    background-image: linear-gradient(to right,
+                                      rgba(20,0,20,0.666),
+                                      rgba(0,0,0,.0001),
+                                      rgba(20,0,20,0.666)
+                                     );
+    color: #fff;
+    font-family: 'latolight', sans-serif;
+    font-size: 0.9em;
+    padding-top: 300px;
+    padding-top: 100vh;
+}
+
+body:before {
+    content: '';
+    padding-top: inherit;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('img/background.png') no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    z-index: 100;
+}
+
+.logo {
+    height: 230px;
+    height: 25vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+
+    /* In case the image does not load: */
+    font-size: 125px;
+    font-size: 14vmin;
+    line-height: 2.5;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.contact, .projects {
+    position: fixed;
+    bottom: 0;
+    padding: 1em;
+    white-space: nowrap;
+}
+
+.contact {
+    left: 0;
+    font: inherit;
+}
+
+.projects {
+    right: 0;
+    margin: 0;
+    list-style: none;
+    text-align: right;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'latoregular', sans-serif;
+}
+
+h1 {
+    font: inherit;
+    margin: inherit;
+}
+
+h2 {
+    font-size: 0.7em;
+    margin: 1.3em 0 0.3em 0;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 2em;
+    transition: 50ms ease-in-out;
+}
+
+a:hover, a:focus {
+    color: #f1ef1f;
+    padding-right: 0.5em;
+}
+
+
+
+@font-face {
+    font-family: 'latohairline';
+    src: url('fonts/lato/lato-hai-webfont.eot');
+    src: url('fonts/lato/lato-hai-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato/lato-hai-webfont.woff') format('woff'),
+         url('fonts/lato/lato-hai-webfont.ttf') format('truetype'),
+         url('fonts/lato/lato-hai-webfont.svg#latohairline') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latolight';
+    src: url('fonts/lato/lato-lig-webfont.eot');
+    src: url('fonts/lato/lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato/lato-lig-webfont.woff') format('woff'),
+         url('fonts/lato/lato-lig-webfont.ttf') format('truetype'),
+         url('fonts/lato/lato-lig-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('fonts/lato/lato-reg-webfont.eot');
+    src: url('fonts/lato/lato-reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lato/lato-reg-webfont.woff') format('woff'),
+         url('fonts/lato/lato-reg-webfont.ttf') format('truetype'),
+         url('fonts/lato/lato-reg-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
