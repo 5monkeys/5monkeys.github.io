@@ -6,29 +6,25 @@ layout: default
 
 <div class="foreground">
 
-    <article class="content">
-        <section>
-            <h1 class="logo">5 Monkeys Agency</h1>
-            <cite>+46-8-5000 66 53</cite>
-        </section>
-    </article>
+  <div class="main">
+    <header>
+      <h1 class="logo">5 Monkeys Agency</h1>
+      <h2 class="slogan">This is how we do it</h2>
+    </header>
 
-    <aside class="contact">
-        <section>
-            {% capture contact %}
-                {% include contact.md %}
-            {% endcapture %}
-            {{ contact | markdownify }}
-        </section>
-    </aside>
+    <section class="projects">
+      {% capture projects %}
+        {% include projects.md %}
+      {% endcapture %}
+      {{ projects | markdownify }}
+    </section>
+  </div>
 
-    <aside class="projects">
-        <section>
-            {% capture projects %}
-                {% include projects.md %}
-            {% endcapture %}
-            {{ projects | markdownify }}
-        </section>
-    </aside>
+  <section class="addendum contact">
+    {% capture contact %}
+      {% include contact.md %}
+    {% endcapture %}
+    {{ contact | markdownify }}
+  </section>
 
 </div>

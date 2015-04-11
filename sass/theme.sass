@@ -3,8 +3,23 @@
 @import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/normalize"
 //@import "../vendor/bootstrap-3.1.1/stylesheets/bootstrap/type"
 @import "mixins"
+@import "flexbox"
 @import "fonts/lato"
 
+$break-mobile: 410px
+$break-small: 570px
+
+@mixin text-shadow($xofs, $yofs, $blur, $color)
+
+@mixin monkey-text-drop-shadow()
+    $xofs: +1px
+    $yofs: +1px
+    $blur:  1px
+    $color: rgba(0, 0, 0, 0.80)
+    -webkit-text-shadow: $xofs $yofs $blur $color
+    -moz-text-shadow: $xofs $yofs $blur $color
+    -o-text-shadow: $xofs $yofs $blur $color
+    text-shadow: $xofs $yofs $blur $color
 
 body
     //@include antialias()
@@ -12,6 +27,7 @@ body
     background-color: #222
     font-family: 'latolight'
     overflow: hidden
+    -webkit-overflow-scroll: none
 
 
 h1, h2, h3
@@ -19,150 +35,169 @@ h1, h2, h3
 
 html, body
     height: 100%
+    width: 100%
 
-$depth: 1000px
-$background_z: -1500px
+$depth: 3000px
+$background_z: -1000px
 
 body
-    -moz-transform: translate3d(0, 0, 0)
-
+    //-moz-transform: transform(translate3d(0, 0, 0))
     perspective: $depth
+    -moz-perspective: $depth
     -webkit-perspective: $depth
 
-aside, .background
+body, .foreground, .main, header
+    transform-style: preserve-3d
+    -moz-transform-style: preserve-3d
+    -webkit-transform-style: preserve-3d
+
+section, header, .background
     -webkit-font-smoothing: subpixel-antialiased
     -webkit-backface-visibility: hidden
 
 .foreground
     height: 100%
 
+.foreground, .main
+    @extend %flexbox
+    @include align-items(center)
+    @include justify-content(center)
+    @include flex-direction(column)
+
+.main
+    @include flex
+    width: 100%
+
+.addendum
+    height: 3em
+
 .background
     position: absolute
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
     background: url('../img/background.png') no-repeat
     background-size: cover
     background-position: 50% 50%
+    // Computed using the JavaScript parallax effect
+    @include transform(translate3d(0, 0, $background_z))
+    width: 1741px
+    height: 1246px
+    left: -368px
+    top: -306px
 
-.content
-    @include translate3d(0, 0, 0)
+// disable background thingy on mobile
+@media screen and (max-width: $break-small)
+    .background
+        display: none
+    body
+        background: url('../img/background.png') no-repeat
+        background-size: cover
+        background-position: 50% 50%
 
-    display: table
-    overflow: hidden
-    position: absolute
-    top: 0
+header
 
-    width: 100%
-    height: 100%
+    text-align: center
+    margin: 0 0 1.5em 0
+    width: 80%
 
-    > section
-        display: table-cell
-        vertical-align: middle
-        text-align: center
+    @media screen and (max-width: $break-small)
+        margin: 0 0 1em 0
 
-        > h1.logo
-            background: url('../img/logo.svg') no-repeat
+    .logo
+        background: url('../img/logo.svg') no-repeat
+        background-size: auto 100%
+        background-position: 50% top
+        height: 5em
+        width: 100%
+        margin: 0 0 0.5em 0
+        text-indent: -99999px
+        // Computed by JavaScript
+        @include transform(translate3d(0px, 0px, -480px) scale(1.16))
+
+        @media screen and (max-width: $break-mobile)
+            background: url('../img/monkey.svg') no-repeat
             background-size: auto 100%
             background-position: 50% top
-            height: 130px
-            margin: 0 0 20px 0
-            text-indent: -99999px
+            height: 3em
 
-        > cite
-            font-family: 'latolight'
-            font-size: 2.2em
-            font-weight: normal
-            font-style: normal
-            text-transform: uppercase
+        @media screen and (max-width: $break-small)
+            background-size: auto 100%
+            height: 3em
 
-        > nav
-            //display: none
-            margin-top: 50px
+    .slogan
+        font-family: 'latolight'
+        font-size: 24pt
+        font-weight: normal
+        font-style: normal
+        text-transform: uppercase
+        margin: 1em 0 0 0
+        max-width: 100%
+        // Computed by JavaScript
+        @include transform(translate3d(0px, 0px, -240px) scale(1.08))
 
-            a
-                display: inline-block
-                color: #fff
+        @media screen and (max-width: $break-mobile)
+            display: none
 
-                border: 2px solid #fff
-                margin: 0 10px
-                padding: 10px 0
-                width: 230px
-
-                font-size: 18px
-                font-family: 'latolight', sans-serif
-                letter-spacing: 1px
-
-                text-align: center
-                text-transform: uppercase
-                text-decoration: none
-
-                @include transition(color, background-color, .4s ease)
-
-                &:hover
-                    color: #444
-                    background-color: #fff
-                    text-decoration: none
+        @media screen and (max-width: $break-small)
+            font-size: 18pt
 
 
-aside
+section
     @include box-sizing(border-box)
-
-    display: table
-    overflow: hidden
-
-    position: absolute
-    top: 0
-
-    width: 200px
-    height: 100%
 
     padding: 0 10px
 
     color: #fff
-    font-size: 0.9em
+    font-size: 1em
     font-family: 'latolight'
 
-    &.contact
-        left: 0
-        padding-left: 40px
-        @include gradient-horizontal($start-color: rgba(20,0,20,0.666), $end-color: rgba(0,0,0,.0001))
+    p
+        margin: 0
 
-    &.projects
-        right: 0
-        padding-right: 40px
-        text-align: right
-        @include gradient-horizontal($start-color: rgba(0,0,0,.0001), $end-color: rgba(20,0,20,0.666))
+    ul
+        @extend .list-unstyled
+        text-align: center
+        margin: 0
 
-    > section
-        display: table-cell
-        vertical-align: middle
+        li
+            display: inline-block
 
-        > h2
-            font-size: 0.7em
+.projects
+    // Computed by JavaScript
+    @include transform(translate3d(0px, 0px, 0px))
+    max-width: 36em
+    ul li
+        margin: 0 0.8em
+        a
+            color: #fff
+            text-decoration: none
             text-transform: uppercase
-            margin: 1.3em 0 0.3em 0
+            line-height: 1.8em
+            display: inline-block
+            @include monkey-text-drop-shadow()
+            @include transition(color)
 
-        > p
-            margin: 0
+            &:active, &:hover
+                color: #f1ef1f
 
-        > ul
-            @extend .list-unstyled
-            margin: 0
+.contact
+    // Computed by JavaScript
+    @include transform(translate3d(0px, 0px, 0px))
+    ul
+        height: 100%
+        *
+            @include monkey-text-drop-shadow()
+        a
+            color: inherit
+            text-decoration: inherit
+        li
+            margin-right: 0.2em
+        li:after
+            content: '|'
+            display: inline-block
+            margin-left: 0.2em
+        li:last-child:after
+            content: ''
+            display: none
 
-            > li
-                > a
-                    color: #fff
-                    text-decoration: none
-                    text-transform: uppercase
-                    line-height: 2em
-                    display: inline-block
-                    @include transition(color,padding-right 50ms ease-in-out)
-
-                    &:hover
-                        color: #f1ef1f
-                        padding-right: 5px
 
 // banana for scale
 .bananas banana
