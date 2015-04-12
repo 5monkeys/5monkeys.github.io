@@ -121,7 +121,7 @@ $.fn.konami = (callback) ->
         callback()
 
 goCrazy = ->
-  secondsPerBanana = 1/10
+  secondsPerBanana = 1/20
   maxBananas = 200
   timeStep = 1e-2
   bananas = []
