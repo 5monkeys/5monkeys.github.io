@@ -150,8 +150,8 @@ goCrazy = ->
         z0: backgroundZ
         dx: +100*(2*Math.random() - 1)
         dy: -100*(Math.random() + 1)
-        dz: +500*(Math.random() + 1)
-        ddy: 80
+        dz: +1200*(Math.random() + 1)
+        ddy: 250
         ddx: 0
         ddz: -2
       }
