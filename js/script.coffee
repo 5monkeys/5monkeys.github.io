@@ -165,7 +165,6 @@ goCrazy = ->
         delete planes['banana' + i]
         return false
 
-    # Fourth-order Runge-Kutta integration of banana particle system
     simulate = (t) ->
       for own i, plane of bananas
         plane.x  += t*(plane.dx + plane.ddx*t/2)
