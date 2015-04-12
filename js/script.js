@@ -225,11 +225,12 @@
   };
 
   goCrazy = function() {
-    var audioEl, backgroundZ, bananaContainer, bananas, maxBananas, secondsPerBanana, throwBananas, timeStep;
-    secondsPerBanana = 1 / 10;
+    var audioEl, backgroundZ, bananaContainer, bananas, freeEls, maxBananas, secondsPerBanana, throwBananas, timeStep;
+    secondsPerBanana = 1 / 20;
     maxBananas = 200;
     timeStep = 1e-2;
     bananas = [];
+    freeEls = [];
     bananaContainer = document.body;
     backgroundZ = planes['.background'].z;
     $(bananaContainer).addClass('bananas');
@@ -240,74 +241,72 @@
     });
     $(bananaContainer).append(audioEl);
     return throwBananas = function() {
-      var banana, clean, simulate, t0, tBanana, tClean;
+      var banana, clean, t0, tBanana, tClean, updateBananaPosition, updateWorld;
+      t0 = Number(new Date()) / 1e3;
       banana = function() {
         var plane, ratio;
         ratio = 1.0 - backgroundZ / depth;
         plane = {
-          el: document.createElement('banana'),
-          x: ratio * pageSize.x * (Math.random() - 0.5),
-          y: ratio * pageSize.y * (Math.random() - 0.5),
-          z: backgroundZ,
+          name: 'banana' + String(t0),
+          t0: t0,
+          x0: ratio * pageSize.x * (Math.random() - 0.5),
+          y0: ratio * pageSize.y * (Math.random() - 0.5),
+          z0: backgroundZ,
           dx: +100 * (2 * Math.random() - 1),
           dy: -100 * (Math.random() + 1),
-          dz: +500 * (Math.random() + 1),
-          ddy: 80,
+          dz: +1200 * (Math.random() + 1),
+          ddy: 250,
           ddx: 0,
           ddz: -2
         };
-        bananaContainer.appendChild(plane.el);
-        planes['banana' + bananas.length] = plane;
-        bananas.push(plane);
+        if (freeEls.length > 0) {
+          plane.el = freeEls.pop();
+        } else {
+          plane.el = document.createElement('banana');
+          bananaContainer.appendChild(plane.el);
+        }
+        planes[plane.name] = plane;
+        return bananas.push(plane);
+      };
+      updateBananaPosition = function(t, plane) {
+        plane.x = plane.x0 + t * (plane.dx + plane.ddx * t / 2);
+        plane.y = plane.y0 + t * (plane.dy + plane.ddy * t / 2);
+        plane.z = plane.z0 + t * (plane.dz + plane.ddz * t / 2);
         return updatePlane('banana', plane);
       };
       clean = function() {
-        return bananas = bananas.filter(function(plane, i) {
-          if (plane.y < 2 * pageSize.y && plane.z < depth) {
-            return true;
+        return bananas = bananas.filter(function(plane) {
+          var removeBanana;
+          removeBanana = plane.z > depth;
+          if (removeBanana) {
+            delete planes[plane.name];
+            freeEls.push(plane.el);
           }
-          bananaContainer.removeChild(plane.el);
-          delete planes['banana' + i];
-          return false;
+          return !removeBanana;
         });
       };
-      simulate = function(t) {
-        var i, plane, _results;
-        _results = [];
-        for (i in bananas) {
-          if (!__hasProp.call(bananas, i)) continue;
-          plane = bananas[i];
-          plane.x += t * (plane.dx + plane.ddx * t / 2);
-          plane.y += t * (plane.dy + plane.ddy * t / 2);
-          plane.z += t * (plane.dz + plane.ddz * t / 2);
-          plane.dx += t * plane.ddx;
-          plane.dy += t * plane.ddy;
-          plane.dz += t * plane.ddz;
-          _results.push(updatePlane('banana', plane));
-        }
-        return _results;
-      };
-      t0 = Number(new Date()) / 1e3;
       tBanana = t0;
       tClean = t0;
-      return setInterval(function() {
-        var t1, _results;
+      updateWorld = function() {
+        var i, plane, t1;
         t1 = Number(new Date()) / 1e3;
-        if ((t1 - tBanana) >= secondsPerBanana && bananas.length < maxBananas) {
-          banana();
-          tBanana = t1;
-        }
         if ((t1 - tClean) >= 5 * secondsPerBanana) {
           clean();
           tClean = t1;
         }
-        _results = [];
-        while ((t1 - t0) > timeStep) {
-          simulate(timeStep);
-          _results.push(t0 += timeStep);
+        if ((t1 - tBanana) >= secondsPerBanana && bananas.length < maxBananas) {
+          banana();
+          tBanana = t1;
         }
-        return _results;
-      }, 50);
+        for (i in bananas) {
+          if (!__hasProp.call(bananas, i)) continue;
+          plane = bananas[i];
+          updateBananaPosition(t1 - plane.t0, plane);
+        }
+        return t0 = t1;
+      };
+      updateWorld();
+      return setInterval(updateWorld, 10);
     };
   };
 
