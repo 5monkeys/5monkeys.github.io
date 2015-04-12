@@ -125,6 +125,7 @@ goCrazy = ->
   maxBananas = 200
   timeStep = 1e-2
   bananas = []
+  freeEls = []
 
   bananaContainer = document.body
   backgroundZ = planes['.background'].z
@@ -142,7 +143,7 @@ goCrazy = ->
     banana = ->
       ratio = 1.0 - backgroundZ / depth
       plane = {
-        el: document.createElement('banana')
+        name: 'banana' + String(t0)
         t0: t0
         x0: ratio*pageSize.x*(Math.random() - 0.5)
         y0: ratio*pageSize.y*(Math.random() - 0.5)
@@ -154,9 +155,14 @@ goCrazy = ->
         ddx: 0
         ddz: -2
       }
-      bananaContainer.appendChild plane.el
 
-      planes['banana' + bananas.length] = plane
+      if freeEls.length > 0
+        plane.el = freeEls.pop()
+      else
+        plane.el = document.createElement('banana')
+        bananaContainer.appendChild plane.el
+
+      planes[plane.name] = plane
       bananas.push plane
 
     updateBananaPosition = (t, plane) ->
@@ -166,12 +172,12 @@ goCrazy = ->
       updatePlane 'banana', plane
 
     clean = ->
-      bananas = bananas.filter (plane, i) ->
-        if plane.y < 2*pageSize.y and plane.z < depth
-          return true
-        bananaContainer.removeChild(plane.el)
-        delete planes['banana' + i]
-        return false
+      bananas = bananas.filter (plane) ->
+        removeBanana = plane.z > depth
+        if removeBanana
+            delete planes[plane.name]
+            freeEls.push(plane.el)
+        return not removeBanana
 
     tBanana = t0
     tClean = t0
@@ -179,12 +185,11 @@ goCrazy = ->
     updateWorld = ->
       t1 = Number(new Date())/1e3
 
-      if (t1 - tClean) >= 10*secondsPerBanana
+      if (t1 - tClean) >= 5*secondsPerBanana
         clean()
         tClean = t1
 
-      nBananas = bananas.length - freeEls.length
-      if (t1 - tBanana) >= secondsPerBanana and nBananas < maxBananas
+      if (t1 - tBanana) >= secondsPerBanana and bananas.length < maxBananas
         banana()
         tBanana = t1
 
@@ -192,9 +197,9 @@ goCrazy = ->
         updateBananaPosition(t1 - plane.t0, plane)
 
       t0 = t1
-      requestAnimationFrame updateWorld
 
     updateWorld()
+    setInterval(updateWorld, 10)
 
 $(document).konami goCrazy
 $(document).on 'dblclick', (ev) ->
