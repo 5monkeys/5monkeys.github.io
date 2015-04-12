@@ -137,13 +137,16 @@ goCrazy = ->
   $(bananaContainer).append(audioEl)
 
   throwBananas = ->
+    t0 = Number(new Date())/1e3
+
     banana = ->
       ratio = 1.0 - backgroundZ / depth
       plane = {
         el: document.createElement('banana')
-        x: ratio*pageSize.x*(Math.random() - 0.5)
-        y: ratio*pageSize.y*(Math.random() - 0.5)
-        z: backgroundZ
+        t0: t0
+        x0: ratio*pageSize.x*(Math.random() - 0.5)
+        y0: ratio*pageSize.y*(Math.random() - 0.5)
+        z0: backgroundZ
         dx: +100*(2*Math.random() - 1)
         dy: -100*(Math.random() + 1)
         dz: +500*(Math.random() + 1)
@@ -155,6 +158,11 @@ goCrazy = ->
 
       planes['banana' + bananas.length] = plane
       bananas.push plane
+
+    updateBananaPosition = (t, plane) ->
+      plane.x = plane.x0 + t*(plane.dx + plane.ddx*t/2)
+      plane.y = plane.y0 + t*(plane.dy + plane.ddy*t/2)
+      plane.z = plane.z0 + t*(plane.dz + plane.ddz*t/2)
       updatePlane 'banana', plane
 
     clean = ->
@@ -165,38 +173,28 @@ goCrazy = ->
         delete planes['banana' + i]
         return false
 
-    simulate = (t) ->
-      for own i, plane of bananas
-        plane.x  += t*(plane.dx + plane.ddx*t/2)
-        plane.y  += t*(plane.dy + plane.ddy*t/2)
-        plane.z  += t*(plane.dz + plane.ddz*t/2)
-        plane.dx += t*plane.ddx
-        plane.dy += t*plane.ddy
-        plane.dz += t*plane.ddz
-        updatePlane('banana', plane)
-
-    t0 = Number(new Date())/1e3
     tBanana = t0
     tClean = t0
 
-    setInterval(->
-
+    updateWorld = ->
       t1 = Number(new Date())/1e3
 
-      if (t1 - tBanana) >= secondsPerBanana and bananas.length < maxBananas
-        banana()
-        tBanana = t1
-
-      if (t1 - tClean) >= 5*secondsPerBanana
+      if (t1 - tClean) >= 10*secondsPerBanana
         clean()
         tClean = t1
 
-      # Constant time step
-      while (t1 - t0) > timeStep
-        simulate(timeStep)
-        t0 += timeStep
+      nBananas = bananas.length - freeEls.length
+      if (t1 - tBanana) >= secondsPerBanana and nBananas < maxBananas
+        banana()
+        tBanana = t1
 
-    , 50)
+      for own i, plane of bananas
+        updateBananaPosition(t1 - plane.t0, plane)
+
+      t0 = t1
+      requestAnimationFrame updateWorld
+
+    updateWorld()
 
 $(document).konami goCrazy
 $(document).on 'dblclick', (ev) ->
