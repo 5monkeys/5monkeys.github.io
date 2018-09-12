@@ -19,6 +19,7 @@
   * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
   }
 
 
@@ -84,8 +85,15 @@
     justify-content: center;
     flex-direction: column;
     margin-top: 200px;
+
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
+  }
+
+  @media screen and (max-width: 800px) {
+    main {
+      padding: 0 15px;
+    }
   }
 
   .introduction {
@@ -108,8 +116,8 @@
     display: block;
     flex-shrink: 0;
     display: flex;
-    width: 140px;
-    height: 25px;
+    width: 200px;
+    height: 80px;
     padding: 22px;
     margin: 2px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -155,7 +163,7 @@
 
       <section class="introduction">
         <p>
-          For more than a decade, we've helped startups and incumbents grow like crazy by using our<br />
+          For more than a decade, we've helped startups and incumbents grow like crazy by using our
           carefully balanced blend of digital strategy, software engineering and open source software.
         </p>
         <p>
@@ -214,13 +222,14 @@
         </a>
       </section>
     </main>
-    <script src="main.js"></script>
+
 
     <footer>
       <p>Stadsgården 10, 116 45 Stockholm | <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a> |
         <a class="a-nonymous" href="mailto:info@5monkeys.se">info@5monkeys.se</a></p>
     </footer>
   </div>
+  <!-- <script src="main.js"></script> -->
 </body>
 
 </html>

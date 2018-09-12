@@ -62,8 +62,8 @@
 	}
 
 	function recalculateBananas() {
-		maybeRecycleBanana(p);
 		particles.map(function(p) {
+			maybeRecycleBanana(p);
 			p.y += p.speed;
 			p.rotation += 0.01 * p.flipped;
 		});
