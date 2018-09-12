@@ -2,16 +2,31 @@
 	var canvas = document.querySelector("#bananas");
 	if (!canvas) return;
 
-	var image_url = "img/banan.png";
 	var image = "";
 	var settings = {
+		canvasSize: {
+			x: 0,
+			y: 0,
+		},
+		areaPadding: 100, // threshold for killing and spawning bananas
+		image_url: "img/banan.png",
 		particles: 20,
+		center: { x: 0, y: 0 },
+		render: false,
+		cancelRender: false,
+		gravity: 1.5,
+		turbulence: 0,
+		wind: 0,
 	};
+
 	var particles = [];
 	var ctx;
-	center = { x: 0, y: 0 };
 
 	function setupCanvas() {
+		window.addEventListener("resize", function() {
+			updateCanvasSize();
+		});
+
 		updateCanvasSize();
 		ctx = canvas.getContext("2d");
 
@@ -20,11 +35,10 @@
 				x: randomRange(0, canvas.width),
 				y: randomRange(0, canvas.height),
 				w: randomRange(50, 100),
-				vy: randomRange(0, 1),
+				vy: randomRange(0.5, 1),
 				vx: randomRange(0, 1),
 				rotation: randomRange(0, 6.283185),
 				scale: randomRange(0.2, 0.5),
-				speed: randomRange(0.1, 1),
 				flipped: Math.random() > 0.5 ? 1 : -1,
 			});
 		}
@@ -33,7 +47,6 @@
 	}
 
 	function renderBananas() {
-		console.log("rendered bananas");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		for (var i = 0; i < particles.length; ++i) {
 			var p = particles[i];
@@ -51,20 +64,45 @@
 
 	function maybeRecycleBanana(p) {
 		// invisible on X
-		if (p.x < 0 - +p.w || p.x > canvas.width + p.w) {
+		if (
+			p.x < 0 - p.w - settings.areaPadding ||
+			p.x > canvas.width + p.w + settings.areaPadding
+		) {
 			p.x = randomRange(0, canvas.width);
 		}
 
 		// invisible on Y
-		if (p.y < 0 - p.w || p.y > canvas.height + p.w) {
-			p.y = 0;
+		if (
+			p.y < 0 - p.w - settings.areaPadding ||
+			p.y > canvas.height + p.w + settings.areaPadding
+		) {
+			p.y = 0 - settings.areaPadding;
 		}
 	}
 
 	function recalculateBananas() {
 		particles.map(function(p) {
 			maybeRecycleBanana(p);
-			p.y += p.speed;
+
+			// recalculate speed along axis based on turbulence, if 1 this is useless.
+			if (settings.turbulence == !1) {
+				p.vy =
+					p.vy *
+					randomRange(
+						1 - settings.turbulence,
+						1 + settings.turbulence,
+					);
+
+				p.vx =
+					p.vx *
+					randomRange(
+						1 - settings.turbulence,
+						1 + settings.turbulence,
+					);
+			}
+
+			p.y += p.vy * settings.gravity;
+			p.x += p.vx * settings.wind;
 			p.rotation += 0.01 * p.flipped;
 		});
 
@@ -74,6 +112,8 @@
 	function startBananas() {
 		recalculateBananas();
 
+		if (!settings.render) return;
+
 		window.requestAnimationFrame(function() {
 			startBananas();
 		});
@@ -82,24 +122,48 @@
 	function createImage() {
 		image = new Image();
 		image.onload = startBananas;
-		image.src = image_url;
+		image.src = settings.image_url;
 	}
 
-	function updateCanvasSize() {
+	function cancelRender() {
+		settings.render = false;
+	}
+
+	function resumeRender() {
+		settings.render = true;
+	}
+
+	function updateCanvasSize(initialSetup) {
+		if (settings.render) cancelRender();
+
+		var oldCanvasSize = settings.canvasSize;
+
 		canvas.height = window.innerHeight;
 		canvas.width = window.innerWidth;
-		center.x = canvas.width / 2;
-		center.y = canvas.height / 2;
-	}
+		settings.center.x = canvas.width / 2;
+		settings.center.y = canvas.height / 2;
+		settings.canvasSize = {
+			y: canvas.height,
+			x: canvas.width,
+		};
 
-	window.addEventListener("resize", function() {
-		particles = [];
-		setupCanvas();
-	});
+		if (!initialSetup) {
+			particles.map(function(p) {
+				p.x = mapRange(0, oldCanvasSize.x, 0, settings.canvasSize.x);
+				p.y = mapRange(0, oldCanvasSize.y, 0, settings.canvasSize.y);
+			});
+		}
+
+		resumeRender();
+	}
 
 	setupCanvas();
 })();
 
 function randomRange(min, max) {
 	return Math.random() * (max - min) + min;
+}
+
+function mapRange(value, low1, high1, low2, high2) {
+	return low2 + ((high2 - low2) * (value - low1)) / (high1 - low1);
 }

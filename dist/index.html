@@ -35,6 +35,10 @@
     font-size: 18px;
     color: white;
     background-color: #222222;
+    background-image: url('img/background.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
     -webkit-font-smoothing: antialiased;
     font-family: "latoregular";
     overflow-x: hidden;
@@ -69,13 +73,10 @@
     margin-top: 22px;
   }
 
-  .background {
-    position: absolute;
+  header img {
+    max-width: 550px;
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
-    background-image: url('img/background.jpg');
-    background-position: center;
-    background-size: cover;
   }
 
   main {
@@ -88,12 +89,6 @@
 
     width: 100%;
     max-width: 800px;
-  }
-
-  @media screen and (max-width: 800px) {
-    main {
-      padding: 0 15px;
-    }
   }
 
   .introduction {
@@ -149,6 +144,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .gasell {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    width: 65px;
+    height: 65px;
+  }
+
+  .gasell img {
+    height: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    main {
+      padding: 0 15px;
+    }
+
+    .logo-item {
+      width: calc(50% - 4px);
+    }
   }
 </style>
 
@@ -225,11 +243,17 @@
 
 
     <footer>
-      <p>Stadsgården 10, 116 45 Stockholm | <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a> |
-        <a class="a-nonymous" href="mailto:info@5monkeys.se">info@5monkeys.se</a></p>
+      <p>
+        <a class="a-nonymous" href="https://goo.gl/maps/fTUxryzN2BF2">Stadsgården 10, 116 45 Stockholm</a> |
+        <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a> |
+        <a class="a-nonymous" href="mailto:info@5monkeys.se">info@5monkeys.se</a>
+      </p>
     </footer>
+    <div class="gasell">
+      <img alt="Di-gasellen" src="img/brands/di-gasell.svg">
+    </div>
   </div>
-  <!-- <script src="main.js"></script> -->
+  <script src="main.js"></script>
 </body>
 
 </html>
