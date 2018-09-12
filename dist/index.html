@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>5 Monkeys</title>
+
+  <link rel="shortcut icon" href="img/redmonkey57.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="img/redmonkey57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/redmonkey72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/redmonkey114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="img/redmonkey144.png" />
+
+</head>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+
+  @font-face {
+    font-family: "latoregular";
+    src: url("../fonts/lato/lato-reg-webfont.eot");
+    src: url("../fonts/lato/lato-reg-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/lato/lato-reg-webfont.woff") format("woff"), url("../fonts/lato/lato-reg-webfont.ttf") format("truetype"), url("../fonts/lato/lato-reg-webfont.svg#latoregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-size: 18px;
+    color: white;
+    background-color: #222222;
+    -webkit-font-smoothing: antialiased;
+    font-family: "latoregular";
+    overflow-x: hidden;
+    line-height: 1.5em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+
+  canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  a {
+    color: #F1EF1F;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a.a-nonymous {
+    color: white;
+    font-weight: normal;
+  }
+
+  p {
+    margin-top: 22px;
+  }
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/background.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+
+  main {
+    top: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 200px;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .introduction {
+    margin-bottom: 80px;
+  }
+
+  .logo-garden {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .logo-garden--header {
+    margin-top: 22px;
+    margin-bottom: 20px;
+  }
+
+  .logo-item {
+    display: block;
+    flex-shrink: 0;
+    display: flex;
+    width: 140px;
+    height: 25px;
+    padding: 22px;
+    margin: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.2s all;
+  }
+
+  .logo-item:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .item-inner {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .logo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+  }
+
+  footer {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<body>
+  <div class="background">
+    <canvas id="bananas" height="100%" width="100%"></canvas>
+    <main>
+
+      <header class="main-logo">
+        <img src="img/logo.svg" alt="5monkeys">
+      </header>
+
+      <section class="introduction">
+        <p>
+          For more than a decade, we've helped startups and incumbents grow like crazy by using our<br />
+          carefully balanced blend of digital strategy, software engineering and open source software.
+        </p>
+        <p>
+          Tell us your big idea and we'll help you refine it, build it and bring it to market.
+          <a href="mailto:jobb@5monkeys.se">Challenge us.</a>
+        </p>
+
+        <p>
+          Oh and we love Django too! <a href="mailto:info@5monkeys.se">Join us.</a>
+        </p>
+      </section>
+
+
+      <strong class="logo-garden--header">Some of our clients</strong>
+
+      <section class="logo-garden">
+        <a href="http://www.bolist.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/bolist.svg" alt="bolist">
+          </div>
+        </a>
+        <a href="http://www.dn.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/dn.svg" alt="dn">
+          </div>
+        </a>
+        <a href="http://www.eqtventures.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/eqtventures.svg" alt="eqtventures">
+          </div>
+        </a>
+        <a href="http://www.mojang.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/mojang.svg" alt="mojang">
+          </div>
+        </a>
+        <a href="http://www.pressbyran.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/pressbyran.svg" alt="pressbyran">
+          </div>
+        </a>
+        <a href="http://www.propellerhead.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/propellerhead.svg" alt="propellerhead">
+          </div>
+        </a>
+        <a href="http://www.sporta.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/sportamore" alt="sporta">
+          </div>
+        </a>
+        <a href="http://www.toborrow.se" class="logo-item">
+          <div class="item-inner">
+            <img src="img/brands/toborrow.svg" alt="toborrow">
+          </div>
+        </a>
+      </section>
+    </main>
+    <script src="main.js"></script>
+
+    <footer>
+      <p>Stadsgården 10, 116 45 Stockholm | <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a> |
+        <a class="a-nonymous" href="mailto:info@5monkeys.se">info@5monkeys.se</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>
