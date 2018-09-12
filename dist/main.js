@@ -2,6 +2,10 @@
 	var canvas = document.querySelector("#bananas");
 	if (!canvas) return;
 
+	var audioSettings = {
+		sound_url: "mp3/chimp.mp3",
+		sound: {},
+	};
 	var image = "";
 	var settings = {
 		canvasSize: {
@@ -24,7 +28,7 @@
 	var particles = [];
 	var ctx;
 
-	function setupCanvas() {
+	function setupParticleSystem() {
 		window.addEventListener("resize", function() {
 			updateCanvasSize();
 		});
@@ -200,7 +204,16 @@
 		resumeRender();
 	}
 
-	setupCanvas();
+	function setupAudio() {
+		audioSettings.audio = new Audio(audioSettings.sound_url);
+
+		document.querySelector("body").addEventListener("dblclick", function() {
+			audioSettings.audio.play();
+		});
+	}
+
+	setupParticleSystem();
+	setupAudio();
 })();
 
 function randomRange(min, max) {
