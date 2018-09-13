@@ -1,52 +1,75 @@
-export default class ParticleSystem {
+(function() {
+	var canvas = document.querySelector("#bananas");
+	if (!canvas) return;
 
-    var particles = [];
+	var image = "";
+	var settings = {
+		canvasSize: {
+			x: 0,
+			y: 0,
+		},
+		areaPadding: 100, // threshold for killing and spawning bananas
+		image_url: "img/banan.png",
+		particles: 50,
+		center: { x: 0, y: 0 },
+		render: false,
+		cancelRender: false,
+		gravity: 1.5,
+		recycleStrays: true,
+		wind: 1,
+		friction: 0,
+		turbulence: 0,
+	};
+
+	var particles = [];
 	var ctx;
 
-	const setupParticleSystem(settings) => {
-		window.addEventListener("resize", function() {
-			updateCanvasSize();
-		});
-
-		// var gasell = document.querySelector(".gasell");
-		// gasell.addEventListener("mouseleave", function() {
-		// 	settings.globalAlpha = 0;
-		// });
-
-		// gasell.addEventListener("mouseenter", function() {
-		// 	settings.globalAlpha = 1;
-		// });
-
-		updateCanvasSize = ();
+	function setupParticleSystem() {
+		updateCanvasSize();
 		ctx = canvas.getContext("2d");
 
 		for (var i = 0; i < settings.particles; ++i) {
-			const articles.push(=> {
+			particles.push({
 				x: randomRange(
 					0 - settings.areaPadding,
 					canvas.width + settings.areaPadding,
 				),
-				y: randomRange(
-					0 - settings.areaPadding,
-					canvas.height + settings.areaPadding,
-				),
+				y: 0 - settings.areaPadding,
 				w: randomRange(50, 100),
-				vy: randomRange(0.5, 1),
+				vy: randomRange(0.5, 1.5),
 				vx: randomRange(-0.1, 0.3),
 				rotation: randomRange(0, 6.283185),
 				rotationSpeed: randomRange(-0.004, 0.004),
-				scale: randomRange(0.2, 1),
+				scale: randomRange(0.2, 0.7),
 				flipped: Math.random() > 0.5 ? 1 : -1,
 			});
 		}
 
-		createImage();
+		window.addEventListener("resize", function() {
+			updateCanvasSize();
+		});
+
+		var gasell = document.querySelector(".gasell");
+
+		gasell.addEventListener("mouseleave", function() {
+			settings.recycleStrays = false;
+		});
+
+		gasell.addEventListener("mouseenter", function() {
+			if (settings.render === false) {
+				resumeRender();
+				settings.recycleStrays = true;
+				startBananas();
+			} else {
+				settings.recycleStrays = true;
+			}
+		});
 	}
 
 	// vind borde påverka tills vx / vy uppnått wind eller gravity.
 	// friction borde ta ner vx / vy, men denna borde alltid sträve mot wind / gravity.
 
-	const renderBananas = () => {
+	function renderBananas() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.globalAlpha = settings.globalAlpha;
 		for (var i = 0; i < particles.length; ++i) {
@@ -63,14 +86,18 @@ export default class ParticleSystem {
 		}
 	}
 
-	const maybeRecycleBanana = (p) => {
+	function maybeRecycleBanana(p, i) {
 		// invisible on X
 		if (
 			p.x < 0 - p.w - settings.areaPadding ||
 			p.x > canvas.width + p.w + settings.areaPadding
 		) {
-			p.x = randomRange(0, canvas.width);
-			p.y = 0 - settings.areaPadding;
+			if (settings.recycleStrays) {
+				p.x = randomRange(0, canvas.width);
+				p.y = 0 - settings.areaPadding;
+			} else {
+				particles.slice(i, 1);
+			}
 		}
 
 		// invisible on Y
@@ -78,13 +105,17 @@ export default class ParticleSystem {
 			p.y < 0 - p.w - settings.areaPadding ||
 			p.y > canvas.height + p.w + settings.areaPadding
 		) {
-			p.y = 0 - settings.areaPadding;
+			if (settings.recycleStrays) {
+				p.y = 0 - settings.areaPadding;
+			} else {
+				particles.slice(i, 1);
+			}
 		}
 	}
 
-	const recalculateBananas = () => {
-		particles.map(function(p) {
-			maybeRecycleBanana(p);
+	function recalculateBananas() {
+		particles.map(function(p, i) {
+			maybeRecycleBanana(p, i);
 
 			// apply friction to make sure vx and vy does not affect object indefinately
 			if (settings.friction !== 0) {
@@ -120,32 +151,34 @@ export default class ParticleSystem {
 		renderBananas();
 	}
 
-	const startBananas = () => {
-		recalculateBananas();
+	function startBananas() {
+		// kill if there's nothing to render or rendering is off.
+		if (!particles.length || !settings.render) return;
 
-		if (!settings.render) return;
+		recalculateBananas();
 
 		window.requestAnimationFrame(function() {
 			startBananas();
 		});
 	}
 
-	const createImage = () => {
+	function preloadImages(cb) {
 		image = new Image();
-		image.onload = startBananas;
+		image.onload = cb;
 		image.src = settings.image_url;
 	}
 
-	const cancelRender= () => {
+	function cancelRender() {
 		settings.render = false;
 	}
 
-	const resumeRender= () => {
+	function resumeRender() {
 		settings.render = true;
 	}
 
-	const updateCanvasSize(initialSetup) => {
-		if (settings.render) cancelRender();
+	function updateCanvasSize(initialSetup) {
+		var renderSetting = settings.render;
+		if (renderSetting) cancelRender();
 
 		var oldCanvasSize = settings.canvasSize;
 
@@ -179,6 +212,16 @@ export default class ParticleSystem {
 			});
 		}
 
-		resumeRender();
+		if(renderSetting) resumeRender();
 	}
+
+	preloadImages(setupParticleSystem);
+})();
+
+function randomRange(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+function mapRange(value, x1, y1, x2, y2) {
+	return x2 + ((y2 - x2) * (value - x1)) / (y1 - x1);
 }

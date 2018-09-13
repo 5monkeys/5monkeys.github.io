@@ -1,0 +1,33 @@
+{
+	"name": "5monkeys.github.io",
+	"version": "1.0.0",
+	"description": "",
+	"main": "webpack.config.js",
+	"dependencies": {
+		"css-loader": "^1.0.0",
+		"mini-css-extract-plugin": "^0.4.2",
+		"node-sass": "^4.9.3",
+		"sass-loader": "^7.1.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.0.1",
+		"@babel/preset-env": "^7.0.0",
+		"babel-loader": "^8.0.2",
+		"webpack": "^4.18.0",
+		"webpack-cli": "^3.1.0"
+	},
+	"scripts": {
+		"start": "webpack --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/5monkeys/5monkeys.github.io.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/5monkeys/5monkeys.github.io/issues"
+	},
+	"homepage": "https://github.com/5monkeys/5monkeys.github.io#readme"
+}
