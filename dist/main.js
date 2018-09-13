@@ -18,9 +18,9 @@
 		center: { x: 0, y: 0 },
 		render: false,
 		cancelRender: false,
-		globalAlpha: 0,
+		globalAlpha: 1,
 		gravity: 1.5,
-		wind: 0,
+		wind: 1,
 		friction: 0,
 		turbulence: 0,
 	};
@@ -33,14 +33,14 @@
 			updateCanvasSize();
 		});
 
-		var gasell = document.querySelector(".gasell");
-		gasell.addEventListener("mouseleave", function() {
-			settings.globalAlpha = 0;
-		});
+		// var gasell = document.querySelector(".gasell");
+		// gasell.addEventListener("mouseleave", function() {
+		// 	settings.globalAlpha = 0;
+		// });
 
-		gasell.addEventListener("mouseenter", function() {
-			settings.globalAlpha = 1;
-		});
+		// gasell.addEventListener("mouseenter", function() {
+		// 	settings.globalAlpha = 1;
+		// });
 
 		updateCanvasSize();
 		ctx = canvas.getContext("2d");
@@ -67,6 +67,9 @@
 
 		createImage();
 	}
+
+	// vind borde påverka tills vx / vy uppnått wind eller gravity.
+	// friction borde ta ner vx / vy, men denna borde alltid sträve mot wind / gravity.
 
 	function renderBananas() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
