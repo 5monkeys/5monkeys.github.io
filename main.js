@@ -1,1 +1,227 @@
-!function(e){var n={};function r(t){if(n[t])return n[t].exports;var a=n[t]={i:t,l:!1,exports:{}};return e[t].call(a.exports,a,a.exports,r),a.l=!0,a.exports}r.m=e,r.c=n,r.d=function(e,n,t){r.o(e,n)||Object.defineProperty(e,n,{enumerable:!0,get:t})},r.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},r.t=function(e,n){if(1&n&&(e=r(e)),8&n)return e;if(4&n&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(r.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&n&&"string"!=typeof e)for(var a in e)r.d(t,a,function(n){return e[n]}.bind(null,a));return t},r.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return r.d(n,"a",n),n},r.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},r.p="",r(r.s=0)}([function(e,n){function r(e,n){return Math.random()*(n-e)+e}function t(e,n,r,t,a){return t+(a-t)*(e-n)/(r-n)}!function(){var e=document.querySelector("#bananas");if(e){var n,a="",i={canvasSize:{x:0,y:0},areaPadding:100,image_url:"img/banan.png",particles:50,center:{x:0,y:0},render:!1,cancelRender:!1,gravity:1.5,recycleStrays:!0,wind:1,friction:0,turbulence:0},d=[];!function(e){(a=new Image).onload=e,a.src=i.image_url}(function(){c(),n=e.getContext("2d");for(var t=0;t<i.particles;++t)d.push({x:r(0-i.areaPadding,e.width+i.areaPadding),y:0-i.areaPadding,w:r(50,100),vy:r(.5,1.5),vx:r(-.1,.3),rotation:r(0,6.283185),rotationSpeed:r(-.004,.004),scale:r(.2,.7),flipped:Math.random()>.5?1:-1});window.addEventListener("resize",function(){c()});var u=document.querySelector(".gasell");u.addEventListener("mouseleave",function(){i.recycleStrays=!1}),u.addEventListener("mouseenter",function(){!1===i.render?(o(),i.recycleStrays=!0,function t(){d.length&&i.render&&(d.map(function(n,t){!function(n,t){(n.x<0-n.w-i.areaPadding||n.x>e.width+n.w+i.areaPadding)&&(i.recycleStrays?(n.x=r(0,e.width),n.y=0-i.areaPadding):d.slice(t,1)),(n.y<0-n.w-i.areaPadding||n.y>e.height+n.w+i.areaPadding)&&(i.recycleStrays?n.y=0-i.areaPadding:d.slice(t,1))}(n,t),0!==i.friction&&(n.vx=n.vx>0?n.vx-i.friction:n.vx,n.vy=n.vy>0?n.vy-i.friction:n.vy),0!==i.turbulence&&(n.vy=n.vy*r(1-i.turbulence,1+i.turbulence),n.vx=n.vx*r(1-i.turbulence,1+i.turbulence)),n.y+=n.vy+n.vy*i.gravity,n.x+=n.vx+n.vx*i.wind,n.rotation+=n.rotationSpeed*n.flipped}),function(){n.clearRect(0,0,e.width,e.height),n.globalAlpha=i.globalAlpha;for(var r=0;r<d.length;++r){var t=d[r],o=t.w*(t.scale*t.flipped),c=t.x-o/2,u=t.y-o/2;n.save(),n.translate(c,u),n.rotate(t.rotation),n.drawImage(a,0,0,o,o),n.restore()}}(),window.requestAnimationFrame(function(){t()}))}()):i.recycleStrays=!0})})}function o(){i.render=!0}function c(n){var r=i.render;r&&(i.render=!1);var a=i.canvasSize;e.height=window.innerHeight,e.width=window.innerWidth,i.center.x=e.width/2,i.center.y=e.height/2,i.canvasSize={y:e.height,x:e.width},n||d.map(function(e){e.x=t(e.x,0-i.areaPadding,a.x+i.areaPadding,0-i.areaPadding,i.canvasSize.x+i.areaPadding),e.y=t(e.y,0-i.areaPadding,a.y+i.areaPadding,0-i.areaPadding,i.canvasSize.y+i.areaPadding)}),r&&o()}}()}]);
+(function() {
+	var canvas = document.querySelector("#bananas");
+	if (!canvas) return;
+
+	var image = "";
+	var settings = {
+		canvasSize: {
+			x: 0,
+			y: 0,
+		},
+		areaPadding: 100, // threshold for killing and spawning bananas
+		image_url: "img/banan.png",
+		particles: 50,
+		center: { x: 0, y: 0 },
+		render: false,
+		cancelRender: false,
+		gravity: 1.5,
+		recycleStrays: true,
+		wind: 1,
+		friction: 0,
+		turbulence: 0,
+	};
+
+	var particles = [];
+	var ctx;
+
+	function setupParticleSystem() {
+		updateCanvasSize();
+		ctx = canvas.getContext("2d");
+
+		for (var i = 0; i < settings.particles; ++i) {
+			particles.push({
+				x: randomRange(
+					0 - settings.areaPadding,
+					canvas.width + settings.areaPadding,
+				),
+				y: 0 - settings.areaPadding,
+				w: randomRange(50, 100),
+				vy: randomRange(0.5, 1.5),
+				vx: randomRange(-0.1, 0.3),
+				rotation: randomRange(0, 6.283185),
+				rotationSpeed: randomRange(-0.004, 0.004),
+				scale: randomRange(0.2, 0.7),
+				flipped: Math.random() > 0.5 ? 1 : -1,
+			});
+		}
+
+		window.addEventListener("resize", function() {
+			updateCanvasSize();
+		});
+
+		var gasell = document.querySelector(".gasell");
+
+		gasell.addEventListener("mouseleave", function() {
+			settings.recycleStrays = false;
+		});
+
+		gasell.addEventListener("mouseenter", function() {
+			if (settings.render === false) {
+				resumeRender();
+				settings.recycleStrays = true;
+				startBananas();
+			} else {
+				settings.recycleStrays = true;
+			}
+		});
+	}
+
+	// vind borde påverka tills vx / vy uppnått wind eller gravity.
+	// friction borde ta ner vx / vy, men denna borde alltid sträve mot wind / gravity.
+
+	function renderBananas() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.globalAlpha = settings.globalAlpha;
+		for (var i = 0; i < particles.length; ++i) {
+			var p = particles[i];
+
+			var size = p.w * (p.scale * p.flipped);
+			var adjustedX = p.x - size / 2;
+			var adjustedY = p.y - size / 2;
+			ctx.save();
+			ctx.translate(adjustedX, adjustedY);
+			ctx.rotate(p.rotation);
+			ctx.drawImage(image, 0, 0, size, size);
+			ctx.restore();
+		}
+	}
+
+	function maybeRecycleBanana(p, i) {
+		// invisible on X
+		if (
+			p.x < 0 - p.w - settings.areaPadding ||
+			p.x > canvas.width + p.w + settings.areaPadding
+		) {
+			if (settings.recycleStrays) {
+				p.x = randomRange(0, canvas.width);
+				p.y = 0 - settings.areaPadding;
+			} else {
+				particles.slice(i, 1);
+			}
+		}
+
+		// invisible on Y
+		if (
+			p.y < 0 - p.w - settings.areaPadding ||
+			p.y > canvas.height + p.w + settings.areaPadding
+		) {
+			if (settings.recycleStrays) {
+				p.y = 0 - settings.areaPadding;
+			} else {
+				particles.slice(i, 1);
+			}
+		}
+	}
+
+	function recalculateBananas() {
+		particles.map(function(p, i) {
+			maybeRecycleBanana(p, i);
+
+			// apply friction to make sure vx and vy does not affect object indefinately
+			if (settings.friction !== 0) {
+				p.vx = p.vx > 0 ? p.vx - settings.friction : p.vx;
+				p.vy = p.vy > 0 ? p.vy - settings.friction : p.vy;
+				// p.rotationSpeed = p.rotationSpeed >= 0 ? p.rotationSpeed - settings.friction : p.rotationSpeed;
+			}
+
+			// p.vy = mapRange(p.y, 0, settings.canvasSize.y, 0, 1.1);
+
+			// recalculate speed along axis based on turbulence, if 0 this is useless.
+			if (settings.turbulence !== 0) {
+				p.vy =
+					p.vy *
+					randomRange(
+						1 - settings.turbulence,
+						1 + settings.turbulence,
+					);
+
+				p.vx =
+					p.vx *
+					randomRange(
+						1 - settings.turbulence,
+						1 + settings.turbulence,
+					);
+			}
+
+			p.y += p.vy + p.vy * settings.gravity;
+			p.x += p.vx + p.vx * settings.wind;
+			p.rotation += p.rotationSpeed * p.flipped;
+		});
+
+		renderBananas();
+	}
+
+	function startBananas() {
+		// kill if there's nothing to render or rendering is off.
+		if (!particles.length || !settings.render) return;
+
+		recalculateBananas();
+
+		window.requestAnimationFrame(function() {
+			startBananas();
+		});
+	}
+
+	function preloadImages(cb) {
+		image = new Image();
+		image.onload = cb;
+		image.src = settings.image_url;
+	}
+
+	function cancelRender() {
+		settings.render = false;
+	}
+
+	function resumeRender() {
+		settings.render = true;
+	}
+
+	function updateCanvasSize(initialSetup) {
+		var renderSetting = settings.render;
+		if (renderSetting) cancelRender();
+
+		var oldCanvasSize = settings.canvasSize;
+
+		canvas.height = window.innerHeight;
+		canvas.width = window.innerWidth;
+		settings.center.x = canvas.width / 2;
+		settings.center.y = canvas.height / 2;
+		settings.canvasSize = {
+			y: canvas.height,
+			x: canvas.width,
+		};
+
+		// probably overkill. But if the canvas is resized, smoothly remap all the particles to a new,
+		// corresponding spot on the newly sized canvas.
+		if (!initialSetup) {
+			particles.map(function(p) {
+				p.x = mapRange(
+					p.x,
+					0 - settings.areaPadding,
+					oldCanvasSize.x + settings.areaPadding,
+					0 - settings.areaPadding,
+					settings.canvasSize.x + settings.areaPadding,
+				);
+				p.y = mapRange(
+					p.y,
+					0 - settings.areaPadding,
+					oldCanvasSize.y + settings.areaPadding,
+					0 - settings.areaPadding,
+					settings.canvasSize.y + settings.areaPadding,
+				);
+			});
+		}
+
+		if(renderSetting) resumeRender();
+	}
+
+	preloadImages(setupParticleSystem);
+})();
+
+function randomRange(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+function mapRange(value, x1, y1, x2, y2) {
+	return x2 + ((y2 - x2) * (value - x1)) / (y1 - x1);
+}
