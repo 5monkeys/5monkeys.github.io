@@ -147,6 +147,25 @@
       justify-content: center;
     }
 
+    .footer-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      text-align: left;
+
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    .footer-flex > div {
+     margin: 0 40px;
+    }
+
+    .footer-flex a {
+      display: block;
+    }
+
     .gasell {
       position: fixed;
       right: 15px;
@@ -167,6 +186,16 @@
       footer {
         padding: 0 15px 20px 15px;
         position: relative;
+      }
+
+      .footer-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-flex > div {
+        margin: 15px 0;
+        text-align: center;
       }
 
       .logo-item {
@@ -415,11 +444,23 @@
       </section>
     </main>
     <footer>
-      <p>
-        <a class="a-nonymous" href="https://goo.gl/maps/fTUxryzN2BF2">Stadsgården 10 (12th floor), Slussen, Stockholm</a> <span class="desktop-only">|</span>
-        <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a> <span class="desktop-only">|</span>
-        <a class="a-nonymous" href="mailto:info@5monkeys.se">info@5monkeys.se</a>
-      </p>
+      <div class="footer-flex">
+        <div>
+          <h3>Stockholm</h3>
+          <a class="a-nonymous" href="https://goo.gl/maps/fTUxryzN2BF2">Stadsgården 10 (12th floor)<br/>Slussen, Stockholm</a>
+          <a class="a-nonymous" href="tel:+46850006653">+46-8-5000 66 53</a>
+        </div>
+        <div>
+          <h3>Göteborg</h3>
+          <a class="a-nonymous" href="https://goo.gl/maps/fTUxryzN2BF2">Viktor Rydbergsgatan 14<br/>Götaplatsen, Göteborg</a>
+          <a class="a-nonymous" href="tel:+46317674000">+46-31-76 74 000</a>
+        </div>
+        <div>
+          <h3>Email us</h3>
+          <a alt="work with us" href="mailto:info@5monkeys.se">info@5monkeys.se</a>
+          <a alt="join our team" href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</a>
+        </div>
+      </div>
     </footer>
     <div class="gasell">
       <svg viewBox="0 0 280 378.65" xmlns="http://www.w3.org/2000/svg">
