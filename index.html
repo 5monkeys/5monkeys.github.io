@@ -26,8 +26,6 @@
       margin: 0;
       box-sizing: border-box;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-      
     }
 
     body {
@@ -208,10 +206,6 @@
         right: auto;
       }
 
-      .desktop-only {
-        display: none;
-      }
-
       .a-nonymous {
         display: block;
       }
@@ -222,6 +216,25 @@
         padding-bottom: 20px;
         position: relative;
       }
+    }
+
+    .btn {
+      background: #F1EF1F;
+      color: black;
+      text-shadow: none;
+      display: table;
+      margin: 2em auto;
+      padding: 1em 3em;
+      font-size: 1.2em;
+      opacity: .90;
+      transition: opacity .2s;
+      border-radius: 3em;
+      letter-spacing: .03em;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      opacity: 1;
     }
   </style>
 </head>
@@ -250,14 +263,18 @@
           For more than a decade, we have helped startups and incumbents grow like crazy by using our
           carefully balanced blend of digital strategy, software engineering and open source software.
         </p>
+
         <p>
           Tell us your big idea and we will help you refine it, build it and bring it to market.
           <a href="mailto:info@5monkeys.se">Challenge us.</a>
         </p>
 
         <p>
-          Oh and we love Django too! <a href="mailto:jobb@5monkeys.se">Join us.</a>
+          We are always looking for talented people to join our team. Check out our job
+          openings in Stockholm and Gothenburg or send us a spontaneous application.
         </p>
+
+        <a href="https://jobs.5monkeys.se/" title="Careers" class="btn">Join the team!</a>
       </section>
 
       <strong class="logo-garden--header">Some of our clients</strong>
@@ -457,8 +474,8 @@
         </div>
         <div>
           <h3>Email us</h3>
-          <a alt="work with us" href="mailto:info@5monkeys.se">info@5monkeys.se</a>
-          <a alt="join our team" href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</a>
+          <a title="Work with us" href="mailto:info@5monkeys.se">info@5monkeys.se</a>
+          <a title="Join our team" href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</a>
         </div>
       </div>
     </footer>
@@ -595,7 +612,7 @@
             if (settings.friction !== 0) {
               p.vx = p.vx > 0 ? p.vx - settings.friction : p.vx;
               p.vy = p.vy > 0 ? p.vy - settings.friction : p.vy;
-  
+
             }
 
             if (settings.turbulence !== 0) {
