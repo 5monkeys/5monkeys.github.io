@@ -12,6 +12,10 @@
 
 <svelte:head>
   <title>{TITLE}</title>
+  <meta
+    name="description"
+    content="5 Monkeys Agency: A Digital Agency in Stockholm &amp; Göteborg. We love Django &amp; React! ✌️"
+  />
 </svelte:head>
 
 <Block background="primary" id="start">
