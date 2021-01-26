@@ -15,12 +15,12 @@
       <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
         <strong>Stockholm office. </strong><br />
         <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6" target="_blank">
-          Repslagargatan 17 A (4th floor)<br />
-          118 46 Stockholm
+          Götgatan 36, 4:th floor<br />
+          Slussen, Stockholm
         </Link>
         <br />
 
-        <Link href="tel:+468500066">Phone: +46 (0)8 500 066</Link>
+        <Link href="tel:+46850006653">+46-8-5000 66 53</Link>
       </p>
 
       <p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
@@ -29,7 +29,7 @@
           Viktor Rydbergsgatan 14<br />
           Götaplatsen, Göteborg<br />
         </Link>
-        <Link href="tel:+463176740000">Phone: +46-31-76 74 0000</Link>
+        <Link href="tel:+46317674000">+46-31-76 74 000</Link>
       </p>
 
       <p on:mouseenter={() => handleMouseEnter()}>
