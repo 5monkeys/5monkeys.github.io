@@ -1,12 +1,13 @@
 <script>
   export let background;
+  export let href;
 </script>
 
-<div class="root" style={`background:${background}`}>
+<a {href} class="root" style={`background:${background}`}>
   <div class="inner">
     <slot />
   </div>
-</div>
+</a>
 
 <style>
   .root {

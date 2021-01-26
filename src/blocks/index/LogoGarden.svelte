@@ -3,29 +3,53 @@
   import Brand from './Brand.svelte';
 
   const brands = [
-    { logo: '/img/brands/dn.svg', name: 'DN', color: '#f00' },
-    { logo: '/img/brands/eqt.svg', name: 'EQT', color: '#240447' },
-    { logo: '/img/brands/bolist.svg', name: 'Bolist', color: '#F50' },
-    { logo: '/img/brands/mojang.svg', name: 'Mojang', color: '#000' },
     {
+      href: 'https://dn.se',
+      logo: '/img/brands/dn.svg',
+      name: 'DN',
+      color: '#f00',
+    },
+    {
+      href: 'https://eqtventures.com',
+      logo: '/img/brands/eqt.svg',
+      name: 'EQT',
+      color: '#240447',
+    },
+    {
+      href: 'https://bolist.se',
+      logo: '/img/brands/bolist.svg',
+      name: 'Bolist',
+      color: '#F50',
+    },
+    {
+      href: 'https://mojang.com',
+      logo: '/img/brands/mojang.svg',
+      name: 'Mojang',
+      color: '#000',
+    },
+    {
+      href: 'https://pressbyran.se',
       logo: '/img/brands/pressbyran.svg',
       name: 'Pressbyrån',
       color: '#EDC607',
     },
     {
+      href: 'https://www.reasonstudios.com/',
       logo: '/img/brands/reasonstudios.svg',
       name: 'Reason studios',
       color: '#F0E8DA',
     },
     {
+      href: 'https://sportamore.com/',
       logo: '/img/brands/sportamore.svg',
       name: 'Sportamore',
       color: '#c4c4c4',
     },
     {
-      logo: '/img/brands/toborrow.svg',
-      name: 'Toborrow',
-      color: '#90C596',
+      href: 'https://ginatricot.com',
+      logo: '/img/brands/ginatricot.svg',
+      name: 'Gina Tricot',
+      color: '#efefef',
     },
   ];
 </script>
@@ -34,7 +58,7 @@
   <h2>Selected works</h2>
   <div class="root">
     {#each brands as brand}
-      <Brand background={brand.color}
+      <Brand background={brand.color} href={brand.href}
         ><img alt={brand.name} src={brand.logo} /></Brand
       >
     {/each}

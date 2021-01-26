@@ -46,8 +46,8 @@
   <Tech />
 </Container>
 
-<AnchorTarget id="contact" />
 <Block>
+  <AnchorTarget id="contact" />
   <Container fullHeight>
     <Offices />
   </Container>
