@@ -3,14 +3,11 @@
 
   const tech_stack = [
     { img: '/img/brands/Tmux_logo.svg', name: 'tmux' },
-    { img: '/img/brands/Swift_logo_with_text.svg', name: 'Swift' },
+
     { img: '/img/brands/React-icon.svg', name: 'React' },
     { img: '/img/brands/RabbitMQ_logo.svg', name: 'RabbitMQ' },
-    { img: '/img/brands/Python_logo_and_wordmark.svg', name: 'Python' },
-    { img: '/img/brands/Kubernetes_logo.svg', name: 'Kubernetes' },
-  ];
 
-  const open_source = [
+    { img: '/img/brands/Kubernetes_logo.svg', name: 'Kubernetes' },
     { img: '/img/brands/docker.svg', name: 'Docker' },
     { img: '/img/brands/haskell-logo.svg', name: 'Haskell' },
     { img: '/img/brands/graphql.svg', name: 'GraphQL' },
@@ -18,6 +15,11 @@
     { img: '/img/brands/Android_logo_2019.svg', name: 'Android' },
     { img: '/img/brands/gh-actions.svg', name: 'Github Actions' },
     { img: '/img/brands/1180px-Node.js_logo.svg', name: 'NodeJS' },
+  ];
+
+  const open_source = [
+    { img: '/img/brands/Swift_logo_with_text.svg', name: 'Swift' },
+    { img: '/img/brands/Python_logo_and_wordmark.svg', name: 'Python' },
     { img: '/img/brands/Django_logo.svg', name: 'Django' },
   ];
 </script>
@@ -29,9 +31,8 @@
     sem iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet
     nisi.
   </article>
-
   <div class="logo-grid">
-    {#each tech_stack as { img, name }}
+    {#each open_source as { img, name }}
       <span class="tech">
         <img src={img} alt={name} />
       </span>
@@ -46,7 +47,7 @@
     iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
   </article>
   <div class="logo-grid">
-    {#each open_source as { img, name }}
+    {#each tech_stack as { img, name }}
       <span class="tech">
         <img src={img} alt={name} />
       </span>
