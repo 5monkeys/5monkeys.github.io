@@ -14,16 +14,22 @@
     <div class="inner">
       <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
         <strong>Stockholm office. </strong><br />
-        Repslagargatan 17 A (4th floor)<br />
-        118 46 Stockholm<br />
-        Phone: +46 (0)8 500 066
+        <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6" target="_blank">
+          Repslagargatan 17 A (4th floor)<br />
+          118 46 Stockholm
+        </Link>
+        <br />
+
+        <Link href="tel:+468500066">Phone: +46 (0)8 500 066</Link>
       </p>
 
       <p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
         <strong>Gothenburg office.</strong><br />
-        Viktor Rydbergsgatan 14<br />
-        Götaplatsen, Göteborg<br />
-        Phone: +46-31-76 74 0000
+        <Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8" target="_blank">
+          Viktor Rydbergsgatan 14<br />
+          Götaplatsen, Göteborg<br />
+        </Link>
+        <Link href="tel:+463176740000">Phone: +46-31-76 74 0000</Link>
       </p>
 
       <p on:mouseenter={() => handleMouseEnter()}>
@@ -45,7 +51,7 @@
     {:else if focusedOffice === 'gothenburg'}
       <img
         class="office-image"
-        src={'https://st.hzcdn.com/simgs/pictures/home-offices/home-office-twice-as-nice-interiors-img~b9c124930fc51900_4-1717-1-2f4d75f.jpg'}
+        src={'/img/5m-gothenburg-office.jpg'}
         in:fade
         out:fade
         alt="Gothenburg office"
