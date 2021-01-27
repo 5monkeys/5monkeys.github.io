@@ -1,9 +1,8 @@
 <script>
   export let href;
-  export let target;
 </script>
 
-<a {href} {target}>
+<a {href} target="_blank">
   <slot />
 </a>
 

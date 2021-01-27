@@ -13,6 +13,11 @@
           helped startups and incumbents grow like crazy by using our carefully balanced
           blend of digital strategy, software engineering and open source software.
         </p>
+        <p>
+          We are a team of 20+ senior software engineers and digital strategists
+          delivering ultra scalable digital platforms for large e-commerce
+          players and crazily ambitious startups.
+        </p>
       </Article>
     </Container>
     <img class="gasell" alt="DI Gasell" src={'/img/brands/di-gasell.svg'} />

@@ -3,7 +3,7 @@
   export let href;
 </script>
 
-<a {href} class="root" style={`background:${background}`}>
+<a {href} target="_blank" class="root" style={`background:${background}`}>
   <div class="inner">
     <slot />
   </div>

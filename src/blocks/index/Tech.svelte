@@ -7,10 +7,8 @@
 
   const tech_stack = [
     { img: '/img/brands/Tmux_logo.svg', name: 'tmux' },
-
     { img: '/img/brands/React-icon.svg', name: 'React' },
     { img: '/img/brands/RabbitMQ_logo.svg', name: 'RabbitMQ' },
-
     { img: '/img/brands/Kubernetes_logo.svg', name: 'Kubernetes' },
     { img: '/img/brands/docker.svg', name: 'Docker' },
     { img: '/img/brands/haskell-logo.svg', name: 'Haskell' },

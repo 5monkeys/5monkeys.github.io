@@ -8,6 +8,7 @@
   import Clients from '../blocks/index/Clients.svelte';
   import OpenSource from '../blocks/index/OpenSource.svelte';
   import Offices from '../blocks/index/Offices';
+  import Careers from '../blocks/index/Careers';
   import Tech from '../blocks/index/Tech.svelte';
   import About from '../blocks/index/About.svelte';
 
@@ -44,8 +45,13 @@
   <OpenSource />
 </AnchorTarget>
 
+<!-- 
 <AnchorTarget id="tech">
   <Tech />
+</AnchorTarget> -->
+
+<AnchorTarget id="careers">
+  <Careers />
 </AnchorTarget>
 
 <AnchorTarget id="contact" />

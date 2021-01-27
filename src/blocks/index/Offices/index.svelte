@@ -12,11 +12,11 @@
 
 <div class="root">
   <div class="offices">
-    <Container>
+    <Container fullHeight>
       <div class="inner">
         <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
           <strong>Stockholm office. </strong><br />
-          <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6" target="_blank">
+          <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6">
             Götgatan 36, 4:th floor<br />
             Slussen, Stockholm
           </Link>
@@ -27,7 +27,7 @@
 
         <p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
           <strong>Gothenburg office.</strong><br />
-          <Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8" target="_blank">
+          <Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8">
             Viktor Rydbergsgatan 14<br />
             Götaplatsen, Göteborg<br />
           </Link>
@@ -73,7 +73,7 @@
 <style>
   .root {
     display: flex;
-    font-size: 1.5rem;
+    font-size: 32px;
 
     @media (max-width: 900px) {
       flex-direction: column;
@@ -84,7 +84,7 @@
     background: var(--primary);
     position: relative;
     height: 100vh;
-    width: 50%;
+    width: 100vh;
 
     @media (max-width: 900px) {
       display: none;
@@ -100,7 +100,9 @@
   .offices {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 33%;
+    min-width: 480px;
+    flex-grow: 1;
     @media (max-width: 900px) {
       width: 100%;
     }
@@ -119,6 +121,6 @@
     position: absolute;
     bottom: var(--sideMargin);
     right: var(--sideMargin);
-    width: 60%;
+    width: 50%;
   }
 </style>

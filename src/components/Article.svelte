@@ -15,5 +15,9 @@
     @media (max-width: 600px) {
       font-size: 3vmax;
     }
+
+    :global(p + p) {
+      margin-top: 2rem;
+    }
   }
 </style>

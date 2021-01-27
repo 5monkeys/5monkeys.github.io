@@ -1,9 +1,16 @@
 <script>
+  import Article from '../../components/Article.svelte';
   import Center from '../../components/Center.svelte';
   import Container from '../../components/Container.svelte';
   import Brand from './Brand.svelte';
 
   const brands = [
+    {
+      href: 'https://ginatricot.com',
+      logo: '/img/brands/ginatricot.svg',
+      name: 'Gina Tricot',
+      color: '#e0c4b6',
+    },
     {
       href: 'https://dn.se',
       logo: '/img/brands/dn.svg',
@@ -46,18 +53,12 @@
       name: 'Sportamore',
       color: '#c4c4c4',
     },
-    {
-      href: 'https://ginatricot.com',
-      logo: '/img/brands/ginatricot.svg',
-      name: 'Gina Tricot',
-      color: '#efefef',
-    },
   ];
 </script>
 
 <Container variant="full" center fullHeight>
   <div class="wrapper">
-    <h2>Some of our clients</h2>
+    <Article><strong>Some of our clients.</strong></Article>
     <div class="root">
       {#each brands as brand}
         <Brand background={brand.color} href={brand.href}>
@@ -67,7 +68,7 @@
       <div class="plug">
         <div>
           <span id="WANT">Want to be part of the selection?</span>
-          <a class="cta" href="#contact"><strong>get in touch!</strong></a>
+          <a class="cta" href="#contact"><strong>Get in touch!</strong></a>
         </div>
       </div>
     </div>

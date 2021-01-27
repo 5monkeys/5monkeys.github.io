@@ -2,6 +2,7 @@
   import Article from '../components/Article.svelte';
   import Block from '../components/Block.svelte';
   import Container from '../components/Container';
+  import Link from '../components/Link.svelte';
   import SvgIcon from '../components/SvgIcon.svelte';
   import GithubSVG from '../icons/github.svg';
 </script>
@@ -9,31 +10,46 @@
 <footer>
   <Block background="black" padding="none">
     <Container fullHeight center>
-      <Article><strong>Get in touch!</strong></Article>
       <div>
+        <Article>
+          <strong>Get in touch!</strong>
+        </Article>
+        <a href="mailto:info@5monkeys.se">info@5monkeys.se</a><br />
+        <span
+          >Would you like to know more about our job offers?<br />SSH to
+          join.5monkeys.se!</span
+        >
+      </div>
+      <!-- <div>
         <a
           href="https://github.com/5monkeys"
           target="_blank"
-          alt="5 monkeys Github page"><SvgIcon icon={GithubSVG} /></a
-        >
-      </div>
+          alt="5 monkeys Github page"
+          ><SvgIcon icon={GithubSVG} />
+        </a>
+      </div> -->
     </Container>
   </Block>
 </footer>
 
 <style>
   div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
   }
   a {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    font-size: 4vw;
     line-height: 54px;
-    border-radius: 100%;
+    font-weight: var(--bold);
+    font-size: border-radius;
     height: 42px;
     margin: 0.5rem;
+    color: white;
+  }
+  span {
+    font-size: 1.25rem;
   }
 </style>
