@@ -6,6 +6,7 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
   /** brand colors */
   --primary: #ffe072;
   --secondary: #40a6e2;
+  --tertiary: #463d54;
 
   /** context colors*/
   --background-light: #fff;
@@ -40,6 +41,7 @@ html {
   font-weight: var(--regular);
   font-style: normal;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {

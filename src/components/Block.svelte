@@ -25,6 +25,11 @@
     color: var(--text-dark);
   }
 
+  .tertiary {
+    background-color: var(--tertiary);
+    color: var(--text-dark);
+  }
+
   .monkey {
     background-color: white;
     background-image: url('/img/monkey-yellow.svg');

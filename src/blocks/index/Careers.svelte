@@ -4,7 +4,7 @@
   import Container from '../../components/Container.svelte';
 </script>
 
-<Block background="black" padding="none">
+<Block background="tertiary" padding="none">
   <Container fullHeight center>
     <Article>
       <p>
