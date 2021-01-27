@@ -4,7 +4,7 @@
 
 <div class={background && background}><slot /></div>
 
-<style type="text/postcss">
+<style>
   div {
     padding: 1rem 0;
   }

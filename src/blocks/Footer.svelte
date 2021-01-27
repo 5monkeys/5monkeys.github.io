@@ -9,7 +9,4 @@
   </Block>
 </footer>
 
-<style>
-  footer {
-  }
-</style>
+

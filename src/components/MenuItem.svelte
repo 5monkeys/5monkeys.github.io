@@ -16,10 +16,10 @@
     border-radius: 300px; /** An insane value */
     text-decoration: none;
     border: 3px solid transparent;
-  }
 
-  a:hover {
-    border-color: white;
+    &:hover {
+      border-color: white;
+    }
   }
 
   span {

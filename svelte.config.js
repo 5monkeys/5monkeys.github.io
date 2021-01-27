@@ -4,12 +4,13 @@ const postcss = require('./postcss.config');
 const createPreprocessors = ({ sourceMap }) => [
   sveltePreprocess({
     sourceMap,
+    minimize: true,
     defaults: {
       style: 'postcss',
     },
     postcss,
   }),
-  // You could have more preprocessors, like mdsvex
+  // ...processors
 ];
 
 module.exports = {

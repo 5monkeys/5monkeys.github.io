@@ -2,14 +2,16 @@
   import { TITLE } from '../../consts';
   import Block from '../components/Block.svelte';
   import Container from '../components/Container.svelte';
-  import LogoGarden from '../blocks/index/LogoGarden.svelte';
-  import OpenSource from '../blocks/index/OpenSource.svelte';
-  import Offices from '../blocks/index/Offices.svelte';
-  import Tech from '../blocks/index/Tech.svelte';
-  import ArrowDownSVG from '../icons/arrow_down.svg';
   import SvgIcon from '../components/SvgIcon.svelte';
   import AnchorTarget from '../components/AnchorTarget.svelte';
+
+  import Tech from '../blocks/index/Tech.svelte';
+  import LogoGarden from '../blocks/index/LogoGarden.svelte';
+  import OpenSource from '../blocks/index/OpenSource.svelte';
+  import Offices from '../blocks/index/Offices';
   import TechV2 from '../blocks/index/Tech_v2.svelte';
+
+  import ArrowDownSVG from '../icons/arrow_down.svg';
 </script>
 
 <svelte:head>

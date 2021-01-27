@@ -99,27 +99,23 @@
 
     &.flipped {
       flex-direction: row-reverse;
+      > * + * {
+        margin-right: 2vw;
+      }
       @media (max-width: 900px) {
         flex-direction: column;
-      }
-    }
 
-    .row:not(.flipped) > * + * {
-      margin-left: 2vw;
-    }
-    .row.flipped > * + * {
-      margin-right: 2vw;
-    }
+        & > * {
+          width: 100%;
+        }
 
-    @media (max-width: 900px) {
-      flex-direction: column;
-
-      & > * {
-        width: 100%;
+        & > * + * {
+          margin-top: 2rem;
+        }
       }
 
-      & > * + * {
-        margin-top: 2rem;
+      &:not(.flipped) > * + * {
+        margin-left: 2vw;
       }
     }
   }

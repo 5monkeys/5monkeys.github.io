@@ -1,5 +1,5 @@
 <script>
-  import Link from '../../components/Link';
+  import Link from '../../../components/Link.svelte';
   import { fade } from 'svelte/transition';
 
   let focusedOffice = undefined;
@@ -80,6 +80,7 @@
   .square {
     position: relative;
     width: 50%;
+
     @media (max-width: 900px) {
       width: 100%;
     }
@@ -98,6 +99,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+
     @media (max-width: 900px) {
       position: relative;
     }
