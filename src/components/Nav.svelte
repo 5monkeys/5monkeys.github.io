@@ -3,8 +3,8 @@
 </script>
 
 <nav>
-  <MenuItem href="#about">About us</MenuItem>
-  <MenuItem href="#contact">Contact us</MenuItem>
+  <MenuItem href="#about">About</MenuItem>
+  <MenuItem href="#contact">Contact</MenuItem>
   <MenuItem href="#about">Careers</MenuItem>
 </nav>
 

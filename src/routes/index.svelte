@@ -3,11 +3,13 @@
   import Block from '../components/Block.svelte';
   import Container from '../components/Container.svelte';
   import LogoGarden from '../blocks/index/LogoGarden.svelte';
+  import OpenSource from '../blocks/index/OpenSource.svelte';
   import Offices from '../blocks/index/Offices.svelte';
   import Tech from '../blocks/index/Tech.svelte';
   import ArrowDownSVG from '../icons/arrow_down.svg';
   import SvgIcon from '../components/SvgIcon.svelte';
   import AnchorTarget from '../components/AnchorTarget.svelte';
+  import TechV2 from '../blocks/index/Tech_v2.svelte';
 </script>
 
 <svelte:head>
@@ -45,10 +47,14 @@
 <AnchorTarget id="clients" />
 <Container center fullHeight><LogoGarden /></Container>
 
-<Container fullHeight id="tech">
-  <AnchorTarget />
-  <Tech />
-</Container>
+<AnchorTarget id="tech" />
+<Tech />
+
+<AnchorTarget id="open-source" />
+<OpenSource />
+
+<AnchorTarget id="open-source" />
+<TechV2 />
 
 <Block>
   <AnchorTarget id="contact" />

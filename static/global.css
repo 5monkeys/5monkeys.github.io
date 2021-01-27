@@ -12,7 +12,6 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
   --background-dark: #111;
   --text-dark: #fff;
   --text-light: #333;
-  --max-width: 1460px;
 
   /** fonts */
   --baseFontSize: 16px;
@@ -25,7 +24,7 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
 
   /* misc */
   --sideMargin: 2rem;
-  --max-width: 1200px;
+  --max-width: 1460px;
   --max-width--article: 680px;
 }
 
@@ -65,6 +64,7 @@ button {
 
 article {
   font-size: 2rem;
+  text-align: justify;
 }
 
 strong {

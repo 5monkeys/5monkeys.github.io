@@ -34,13 +34,13 @@
       color: '#EDC607',
     },
     {
-      href: 'https://www.reasonstudios.com/',
+      href: 'https://reasonstudios.com/',
       logo: '/img/brands/reasonstudios.svg',
       name: 'Reason studios',
       color: '#F0E8DA',
     },
     {
-      href: 'https://sportamore.com/',
+      href: 'https://sportamore.se/',
       logo: '/img/brands/sportamore.svg',
       name: 'Sportamore',
       color: '#c4c4c4',
@@ -55,7 +55,7 @@
 </script>
 
 <div class="wrapper">
-  <h2>Selected works</h2>
+  <h2>Some of our clients</h2>
   <div class="root">
     {#each brands as brand}
       <Brand background={brand.color} href={brand.href}

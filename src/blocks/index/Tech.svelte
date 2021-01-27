@@ -1,5 +1,5 @@
 <script>
-  const { default: Block } = require('../../components/Block.svelte');
+  import Container from '../../components/Container.svelte';
 
   const tech_stack = [
     { img: '/img/brands/Tmux_logo.svg', name: 'tmux' },
@@ -24,36 +24,38 @@
   ];
 </script>
 
-<div class="row">
-  <article>
-    <strong>We contribute to open source projects.</strong> Sed finibus ante ut tortor
-    lacinia, et convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur
-    sem iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet
-    nisi.
-  </article>
-  <div class="logo-grid">
-    {#each open_source as { img, name }}
-      <span class="tech">
-        <img src={img} alt={name} />
-      </span>
-    {/each}
+<Container fullHeight>
+  <div class="row">
+    <article>
+      <strong>We contribute to open source projects.</strong> Sed finibus ante ut
+      tortor lacinia, et convallis ante hendrerit. Curabitur cursus convallis felis,
+      vel efficitur sem iaculis vel. Maecenas ac purus porta sem vulputate hendrerit
+      eu sit amet nisi.
+    </article>
+    <div class="logo-grid">
+      {#each open_source as { img, name }}
+        <span class="tech">
+          <img src={img} alt={name} />
+        </span>
+      {/each}
+    </div>
   </div>
-</div>
 
-<div class="row flipped">
-  <article>
-    <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia, et
-    convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur sem
-    iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
-  </article>
-  <div class="logo-grid">
-    {#each tech_stack as { img, name }}
-      <span class="tech">
-        <img src={img} alt={name} />
-      </span>
-    {/each}
+  <div class="row flipped">
+    <article>
+      <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia, et
+      convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur sem
+      iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
+    </article>
+    <div class="logo-grid">
+      {#each tech_stack as { img, name }}
+        <span class="tech">
+          <img src={img} alt={name} />
+        </span>
+      {/each}
+    </div>
   </div>
-</div>
+</Container>
 
 <style>
   .logo-grid {
