@@ -1,11 +1,14 @@
 <script>
   export let background = undefined;
+  export let padding = 'none';
 </script>
 
-<div class={background && background}><slot /></div>
+<div class={background && background} class:padding={padding == 'normal'}>
+  <slot />
+</div>
 
 <style>
-  div {
+  .padding {
     padding: 1rem 0;
   }
 
@@ -32,6 +35,7 @@
 
     @media (prefers-color-scheme: dark) {
       background-color: black;
+      background-image: unset;
       color: var(--primary);
       filter: grayscale(100%);
     }

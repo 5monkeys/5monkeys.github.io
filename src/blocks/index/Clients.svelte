@@ -1,5 +1,6 @@
 <script>
   import Center from '../../components/Center.svelte';
+  import Container from '../../components/Container.svelte';
   import Brand from './Brand.svelte';
 
   const brands = [
@@ -54,22 +55,24 @@
   ];
 </script>
 
-<div class="wrapper">
-  <h2>Some of our clients</h2>
-  <div class="root">
-    {#each brands as brand}
-      <Brand background={brand.color} href={brand.href}
-        ><img alt={brand.name} src={brand.logo} /></Brand
-      >
-    {/each}
-    <div class="plug">
-      <div>
-        <span id="WANT">Want to be part of the selection?</span>
-        <a class="cta" href="#contact"><strong>get in touch!</strong></a>
+<Container variant="full" center fullHeight>
+  <div class="wrapper">
+    <h2>Some of our clients</h2>
+    <div class="root">
+      {#each brands as brand}
+        <Brand background={brand.color} href={brand.href}>
+          <img alt={brand.name} src={brand.logo} />
+        </Brand>
+      {/each}
+      <div class="plug">
+        <div>
+          <span id="WANT">Want to be part of the selection?</span>
+          <a class="cta" href="#contact"><strong>get in touch!</strong></a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</Container>
 
 <style>
   .wrapper {

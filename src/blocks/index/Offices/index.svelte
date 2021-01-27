@@ -1,6 +1,7 @@
 <script>
   import Link from '../../../components/Link.svelte';
   import { fade } from 'svelte/transition';
+  import Container from '../../../components/Container.svelte';
 
   let focusedOffice = undefined;
 
@@ -10,36 +11,38 @@
 </script>
 
 <div class="root">
-  <div class="square offices">
-    <div class="inner">
-      <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
-        <strong>Stockholm office. </strong><br />
-        <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6" target="_blank">
-          Götgatan 36, 4:th floor<br />
-          Slussen, Stockholm
-        </Link>
-        <br />
+  <div class="offices">
+    <Container>
+      <div class="inner">
+        <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
+          <strong>Stockholm office. </strong><br />
+          <Link href="https://goo.gl/maps/rK183Qy6hftXA29B6" target="_blank">
+            Götgatan 36, 4:th floor<br />
+            Slussen, Stockholm
+          </Link>
+          <br />
 
-        <Link href="tel:+46850006653">+46-8-5000 66 53</Link>
-      </p>
+          <Link href="tel:+46850006653">+46-8-5000 66 53</Link>
+        </p>
 
-      <p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
-        <strong>Gothenburg office.</strong><br />
-        <Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8" target="_blank">
-          Viktor Rydbergsgatan 14<br />
-          Götaplatsen, Göteborg<br />
-        </Link>
-        <Link href="tel:+46317674000">+46-31-76 74 000</Link>
-      </p>
+        <p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
+          <strong>Gothenburg office.</strong><br />
+          <Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8" target="_blank">
+            Viktor Rydbergsgatan 14<br />
+            Götaplatsen, Göteborg<br />
+          </Link>
+          <Link href="tel:+46317674000">+46-31-76 74 000</Link>
+        </p>
 
-      <p on:mouseenter={() => handleMouseEnter()}>
-        <strong>Get in touch.</strong><br />
-        <Link href="mailto:info@5monkeys.se">info@5monkeys.se</Link><br />
-        <Link href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</Link>
-      </p>
-    </div>
+        <p on:mouseenter={() => handleMouseEnter()}>
+          <strong>Get in touch.</strong><br />
+          <Link href="mailto:info@5monkeys.se">info@5monkeys.se</Link><br />
+          <Link href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</Link>
+        </p>
+      </div>
+    </Container>
   </div>
-  <div class="square preview">
+  <div class="preview">
     {#if focusedOffice === 'stockholm'}
       <img
         class="office-image"
@@ -77,31 +80,14 @@
     }
   }
 
-  .square {
+  .preview {
+    background: var(--primary);
     position: relative;
+    height: 100vh;
     width: 50%;
 
     @media (max-width: 900px) {
-      width: 100%;
-    }
-  }
-
-  .square:before {
-    display: block;
-    content: '';
-    width: 100%;
-    padding-top: 100%;
-  }
-
-  .square > .inner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    @media (max-width: 900px) {
-      position: relative;
+      display: none;
     }
   }
 
@@ -113,6 +99,11 @@
 
   .offices {
     display: flex;
+    align-items: center;
+    width: 50%;
+    @media (max-width: 900px) {
+      width: 100%;
+    }
   }
 
   .office-image {
@@ -122,10 +113,6 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-  }
-
-  .preview {
-    background: var(--primary);
   }
 
   .watermark {

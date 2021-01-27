@@ -1,9 +1,8 @@
 <script>
+  import Article from '../../components/Article.svelte';
   import Block from '../../components/Block.svelte';
-  import Center from '../../components/Center.svelte';
   import Container from '../../components/Container.svelte';
   import LogoGrid from '../../components/LogoGrid.svelte';
-  import LogoGarden from './LogoGarden.svelte';
 
   const open_source = [
     { img: '/img/brands/Swift_logo_with_text.svg', name: 'Swift' },
@@ -13,13 +12,15 @@
 </script>
 
 <Block background="secondary">
-  <Container fullHeight variant="article" center>
-    <article>
-      <strong>We contribute to open source projects.</strong> Sed finibus ante ut
-      tortor lacinia, et convallis ante hendrerit. Curabitur cursus convallis felis,
-      vel efficitur sem iaculis vel. Maecenas ac purus porta sem vulputate hendrerit
-      eu sit amet nisi.
-    </article>
+  <Container fullHeight center>
+    <div>
+      <Article>
+        <strong>We contribute to open source projects.</strong> Sed finibus ante
+        ut tortor lacinia, et convallis ante hendrerit. Curabitur cursus convallis
+        felis, vel efficitur sem iaculis vel. Maecenas ac purus porta sem vulputate
+        hendrerit eu sit amet nisi.
+      </Article>
+    </div>
     <LogoGrid>
       {#each open_source as { img, name }}
         <span class="tech">
@@ -31,10 +32,9 @@
 </Block>
 
 <style>
-  article {
+  div {
     margin-bottom: 3rem;
   }
-
   .tech {
     padding: 1rem;
     display: flex;

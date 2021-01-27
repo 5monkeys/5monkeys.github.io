@@ -11,6 +11,7 @@
   class:paddingNormal={padding === 'normal'}
   class:fullHeight
   class:article={variant === 'article'}
+  class:full={variant === 'full'}
   class:relative
   class:center
 >
@@ -22,6 +23,10 @@
     max-width: var(--max-width);
     width: 100%;
     margin: 0 auto;
+  }
+
+  .full {
+    max-width: unset;
   }
 
   .center {

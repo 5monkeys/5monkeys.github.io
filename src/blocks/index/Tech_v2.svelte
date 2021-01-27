@@ -1,4 +1,6 @@
 <script>
+  import Article from '../../components/Article.svelte';
+
   const { default: Block } = require('../../components/Block.svelte');
   const { default: Container } = require('../../components/Container.svelte');
   const { default: LogoGrid } = require('../../components/LogoGrid.svelte');
@@ -20,12 +22,14 @@
   ];
 </script>
 
-<Container variant="article" fullHeight center>
-  <article>
-    <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia, et
-    convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur sem
-    iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
-  </article>
+<Container fullHeight center>
+  <div>
+    <Article>
+      <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia, et
+      convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur sem
+      iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
+    </Article>
+  </div>
 
   <LogoGrid>
     {#each tech_stack as { img, name }}
@@ -37,10 +41,9 @@
 </Container>
 
 <style>
-  article {
-    margin-bottom: 3em;
+  div {
+    margin-bottom: 3rem;
   }
-
   .tech {
     padding: 1rem;
     display: flex;

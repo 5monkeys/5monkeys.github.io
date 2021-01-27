@@ -11,7 +11,6 @@
     font-size: 1rem;
     position: relative;
     padding: 4px;
-    color: var(--text-white);
 
     border-radius: 300px; /** An insane value */
     text-decoration: none;
@@ -27,5 +26,9 @@
     border-radius: 300px;
     padding: 0.5rem 1rem;
     background: white;
+    @media (prefers-color-scheme: dark) {
+      background: transparent;
+      color: black;
+    }
   }
 </style>

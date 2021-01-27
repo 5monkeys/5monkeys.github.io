@@ -1,16 +1,19 @@
 <script>
   export let href;
+  export let target;
 </script>
 
-<a {href}><slot /></a>
+<a {href} {target}>
+  <slot />
+</a>
 
 <style>
   a {
-    color: black;
+    color: inherit;
     text-decoration: none;
   }
   a:visited {
-    color: black;
+    color: inherit;
   }
   a:focus,
   a:active,

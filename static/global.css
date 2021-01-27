@@ -64,11 +64,6 @@ button {
   }
 }
 
-article {
-  font-size: 2rem;
-  text-align: justify;
-}
-
 strong {
   font-weight: var(--bold);
 }

@@ -6,12 +6,13 @@
   import AnchorTarget from '../components/AnchorTarget.svelte';
 
   import Tech from '../blocks/index/Tech.svelte';
-  import LogoGarden from '../blocks/index/LogoGarden.svelte';
+  import Clients from '../blocks/index/Clients.svelte';
   import OpenSource from '../blocks/index/OpenSource.svelte';
   import Offices from '../blocks/index/Offices';
   import TechV2 from '../blocks/index/Tech_v2.svelte';
 
   import ArrowDownSVG from '../icons/arrow_down.svg';
+  import Article from '../components/Article.svelte';
 </script>
 
 <svelte:head>
@@ -22,7 +23,7 @@
   />
 </svelte:head>
 
-<Block background="primary" id="start">
+<Block background="primary">
   <Container fullHeight>
     <div class="blowout" />
     <a href="#about" class="scrollButton">
@@ -34,20 +35,20 @@
 <AnchorTarget id="about" />
 <Block background="monkey">
   <Container relative={true}>
-    <Container variant="article" fullHeight padding="none" center>
-      <article>
+    <Container fullHeight padding="none" center>
+      <Article>
         <p>
           <strong>This is how we do it.</strong> For more than a decade, we have
           helped startups and incumbents grow like crazy by using our carefully balanced
           blend of digital strategy, software engineering and open source software.
         </p>
-      </article>
+      </Article>
     </Container>
     <img class="gasell" alt="DI Gasell" src={'/img/brands/di-gasell.svg'} />
   </Container>
 </Block>
 <AnchorTarget id="clients" />
-<Container center fullHeight><LogoGarden /></Container>
+<Clients />
 
 <AnchorTarget id="tech" />
 <Tech />
@@ -58,12 +59,8 @@
 <AnchorTarget id="open-source" />
 <TechV2 />
 
-<Block>
-  <AnchorTarget id="contact" />
-  <Container fullHeight>
-    <Offices />
-  </Container>
-</Block>
+<AnchorTarget id="contact" />
+<Offices />
 
 <style>
   .scrollButton {
@@ -92,9 +89,15 @@
     height: 80px;
     left: var(--sideMargin);
     bottom: var(--sideMargin);
-  }
 
-  article {
-    text-align: justify;
+    @media (prefers-color-scheme: dark) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 900px) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 </style>
