@@ -4,15 +4,16 @@
 
 <nav>
   <MenuItem href="#about">About</MenuItem>
+  <MenuItem href="#about">Clients</MenuItem>
+  <MenuItem href="#career">Careers</MenuItem>
   <MenuItem href="#contact">Contact</MenuItem>
-  <MenuItem href="#about">Careers</MenuItem>
 </nav>
 
 <style>
   nav {
     top: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     justify-content: flex-end;
     width: 100%;
     padding: 1rem 2rem;

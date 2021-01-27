@@ -1,7 +1,9 @@
 <script>
   import Article from '../../components/Article.svelte';
 
-  import Container from '../../components/Container.svelte';
+  const { default: Block } = require('../../components/Block.svelte');
+  const { default: Container } = require('../../components/Container.svelte');
+  const { default: LogoGrid } = require('../../components/LogoGrid.svelte');
 
   const tech_stack = [
     { img: '/img/brands/Tmux_logo.svg', name: 'tmux' },
@@ -18,112 +20,42 @@
     { img: '/img/brands/gh-actions.svg', name: 'Github Actions' },
     { img: '/img/brands/1180px-Node.js_logo.svg', name: 'NodeJS' },
   ];
-
-  const open_source = [
-    { img: '/img/brands/Swift_logo_with_text.svg', name: 'Swift' },
-    { img: '/img/brands/Python_logo_and_wordmark.svg', name: 'Python' },
-    { img: '/img/brands/Django_logo.svg', name: 'Django' },
-  ];
 </script>
 
-<Container fullHeight>
-  <div class="row">
-    <div>
-      <Article>
-        <strong>We contribute to open source projects.</strong> Sed finibus ante
-        ut tortor lacinia, et convallis ante hendrerit. Curabitur cursus convallis
-        felis, vel efficitur sem iaculis vel. Maecenas ac purus porta sem vulputate
-        hendrerit eu sit amet nisi.
-      </Article>
-    </div>
-    <div class="logo-grid">
-      {#each open_source as { img, name }}
-        <span class="tech">
-          <img src={img} alt={name} />
-        </span>
-      {/each}
-    </div>
+<Container fullHeight center>
+  <div>
+    <Article>
+      <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia, et
+      convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur sem
+      iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet nisi.
+    </Article>
   </div>
 
-  <div class="row flipped">
-    <div>
-      <Article>
-        <strong>Our preferred stack.</strong> Sed finibus ante ut tortor lacinia,
-        et convallis ante hendrerit. Curabitur cursus convallis felis, vel efficitur
-        sem iaculis vel. Maecenas ac purus porta sem vulputate hendrerit eu sit amet
-        nisi.
-      </Article>
-    </div>
-    <div class="logo-grid">
-      {#each tech_stack as { img, name }}
-        <span class="tech">
-          <img src={img} alt={name} />
-        </span>
-      {/each}
-    </div>
-  </div>
+  <LogoGrid>
+    {#each tech_stack as { img, name }}
+      <span class="tech">
+        <img src={img} alt={name} />
+      </span>
+    {/each}
+  </LogoGrid>
 </Container>
 
 <style>
-  .logo-grid {
-    grid-gap: 1vw;
-    display: grid;
-    grid-auto-rows: 90px;
-    grid-template-columns: repeat(4, minmax(50px, 1fr));
-
-    @media (max-width: 600px) {
-      grid-template-columns: repeat(3, minmax(50px, 1fr));
-    }
-    @media (max-width: 360px) {
-      grid-template-columns: repeat(2, minmax(50px, 1fr));
-    }
+  div {
+    margin-bottom: 3rem;
   }
-
   .tech {
     padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(241, 241, 241, 50);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-    }
-  }
-
-  .row {
-    display: flex;
-
-    & + & {
-      margin-top: 100px;
-    }
-
-    & > * {
-      width: 50%;
-    }
-
-    &.flipped {
-      flex-direction: row-reverse;
-      > * + * {
-        margin-right: 2vw;
-      }
-      @media (max-width: 900px) {
-        flex-direction: column;
-
-        & > * {
-          width: 100%;
-        }
-
-        & > * + * {
-          margin-top: 2rem;
-        }
-      }
-
-      &:not(.flipped) > * + * {
-        margin-left: 2vw;
-      }
+      filter: contrast(200%) grayscale(100%) brightness(0.7);
+      transition: filter 0.5s ease-in-out;
     }
   }
 </style>

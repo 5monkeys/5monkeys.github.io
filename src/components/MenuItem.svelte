@@ -11,6 +11,7 @@
     font-size: 1rem;
     position: relative;
     padding: 4px;
+    color: inherit;
 
     border-radius: 300px; /** An insane value */
     text-decoration: none;
@@ -19,13 +20,19 @@
     &:hover {
       border-color: white;
     }
+    &:visited,
+    &:active {
+      color: black;
+    }
   }
 
   span {
     display: inline-block;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
     border-radius: 300px;
     padding: 0.5rem 1rem;
     background: white;
+
     @media (prefers-color-scheme: dark) {
       background: transparent;
       color: black;
