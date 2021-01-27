@@ -1,8 +1,9 @@
 <script>
   import Article from '../../components/Article.svelte';
-  import Center from '../../components/Center.svelte';
   import Container from '../../components/Container.svelte';
+  import SvgIcon from '../../components/SvgIcon.svelte';
   import Brand from './Brand.svelte';
+  import ArrowForwardSVG from '../../icons/arrow_forward.svg';
 
   const brands = [
     {
@@ -67,8 +68,10 @@
       {/each}
       <div class="plug">
         <div>
-          <span id="WANT">Want to join the club?</span>
-          <a class="cta" href="#contact"><strong>Get in touch!</strong></a>
+          <span class="heavy">Want to join the club?</span>
+          <a class="cta" href="#contact"
+            ><span>Get in touch!</span><SvgIcon icon={ArrowForwardSVG} /></a
+          >
         </div>
       </div>
     </div>
@@ -76,6 +79,12 @@
 </Container>
 
 <style>
+  .heavy {
+    font-weight: var(--bold);
+    font-size: 1.25rem;
+    margin-bottom: 0.5em;
+    display: block;
+  }
   .wrapper {
     width: 100%;
   }
@@ -116,7 +125,27 @@
   }
 
   .cta {
-    display: block;
+    position: relative;
+    display: inline-flex;
     color: black;
+    text-decoration: none;
+    padding-right: 1.5em;
+    background: white;
+    border-radius: 100px;
+    font-weight: var(--bold);
+    font-size: 1rem;
+
+    span {
+      flex-shrink: 0;
+    }
+
+    & > :global(svg) {
+      height: 1em;
+      width: 1em;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
   }
 </style>
