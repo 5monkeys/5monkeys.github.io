@@ -1,36 +1,39 @@
 <script>
+  import Article from '../components/Article.svelte';
   import Block from '../components/Block.svelte';
   import Container from '../components/Container';
-
-  const contact_points = [
-    {
-      name: 'github',
-      url: 'https://github.com/5monkeys',
-    },
-  ];
+  import SvgIcon from '../components/SvgIcon.svelte';
+  import GithubSVG from '../icons/github.svg';
 </script>
 
 <footer>
   <Block background="black" padding="none">
-    <Container fullHeight>
+    <Container fullHeight center>
+      <Article><strong>Get in touch!</strong></Article>
       <div>
-        {#each contact_points as contact}
-          <span>{contact.name.substring(0, 1)}</span>
-        {/each}
+        <a
+          href="https://github.com/5monkeys"
+          target="_blank"
+          alt="5 monkeys Github page"><SvgIcon icon={GithubSVG} /></a
+        >
       </div>
     </Container>
   </Block>
 </footer>
 
 <style>
-  span {
+  div {
     display: flex;
-    align-itens: center;
+    align-items: center;
     justify-content: center;
-    border: 1px solid white;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     line-height: 54px;
     border-radius: 100%;
-    width: 54px;
-    height: 54px;
+    height: 42px;
+    margin: 0.5rem;
   }
 </style>
