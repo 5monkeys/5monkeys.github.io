@@ -49,6 +49,8 @@ body {
   line-height: 1.5;
   color: var(--text-light);
   background: var(--background-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
