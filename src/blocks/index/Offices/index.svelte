@@ -60,13 +60,8 @@
         alt="Gothenburg office"
       />
     {/if}
-    <div class="inner highlight">
-      <img
-        class="watermark"
-        alt="5 monkeys logo with text"
-        src="/img/logo.svg"
-      />
-    </div>
+
+    <img class="watermark" alt="5 monkeys logo with text" src="/img/logo.svg" />
   </div>
 </div>
 
