@@ -8,8 +8,8 @@
 
 <style>
   a {
-    font-size: 1rem;
     position: relative;
+    font-size: 1rem;
     padding: 4px;
     color: inherit;
 

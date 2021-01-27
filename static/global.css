@@ -60,10 +60,9 @@ button {
   cursor: pointer;
   background: none;
   border: none;
-
-  &:focus {
-    outline: none;
-  }
+}
+button:focus {
+  outline: none;
 }
 
 strong {

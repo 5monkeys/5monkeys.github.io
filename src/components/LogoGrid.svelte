@@ -13,6 +13,14 @@
 
     & > :global(*) {
       height: 90px;
+      width: 140px;
+    }
+
+    @media (max-width: 600px) {
+      & > :global(*) {
+        height: auto;
+        width: 33.3%;
+      }
     }
   }
   /* div {

@@ -67,7 +67,7 @@
       {/each}
       <div class="plug">
         <div>
-          <span id="WANT">Want to be part of the selection?</span>
+          <span id="WANT">Want to join the club?</span>
           <a class="cta" href="#contact"><strong>Get in touch!</strong></a>
         </div>
       </div>

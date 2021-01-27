@@ -10,7 +10,6 @@
     { href: 'https://prettier.io/', name: 'Prettier' },
     { href: '', name: 'Celery' },
     { href: '', name: 'HTTPX' },
-    { href: '', name: 'HTTPX' },
     { img: '/img/brands/isort.png', name: 'ISORT' },
   ];
   /**
@@ -80,7 +79,6 @@
 
     img {
       width: 100%;
-      height: 100%;
       object-fit: contain;
       filter: contrast(200%) brightness(0.2) grayscale() invert(1);
     }
