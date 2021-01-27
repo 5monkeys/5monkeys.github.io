@@ -12,7 +12,7 @@
 
 <div class="root">
   <div class="offices">
-    <Container fullHeight>
+    <Container fullHeight center>
       <div class="inner">
         <p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
           <strong>Stockholm office. </strong><br />
@@ -46,7 +46,7 @@
     {#if focusedOffice === 'stockholm'}
       <img
         class="office-image"
-        src={'https://www.travelmag.com/wp-content/uploads/2019/10/Gothenburg.jpg'}
+        src={'/img/5m-stockholm-office.jpg'}
         in:fade
         out:fade
         alt="Stockholm office"
@@ -73,10 +73,12 @@
 <style>
   .root {
     display: flex;
-    font-size: 32px;
+    font-size: 2rem;
+    align-items: center;
 
     @media (max-width: 900px) {
       flex-direction: column;
+      font-size: 1.5rem;
     }
   }
 
@@ -93,7 +95,7 @@
 
   .inner {
     & > :global(*) {
-      padding: 20px 20px 0 20px;
+      padding: 30px 20px 0 20px;
     }
   }
 
@@ -103,7 +105,9 @@
     width: 33%;
     min-width: 480px;
     flex-grow: 1;
+
     @media (max-width: 900px) {
+      min-width: unset;
       width: 100%;
     }
   }

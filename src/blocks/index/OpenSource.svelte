@@ -5,7 +5,14 @@
   import Link from '../../components/Link.svelte';
   import LogoGrid from '../../components/LogoGrid.svelte';
 
-  const open_source = [{ img: '/img/brands/Django_logo.svg', name: 'Django' }];
+  const open_source = [
+    { href: '', img: '/img/brands/Django_logo.svg', name: 'Django' },
+    { href: 'https://prettier.io/', name: 'Prettier' },
+    { href: '', name: 'Celery' },
+    { href: '', name: 'HTTPX' },
+    { href: '', name: 'HTTPX' },
+    { img: '/img/brands/isort.png', name: 'ISORT' },
+  ];
   /**
    * django
    * docker
@@ -45,7 +52,11 @@
     <LogoGrid>
       {#each open_source as { img, name }}
         <span class="tech">
-          <img src={img} alt={name} />
+          {#if img}
+            <img src={img} alt={name} />
+          {:else}
+            <span class="name">{name}</span>
+          {/if}
         </span>
       {/each}
     </LogoGrid>
@@ -55,6 +66,11 @@
 <style>
   div {
     margin-bottom: 3rem;
+  }
+
+  .name {
+    font-size: 2rem;
+    font-weight: var(--bold);
   }
   .tech {
     padding: 1rem;

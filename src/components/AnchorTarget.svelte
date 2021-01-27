@@ -1,5 +1,9 @@
 <script>
   export let id;
+</script>
+
+<!--<script>
+  export let id;
 
   import { onMount } from 'svelte';
 
@@ -30,13 +34,13 @@
       return () => observer.unobserve(container);
     }
   });
-</script>
+</script>-->
 
-<div bind:this={container}>
-  <span {id} />
-  <slot />
-</div>
+<!-- <div bind:this={container}> -->
+<span {id} />
+<slot />
 
+<!-- </div> -->
 <style>
   span {
     visibility: hidden;

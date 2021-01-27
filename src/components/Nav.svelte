@@ -4,8 +4,8 @@
 
 <nav>
   <MenuItem href="#about">About</MenuItem>
-  <MenuItem href="#about">Clients</MenuItem>
-  <MenuItem href="#career">Careers</MenuItem>
+  <MenuItem href="#clients">Clients</MenuItem>
+  <MenuItem href="#careers">Careers</MenuItem>
   <MenuItem href="#contact">Contact</MenuItem>
 </nav>
 

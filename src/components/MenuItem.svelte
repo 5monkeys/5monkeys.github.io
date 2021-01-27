@@ -28,7 +28,6 @@
 
   span {
     display: inline-block;
-    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.05);
     border-radius: 300px;
     padding: 0.5rem 1rem;
     background: white;
