@@ -23,6 +23,9 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';
 
+  --font-mono: 'Courier New', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial;
+
   /* misc */
   --sideMargin: 2rem;
   --max-width: 1460px;

@@ -13,9 +13,9 @@
         </Article>
         <a href="mailto:hello@5monkeys.se">hello@5monkeys.se</a><br />
         <span
-          >Would you like to know more about our job offers?<br />SSH to
-          join.5monkeys.se!</span
-        >
+          >Would you like to know more about our job offers?
+          <code> > ssh join.5monkeys.se<span class="cursor">█</span></code>
+        </span>
       </div>
       <!-- <div>
         <a
@@ -30,6 +30,28 @@
 </footer>
 
 <style>
+  .cursor {
+    @keyframes blink {
+      0% {
+        opacity: 0.7;
+      }
+      49% {
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    animation: blink 0.6s alternate-reverse infinite;
+  }
+  code {
+    display: block;
+    font-family: var(--font-mono);
+  }
+
   div {
     text-align: center;
   }

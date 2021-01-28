@@ -2,6 +2,7 @@
   import Article from '../../components/Article.svelte';
   import Block from '../../components/Block.svelte';
   import Container from '../../components/Container.svelte';
+  import TerminalText from '../../components/TerminalText.svelte';
 </script>
 
 <Block background="tertiary">
@@ -15,9 +16,9 @@
       </p>
 
       <p>
-        Apply by connecting to join.5monkeys.se via SSH and follow the
-        instructions. The application process takes less than a minute and is
-        entirely text-based. We know you share our love for the terminal!
+        Apply by connecting to <TerminalText>join.5monkeys.se</TerminalText> via
+        SSH and follow the instructions. The application process takes less than
+        a minute and is entirely text-based. We know you share our love for the terminal!
       </p>
     </Article>
   </Container>

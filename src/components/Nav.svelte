@@ -59,7 +59,7 @@
       flex-direction: column;
       align-items: flex-end;
       padding-top: 80px;
-      padding-right: var(--sideMargin);
+      padding-right: 1rem;
       top: 0;
       right: 0;
     }

@@ -44,6 +44,7 @@
       transform: translate(-50%, -11px);
       .open & {
         transform: translate(-50%, -50%) rotate(-45deg);
+        box-shadow: none;
       }
     }
 
