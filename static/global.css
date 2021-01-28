@@ -73,6 +73,13 @@ h2 {
   font-weight: var(--bold);
   font-size: 2rem;
 }
+
+@media (max-width: 900px) {
+  html {
+    scroll-snap-type: none;
+  }
+}
+
 /**
 @media (prefers-color-scheme: dark) {
   body {

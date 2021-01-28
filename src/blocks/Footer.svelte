@@ -48,6 +48,10 @@
     height: 42px;
     margin: 0.5rem;
     color: white;
+
+    @media (max-width: 600px) {
+      font-size: 2rem;
+    }
   }
   span {
     font-size: 1.25rem;

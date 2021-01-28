@@ -42,7 +42,6 @@
 
   .fullHeight {
     min-height: 100vh;
-    min-height: var(--full-vh);
     scroll-snap-align: start;
   }
   .article {
