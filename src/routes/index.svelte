@@ -69,13 +69,12 @@
   }
   .blowout {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: contain;
+    width: 90%;
+    height: 60%;
+    left: 5%;
+    top: 20%;
     background-image: url('/img/monkey.svg');
     background-position: center;
-    background-size: 60%;
+    background-size: contain;
   }
 </style>
