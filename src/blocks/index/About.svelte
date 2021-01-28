@@ -14,9 +14,9 @@
           blend of digital strategy, software engineering and open source software.
         </p>
         <p>
-          We are a team of 20+ senior software engineers and digital strategists
-          delivering ultra scalable digital platforms for large e-commerce
-          players and crazily ambitious startups.
+          We are a team of 20+ senior software engineers, designers and digital
+          strategists delivering scalable digital platforms for large e-commerce
+          players and ambitious startups.
         </p>
       </Article>
     </Container>

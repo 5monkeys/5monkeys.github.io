@@ -8,10 +8,10 @@
   <Container fullHeight center>
     <Article>
       <p>
-        <strong>We're hiring!</strong> Actually we're always hiring. We're always
-        looking for talented colleagues who share our love for open source software
-        and our relentless focus on high-quality engineering. Do you wish you had
-        colleagues who cared deeply about open source software? Apply now!
+        <strong>Join us!</strong> We're always looking for talented colleagues who
+        share our love for open source software and our relentless focus on high-quality
+        engineering. Do you wish you had colleagues who cared deeply about open source
+        software? Apply now!
       </p>
 
       <p>

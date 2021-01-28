@@ -14,7 +14,7 @@
         <Article>
           <strong>Get in touch!</strong>
         </Article>
-        <a href="mailto:info@5monkeys.se">info@5monkeys.se</a><br />
+        <a href="mailto:hello@5monkeys.se">hello@5monkeys.se</a><br />
         <span
           >Would you like to know more about our job offers?<br />SSH to
           join.5monkeys.se!</span

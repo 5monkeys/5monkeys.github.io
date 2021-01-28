@@ -36,7 +36,7 @@
 
         <p on:mouseenter={() => handleMouseEnter()}>
           <strong>Get in touch.</strong><br />
-          <Link href="mailto:info@5monkeys.se">info@5monkeys.se</Link><br />
+          <Link href="mailto:hello@5monkeys.se">hello@5monkeys.se</Link><br />
           <Link href="mailto:jobb@5monkeys.se">jobb@5monkeys.se</Link>
         </p>
       </div>
