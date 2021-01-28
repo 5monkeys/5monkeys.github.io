@@ -18,6 +18,11 @@
       img: '/img/brands/ansible.svg',
     },
     {
+      name: 'Djedi CMS',
+      href: 'https://github.com/5monkeys/djedi-cms',
+      img: '/img/brands/djedi-portrait.svg',
+    },
+    {
       img: '/img/brands/celery.svg',
       name: 'Celery',
       href: 'https://docs.celeryproject.org/',
