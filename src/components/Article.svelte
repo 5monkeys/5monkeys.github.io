@@ -19,5 +19,15 @@
     :global(p + p) {
       margin-top: 2rem;
     }
+
+    :global(a) {
+      text-decoration: underline;
+      text-underline-offset: 0.06em;
+      text-decoration-thickness: 0.06em;
+
+      &:hover {
+        text-decoration-thickness: 0.06em;
+      }
+    }
   }
 </style>

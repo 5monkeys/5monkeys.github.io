@@ -6,44 +6,52 @@
   import LogoGrid from '../../components/LogoGrid.svelte';
 
   const open_source = [
-    { href: '', img: '/img/brands/Django_logo.svg', name: 'Django' },
     {
-      href: 'https://prettier.io/',
-      name: 'Prettier',
-      img: '/img/brands/prettier.svg',
+      name: 'Django',
+      href: 'https://www.djangoproject.com/',
+      img: '/img/brands/Django_logo.svg',
+    },
+    {
+      name: 'Docker',
+      img: '/img/brands/docker.svg',
+      href: 'https://www.docker.com/',
     },
     {
       name: 'Ansible',
-      href: 'https://ansible.com',
       img: '/img/brands/ansible.svg',
+      href: 'https://ansible.com',
+    },
+    {
+      name: 'Prettier',
+      img: '/img/brands/prettier.svg',
+      href: 'https://prettier.io',
+    },
+    {
+      name: 'Celery',
+      img: '/img/brands/celery.svg',
+      href: 'https://docs.celeryproject.org',
+    },
+    {
+      name: 'ISORT',
+      img: '/img/brands/isort.svg',
+      href: 'https://pycqa.github.io/isort',
+    },
+    {
+      name: 'HTTPX',
+      img: '/img/brands/HTTPX.svg',
+      href: 'https://www.python-httpx.org',
     },
     {
       name: 'Djedi CMS',
-      href: 'https://github.com/5monkeys/djedi-cms',
       img: '/img/brands/djedi-portrait.svg',
+      href: 'https://github.com/5monkeys/djedi-cms',
     },
     {
-      img: '/img/brands/celery.svg',
-      name: 'Celery',
-      href: 'https://docs.celeryproject.org/',
-    },
-    { name: 'HTTPX', href: 'https://www.python-httpx.org/' },
-    {
-      img: '/img/brands/isort.svg',
-      name: 'ISORT',
-      href: 'https://pycqa.github.io/isort/',
+      name: 'RESPX',
+      img: '/img/brands/RESPX.svg',
+      href: 'https://lundberg.github.io/respx',
     },
   ];
-  /**
-   * django
-   * docker
-   * ansible
-   * httpx
-   * celery
-   * isort
-   * prettier
-   *
-   */
 </script>
 
 <Block background="secondary">
@@ -52,20 +60,19 @@
       <Article>
         <p>
           <strong>We contribute to open source.</strong> You'll find contributions
-          from our engineers in major open source infrastructure projects such as
-          Django (used by Instagram, Mozilla, The Washington Times, etc.), Docker
-          (used by everyone!) and Ansible.
+          from our engineers in major open source projects such as Django (used by
+          Instagram, Mozilla, The Washington Times, etc.), Docker and Ansible (used
+          by everyone!).
         </p>
+
         <p>
-          In addition to our external contributions we maintain a few open
-          source projects ourselves. Some examples include <Link
-            href="https://github.com/5monkeys/djedi-cms">Djedi CMS</Link
+          In addition we maintain a few open source projects ourselves. Some
+          examples include <Link href="https://github.com/5monkeys/djedi-cms"
+            >Djedi CMS</Link
           >, <Link href="https://github.com/5monkeys/django-bananas"
             >django-bananas</Link
-          >, RESPX <Link href="https://github.com/lundberg/respx"
-            >(HTTPX mocking)</Link
-          > and <Link href="https://github.com/5monkeys/kapten"
-            >Kapten (Docker Swarm auto-deploy)</Link
+          >, <Link href="https://github.com/lundberg/respx">RESPX</Link> and <Link
+            href="https://github.com/5monkeys/kapten">Kapten</Link
           >.
         </p></Article
       >
@@ -99,6 +106,10 @@
     font-size: 2rem;
     font-weight: var(--bold);
     white-space: nowrap;
+
+    @media (max-width: 600px) {
+      padding: 0.25rem;
+    }
 
     img {
       width: 100%;
