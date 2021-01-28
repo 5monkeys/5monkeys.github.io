@@ -1,7 +1,7 @@
 <span><slot /></span>
 
 <style>
-  slot {
+  span {
     position: absolute;
     width: 1px;
     height: 1px;

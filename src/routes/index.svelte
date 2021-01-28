@@ -28,8 +28,8 @@
     <Container fullHeight>
       <div class="blowout" />
       <a href="#about" class="scrollButton">
-        <ScreenReaderOnly>Go to about us</ScreenReaderOnly>
         <SvgIcon icon={ArrowDownSVG} />
+        <ScreenReaderOnly>Go to about us</ScreenReaderOnly>
       </a>
     </Container>
   </Block>
