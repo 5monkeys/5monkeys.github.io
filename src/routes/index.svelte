@@ -13,6 +13,7 @@
   import About from '../blocks/index/About.svelte';
 
   import ArrowDownSVG from '../icons/arrow_down.svg';
+  import ScreenReaderOnly from '../components/ScreenReaderOnly.svelte';
 </script>
 
 <svelte:head>
@@ -27,6 +28,7 @@
     <Container fullHeight>
       <div class="blowout" />
       <a href="#about" class="scrollButton">
+        <ScreenReaderOnly>Go to about us</ScreenReaderOnly>
         <SvgIcon icon={ArrowDownSVG} />
       </a>
     </Container>
