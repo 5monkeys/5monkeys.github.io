@@ -46,7 +46,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem;
     z-index: 300;
   }
   .mobile {
