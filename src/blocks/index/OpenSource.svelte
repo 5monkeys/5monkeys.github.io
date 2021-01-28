@@ -17,7 +17,11 @@
       href: 'https://ansible.com',
       img: '/img/brands/ansible.svg',
     },
-    { name: 'Celery', href: 'https://docs.celeryproject.org/' },
+    {
+      img: '/img/brands/celery.svg',
+      name: 'Celery',
+      href: 'https://docs.celeryproject.org/',
+    },
     { name: 'HTTPX', href: 'https://www.python-httpx.org/' },
     {
       img: '/img/brands/isort.svg',

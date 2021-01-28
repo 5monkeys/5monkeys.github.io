@@ -19,9 +19,5 @@
     :global(p + p) {
       margin-top: 2rem;
     }
-
-    :global(a) {
-      text-decoration: underline;
-    }
   }
 </style>
