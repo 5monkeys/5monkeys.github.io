@@ -14,7 +14,8 @@
     "compression": "^1.7.1",
     "polka": "next",
     "reset.css": "^2.0.2",
-    "sirv": "^1.0.0"
+    "sirv": "^1.0.0",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",

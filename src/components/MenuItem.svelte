@@ -1,10 +1,21 @@
 <script>
-  import Block from './Block.svelte';
-
   export let href;
+
+  const scrollToId = (e) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const el = document.querySelector(href);
+      console.log(el);
+      window.scrollTo({
+        top: el.offsetTop,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
 </script>
 
-<a {href} {...$$props}><span><slot /></span></a>
+<a {href} {...$$props} on:click={scrollToId}><span><slot /></span></a>
 
 <style>
   a {

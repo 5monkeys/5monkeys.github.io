@@ -48,7 +48,7 @@ body {
   min-width: 280px; /* if you're below this you're better off scrolling */
   font-family: var(--font-stack);
   font-size: 1.125rem; /* 18px standard*/
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--text-light);
   background: var(--background-light);
   -webkit-font-smoothing: antialiased;
