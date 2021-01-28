@@ -3,7 +3,7 @@ name: Github pages deploy
 on:
   push:
     branches:
-      - feature/site-2021
+      - master
 
 jobs:
   deploy:
