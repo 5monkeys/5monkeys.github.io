@@ -63,7 +63,6 @@
     font-size: 4vw;
     line-height: 54px;
     font-weight: var(--bold);
-    font-size: border-radius;
     height: 42px;
     margin: 0.5rem;
     color: white;
