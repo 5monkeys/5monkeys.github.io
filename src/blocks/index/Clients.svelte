@@ -54,7 +54,7 @@
       name: 'Sportamore',
       color: '#c4c4c4',
     },
-  ];
+  ].sort(() => (Math.random() > 0.5 ? 1 : -1));
 </script>
 
 <Container padding="none" variant="full" center fullHeight>
