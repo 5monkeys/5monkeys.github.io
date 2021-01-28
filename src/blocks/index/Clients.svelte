@@ -57,7 +57,7 @@
   ];
 </script>
 
-<Container variant="full" center fullHeight>
+<Container padding="none" variant="full" center fullHeight>
   <div class="wrapper">
     <Article><strong>Some of our clients.</strong></Article>
     <div class="root">
@@ -69,9 +69,9 @@
       <div class="plug">
         <div>
           <span class="heavy">Want to join the club?</span>
-          <a class="cta" href="#contact"
-            ><span>Get in touch!</span><SvgIcon icon={ArrowForwardSVG} /></a
-          >
+          <a class="cta" href="#contact">
+            <span>Get in touch!</span><SvgIcon icon={ArrowForwardSVG} />
+          </a>
         </div>
       </div>
     </div>
@@ -80,18 +80,19 @@
 
 <style>
   .heavy {
+    display: block;
     font-weight: var(--bold);
     font-size: 1.25rem;
-    margin-bottom: 0.5em;
+    margin-bottom: 1.25em;
     display: block;
   }
   .wrapper {
     width: 100%;
+    padding: 2vw;
   }
   .root {
     display: grid;
     grid-gap: 2vw;
-    padding: 2vw 0;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
 
