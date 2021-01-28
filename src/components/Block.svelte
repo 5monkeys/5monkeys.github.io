@@ -38,11 +38,11 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    @media (prefers-color-scheme: dark) {
+    /* @media (prefers-color-scheme: dark) {
       background-color: black;
       background-image: unset;
       color: var(--primary);
       filter: grayscale(100%);
-    }
+    } */
   }
 </style>

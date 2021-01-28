@@ -32,10 +32,10 @@
     bottom: var(--sideMargin);
     mix-blend-mode: multiply;
 
-    @media (prefers-color-scheme: dark) {
+    /* @media (prefers-color-scheme: dark) {
       left: 50%;
       transform: translateX(-50%);
-    }
+    } */
 
     @media (max-width: 900px) {
       left: 50%;

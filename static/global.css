@@ -73,10 +73,11 @@ h2 {
   font-weight: var(--bold);
   font-size: 2rem;
 }
-
+/**
 @media (prefers-color-scheme: dark) {
   body {
     color: var(--text-dark);
     background: var(--background-dark);
   }
 }
+*/

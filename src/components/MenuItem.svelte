@@ -32,9 +32,9 @@
     padding: 0.5rem 1rem;
     background: white;
 
-    @media (prefers-color-scheme: dark) {
+    /* @media (prefers-color-scheme: dark) {
       background: transparent;
       color: black;
-    }
+    } */
   }
 </style>

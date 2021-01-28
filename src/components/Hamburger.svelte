@@ -10,7 +10,7 @@
   }
 </script>
 
-<button on:click={toggle} class:open>
+<button alt="Toggle menu" on:click={toggle} class:open>
   <span />
   <span />
   <span />
