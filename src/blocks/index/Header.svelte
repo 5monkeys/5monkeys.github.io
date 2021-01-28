@@ -6,7 +6,7 @@
   import ScreenReaderOnly from '../../components/ScreenReaderOnly.svelte';
 </script>
 
-<Block background="primary" padding="none">
+<Block background="primary">
   <Container fullHeight>
     <div class="blowout" />
     <a href="#about" class="scrollButton">

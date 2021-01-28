@@ -2,13 +2,10 @@
   import Article from '../components/Article.svelte';
   import Block from '../components/Block.svelte';
   import Container from '../components/Container';
-  import Link from '../components/Link.svelte';
-  import SvgIcon from '../components/SvgIcon.svelte';
-  import GithubSVG from '../icons/github.svg';
 </script>
 
 <footer>
-  <Block background="black" padding="none">
+  <Block background="black">
     <Container fullHeight center>
       <div>
         <Article>

@@ -1,17 +1,12 @@
 <script>
   export let background = undefined;
-  export let padding = 'none';
 </script>
 
-<div class={background && background} class:padding={padding == 'normal'}>
+<div class={background && background}>
   <slot />
 </div>
 
 <style>
-  .padding {
-    padding: 1rem 0;
-  }
-
   .black {
     background-color: var(--background-dark);
     color: var(--text-dark);

@@ -7,10 +7,23 @@
 
   const open_source = [
     { href: '', img: '/img/brands/Django_logo.svg', name: 'Django' },
-    { href: 'https://prettier.io/', name: 'Prettier' },
-    { href: '', name: 'Celery' },
-    { href: '', name: 'HTTPX' },
-    { img: '/img/brands/isort.png', name: 'ISORT' },
+    {
+      href: 'https://prettier.io/',
+      name: 'Prettier',
+      img: '/img/brands/prettier.svg',
+    },
+    {
+      name: 'Ansible',
+      href: 'https://ansible.com',
+      img: '/img/brands/ansible.svg',
+    },
+    { name: 'Celery', href: 'https://docs.celeryproject.org/' },
+    { name: 'HTTPX', href: 'https://www.python-httpx.org/' },
+    {
+      img: '/img/brands/isort.svg',
+      name: 'ISORT',
+      href: 'https://pycqa.github.io/isort/',
+    },
   ];
   /**
    * django
@@ -49,14 +62,14 @@
       >
     </div>
     <LogoGrid>
-      {#each open_source as { img, name }}
-        <span class="tech">
+      {#each open_source as { img, href, name }}
+        <a {href} target="_blank" class="tech">
           {#if img}
             <img src={img} alt={name} />
           {:else}
-            <span class="name">{name}</span>
+            {name}
           {/if}
-        </span>
+        </a>
       {/each}
     </LogoGrid>
   </Container>
@@ -67,22 +80,21 @@
     margin-bottom: 3rem;
   }
 
-  .name {
-    font-size: 2rem;
-    font-weight: var(--bold);
-    white-space: nowrap;
-  }
   .tech {
+    text-decoration: none;
+    color: white;
     padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 2rem;
+    font-weight: var(--bold);
+    white-space: nowrap;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: contrast(200%) brightness(0.2) grayscale() invert(1);
     }
   }
 </style>

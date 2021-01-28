@@ -5,7 +5,6 @@
     if (href.startsWith('#')) {
       e.preventDefault();
       const el = document.querySelector(href);
-      console.log(el);
       window.scrollTo({
         top: el.offsetTop,
         left: 0,

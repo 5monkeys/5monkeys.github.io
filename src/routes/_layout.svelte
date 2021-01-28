@@ -7,7 +7,6 @@
   export let segment;
 
   const setup = () => {
-    console.log('setup');
     smoothscroll.polyfill();
   };
 </script>
