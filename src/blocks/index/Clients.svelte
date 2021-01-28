@@ -82,9 +82,13 @@
   .heavy {
     display: block;
     font-weight: var(--bold);
-    font-size: 1.25rem;
-    margin-bottom: 1.25em;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
     display: block;
+
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+    }
   }
   .wrapper {
     width: 100%;

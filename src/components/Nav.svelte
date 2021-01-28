@@ -16,6 +16,7 @@
     <MenuItem href="#careers">Careers</MenuItem>
     <MenuItem href="#contact">Contact</MenuItem>
   </div>
+
   {#if open}
     <div
       class="mobile"
@@ -28,6 +29,7 @@
       <MenuItem href="#contact">Contact</MenuItem>
     </div>
   {/if}
+
   <Hamburger on:click={handle} {open} />
 </nav>
 
