@@ -70,6 +70,7 @@
   .name {
     font-size: 2rem;
     font-weight: var(--bold);
+    white-space: nowrap;
   }
   .tech {
     padding: 1rem;
@@ -79,6 +80,7 @@
 
     img {
       width: 100%;
+      height: 100%;
       object-fit: contain;
       filter: contrast(200%) brightness(0.2) grayscale() invert(1);
     }
