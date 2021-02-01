@@ -73,8 +73,8 @@
           contributions from our engineers in major open source projects such as
           <Link href="https://djangoproject.com/">Django</Link> (used by Instagram,
           Mozilla, etc.),
-          <Link href="https://docker.com/">Docker</Link> and
-          <Link href="https://ansible.com/">Ansible</Link> (used by everyone!).
+          <Link href="https://ansible.com/">Ansible</Link> and
+          <Link href="https://docker.com/">Docker</Link> (used by everyone!).
         </p>
 
         <p>
