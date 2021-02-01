@@ -42,6 +42,7 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
 html {
   font-size: var(--baseFontSize);
   font-weight: var(--regular);
+  font-display: swap;
   font-style: normal;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
