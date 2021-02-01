@@ -5,7 +5,7 @@
 </script>
 
 <Block background="monkey">
-  <Container relative={true} variant="full" padding="none">
+  <Container relative fullWidth padding="none">
     <Container fullHeight center>
       <Article>
         <p>

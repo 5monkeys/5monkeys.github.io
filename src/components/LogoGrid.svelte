@@ -16,7 +16,7 @@
       width: 140px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
       display: none;
     }
   }

@@ -28,7 +28,7 @@
       href: 'https://bolist.se',
       logo: '/img/brands/bolist.svg',
       name: 'Bolist',
-      color: '#F50',
+      color: '#EF7D0B',
     },
     {
       href: 'https://mojang.com',
@@ -52,12 +52,12 @@
       href: 'https://sportamore.se/',
       logo: '/img/brands/sportamore.svg',
       name: 'Sportamore',
-      color: '#c4c4c4',
+      color: '#F470DD',
     },
   ].sort(() => (Math.random() > 0.5 ? 1 : -1));
 </script>
 
-<Container padding="none" variant="full" center fullHeight>
+<Container padding="none" fullWidth center fullHeight>
   <div class="wrapper">
     <Article><strong>Some of our clients.</strong></Article>
     <div class="root">
@@ -119,7 +119,7 @@
   }
 
   .plug {
-    padding: 1rem;
+    padding: 2rem;
     border: 0.5rem dashed var(--primary);
     display: flex;
     align-items: center;

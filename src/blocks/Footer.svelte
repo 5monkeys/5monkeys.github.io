@@ -14,7 +14,7 @@
         <a href="mailto:hello@5monkeys.se">hello@5monkeys.se</a><br />
         <span
           >Would you like to know more about our job offers?
-          <code> > ssh join.5monkeys.se<span class="cursor">█</span></code>
+          <code> {'>'} ssh join.5monkeys.se<span class="cursor">█</span></code>
         </span>
       </div>
       <!-- <div>
@@ -63,7 +63,6 @@
     font-size: 4vw;
     line-height: 54px;
     font-weight: var(--bold);
-    font-size: border-radius;
     height: 42px;
     margin: 0.5rem;
     color: white;
