@@ -11,8 +11,8 @@
       <p>
         <strong>Join us!</strong> We're always looking for talented colleagues who
         share our love for open source software and our relentless focus on high-quality
-        engineering. Do you wish you had colleagues who cared deeply about open source
-        software? Apply now!
+        engineering. Do you wish you had colleagues who cared deeply about open source?
+        Apply now!
       </p>
 
       <p>

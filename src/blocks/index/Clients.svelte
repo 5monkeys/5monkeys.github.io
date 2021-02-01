@@ -57,7 +57,7 @@
   ].sort(() => (Math.random() > 0.5 ? 1 : -1));
 </script>
 
-<Container padding="none" variant="full" center fullHeight>
+<Container padding="none" fullWidth center fullHeight>
   <div class="wrapper">
     <Article><strong>Some of our clients.</strong></Article>
     <div class="root">

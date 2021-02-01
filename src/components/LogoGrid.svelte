@@ -15,6 +15,10 @@
       height: 90px;
       width: 140px;
     }
+
+    @media (max-width: 800px) {
+      display: none;
+    }
   }
   /* div {
     grid-gap: 1vw;

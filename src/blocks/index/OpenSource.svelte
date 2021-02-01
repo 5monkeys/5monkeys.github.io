@@ -42,6 +42,16 @@
       href: 'https://www.python-httpx.org',
     },
     {
+      name: 'Kapten',
+      img: '/img/brands/kapten.svg',
+      href: 'https://github.com/5monkeys/kapten',
+    },
+    {
+      name: 'Django Bananas',
+      img: '/img/brands/bananas.svg',
+      href: 'https://github.com/5monkeys/django-bananas',
+    },
+    {
       name: 'Djedi CMS',
       img: '/img/brands/djedi-portrait.svg',
       href: 'https://github.com/5monkeys/djedi-cms',
@@ -59,10 +69,12 @@
     <div>
       <Article>
         <p>
-          <strong>We contribute to open source.</strong> You'll find contributions
-          from our engineers in major open source projects such as Django (used by
-          Instagram, Mozilla, The Washington Times, etc.), Docker and Ansible (used
-          by everyone!).
+          <strong>We contribute to open source.</strong> You'll find
+          contributions from our engineers in major open source projects such as
+          <Link href="https://djangoproject.com/">Django</Link> (used by Instagram,
+          Mozilla, etc.),
+          <Link href="https://docker.com/">Docker</Link> and
+          <Link href="https://ansible.com/">Ansible</Link> (used by everyone!).
         </p>
 
         <p>
@@ -79,7 +91,7 @@
     </div>
     <LogoGrid>
       {#each open_source as { img, href, name }}
-        <a {href} target="_blank" class="tech">
+        <a {href} class="tech">
           {#if img}
             <img src={img} alt={name} />
           {:else}

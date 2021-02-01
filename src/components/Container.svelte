@@ -1,5 +1,6 @@
 <script>
   export let fullHeight = false;
+  export let fullWidth = false;
   export let variant = 'normal';
   export let padding = 'normal';
   export let relative = false;
@@ -11,7 +12,7 @@
   class:paddingNormal={padding === 'normal'}
   class:fullHeight
   class:article={variant === 'article'}
-  class:full={variant === 'full'}
+  class:fullWidth
   class:relative
   class:center
 >
@@ -25,7 +26,7 @@
     margin: 0 auto;
   }
 
-  .full {
+  .fullWidth {
     max-width: unset;
   }
 
@@ -41,6 +42,7 @@
   }
 
   .fullHeight {
+    min-height: auto;
     min-height: 100vh;
     /* scroll-snap-align: start; */
   }
