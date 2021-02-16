@@ -18,13 +18,12 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
   --baseFontSize: 16px;
   --bold: 700;
   --regular: 400;
-  --font-stack: bilo, sans-serif, ui-sans-serif, system-ui, -apple-system,
-    system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
+  --font-stack: bilo, sans-serif, ui-sans-serif, system-ui, -apple-system, system-ui, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
 
-  --font-mono: 'Courier New', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial;
+  --font-mono: 'Courier New', BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial;
 
   /* misc */
   --sideMargin: 2rem;
@@ -40,12 +39,12 @@ https://coolors.co/ffe072-40a6e2-000000-ffffff
 }
 
 html {
+  font-display: swap;
   font-size: var(--baseFontSize);
   font-weight: var(--regular);
   font-display: swap;
   font-style: normal;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -76,12 +75,6 @@ strong {
 h2 {
   font-weight: var(--bold);
   font-size: 2rem;
-}
-
-@media (max-width: 900px) {
-  html {
-    scroll-snap-type: none;
-  }
 }
 
 /**

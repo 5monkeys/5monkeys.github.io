@@ -42,9 +42,7 @@
   }
 
   .fullHeight {
-    min-height: auto;
     min-height: 100vh;
-    /* scroll-snap-align: start; */
   }
   .article {
     max-width: var(--max-width--article);

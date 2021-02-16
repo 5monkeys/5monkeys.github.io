@@ -17,6 +17,7 @@
   import DjediLogo from '../../brands/djedi-portrait.svg';
   import RespxLogo from '../../brands/RESPX.svg';
   import SvgIcon from '../../components/SvgIcon.svelte';
+  import ScreenReaderOnly from '../../components/ScreenReaderOnly.svelte';
 
   const open_source = [
     {
@@ -82,30 +83,27 @@
     <div>
       <Article>
         <p>
-          <strong>We contribute to open source.</strong> You'll find
-          contributions from our engineers in major open source projects such as
-          <Link href="https://djangoproject.com/">Django</Link> (used by Instagram,
-          Mozilla, etc.),
+          <strong>We contribute to open source.</strong> You'll find contributions from our
+          engineers in major open source projects such as
+          <Link href="https://djangoproject.com/">Django</Link> (used by Instagram, Mozilla, etc.),
           <Link href="https://ansible.com/">Ansible</Link> and
           <Link href="https://docker.com/">Docker</Link> (used by everyone!).
         </p>
 
         <p>
-          In addition we maintain a few open source projects ourselves. Some
-          examples include <Link href="https://github.com/5monkeys/djedi-cms"
-            >Djedi CMS</Link
-          >, <Link href="https://github.com/5monkeys/django-bananas"
-            >django-bananas</Link
-          >, <Link href="https://github.com/lundberg/respx">RESPX</Link> and <Link
-            href="https://github.com/5monkeys/kapten">Kapten</Link
-          >.
+          In addition we maintain a few open source projects ourselves. Some examples include <Link
+            href="https://github.com/5monkeys/djedi-cms">Djedi CMS</Link
+          >, <Link href="https://github.com/5monkeys/django-bananas">django-bananas</Link>, <Link
+            href="https://github.com/lundberg/respx">RESPX</Link
+          > and <Link href="https://github.com/5monkeys/kapten">Kapten</Link>.
         </p></Article
       >
     </div>
     <LogoGrid>
       {#each open_source as { img, href, name }}
-        <a {href} class="tech">
+        <a {href} class="tech" rel="noopener">
           {#if img}
+            <ScreenReaderOnly>{name}</ScreenReaderOnly>
             <SvgIcon icon={img} />
           {:else}
             {name}

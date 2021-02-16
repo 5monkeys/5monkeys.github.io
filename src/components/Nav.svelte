@@ -18,11 +18,7 @@
   </div>
 
   {#if open}
-    <div
-      class="mobile"
-      transition:fly={{ x: 300, duration: 600 }}
-      on:click={handle}
-    >
+    <div class="mobile" transition:fly={{ x: 300, duration: 600 }} on:click={handle}>
       <MenuItem href="#about">About</MenuItem>
       <MenuItem href="#clients">Clients</MenuItem>
       <MenuItem href="#careers">Careers</MenuItem>

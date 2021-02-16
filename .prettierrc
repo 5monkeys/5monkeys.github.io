@@ -1,8 +1,10 @@
 {
   "trailingComma": "es5",
-  "semi":true,
+  "bracketSpacing": true,
+  "printWidth": 100,
   "singleQuote": true,
-  "jsxBracketSameLine": true,
+  "semi": true,
+  "arrowParens": "avoid",
   "overrides": [
     {
       "files": "*.md",

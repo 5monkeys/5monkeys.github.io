@@ -14,14 +14,23 @@
 
     %sapper.base%
 
-    <link rel="stylesheet" href="https://use.typekit.net/fuw5qsn.css" />
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="global.css" />
+    <link rel="preconnect" href="https://use.typekit.net" />
+    <link rel="preload" as="style" href="https://use.typekit.net/fuw5qsn.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.typekit.net/fuw5qsn.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <noscript>
+      <link rel="stylesheet" href="https://use.typekit.net/fuw5qsn.css" />
+    </noscript>
+
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
     <link rel="icon" type="image/png" href="favicon.ico" />
     <title>
-      5 Monkeys Agency: A Digital Agency in Stockholm & Gothenburg. We love
-      Django & React!
+      5 Monkeys Agency: A Digital Agency in Stockholm & Gothenburg. We love Django & React!
     </title>
     <meta
       name="description"

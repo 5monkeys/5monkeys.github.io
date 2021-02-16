@@ -14,6 +14,7 @@
   import PressbyranLogo from '../../brands/pressbyran.svg';
   import ReasonLogo from '../../brands/reasonstudios.svg';
   import SportaMoreLogo from '../../brands/sportamore.svg';
+  import ScreenReaderOnly from '../../components/ScreenReaderOnly.svelte';
 
   const brands = [
     {
@@ -73,13 +74,14 @@
     <div class="root">
       {#each brands as brand}
         <Brand background={brand.color} href={brand.href}>
+          <ScreenReaderOnly>{Brand.name}</ScreenReaderOnly>
           <SvgIcon icon={brand.logo} />
         </Brand>
       {/each}
       <div class="plug">
         <div>
           <span class="heavy">Want to join the club?</span>
-          <a class="cta" href="#contact">
+          <a class="cta" href="#contact" rel="noopener">
             <span>Get in touch!</span><SvgIcon icon={ArrowForwardSVG} />
           </a>
         </div>
