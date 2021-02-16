@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import ScreenReaderOnly from './ScreenReaderOnly.svelte';
 
   export let open = true;
 
@@ -14,6 +15,7 @@
   <span />
   <span />
   <span />
+  <ScreenReaderOnly>Toggle Menu</ScreenReaderOnly>
 </button>
 
 <style>
@@ -54,7 +56,7 @@
       }
     }
 
-    &:last-child {
+    &:nth-child(3) {
       transform: translate(-50%, 7px);
       .open & {
         transform: translate(-50%, -50%) rotate(45deg);
