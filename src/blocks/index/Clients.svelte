@@ -5,52 +5,63 @@
   import Brand from './Brand.svelte';
   import ArrowForwardSVG from '../../icons/arrow_forward.svg';
 
+  /** logos */
+  import DNLogo from '../../brands/dn.svg';
+  import GinaTricotLogo from '../../brands/ginatricot.svg';
+  import EqtLogo from '../../brands/eqt.svg';
+  import BolistLogo from '../../brands/bolist.svg';
+  import MojangLogo from '../../brands/mojang.svg';
+  import PressbyranLogo from '../../brands/pressbyran.svg';
+  import ReasonLogo from '../../brands/reasonstudios.svg';
+  import SportaMoreLogo from '../../brands/sportamore.svg';
+  import ScreenReaderOnly from '../../components/ScreenReaderOnly.svelte';
+
   const brands = [
     {
       href: 'https://ginatricot.com',
-      logo: '/img/brands/ginatricot.svg',
+      logo: GinaTricotLogo,
       name: 'Gina Tricot',
       color: '#e0c4b6',
     },
     {
       href: 'https://dn.se',
-      logo: '/img/brands/dn.svg',
+      logo: DNLogo,
       name: 'DN',
       color: '#f00',
     },
     {
       href: 'https://eqtventures.com',
-      logo: '/img/brands/eqt.svg',
+      logo: EqtLogo,
       name: 'EQT',
       color: '#240447',
     },
     {
       href: 'https://bolist.se',
-      logo: '/img/brands/bolist.svg',
+      logo: BolistLogo,
       name: 'Bolist',
       color: '#EF7D0B',
     },
     {
       href: 'https://mojang.com',
-      logo: '/img/brands/mojang.svg',
+      logo: MojangLogo,
       name: 'Mojang',
       color: '#000',
     },
     {
       href: 'https://pressbyran.se',
-      logo: '/img/brands/pressbyran.svg',
+      logo: PressbyranLogo,
       name: 'Pressbyrån',
       color: '#EDC607',
     },
     {
       href: 'https://reasonstudios.com/',
-      logo: '/img/brands/reasonstudios.svg',
+      logo: ReasonLogo,
       name: 'Reason studios',
       color: '#F0E8DA',
     },
     {
       href: 'https://sportamore.se/',
-      logo: '/img/brands/sportamore.svg',
+      logo: SportaMoreLogo,
       name: 'Sportamore',
       color: '#F470DD',
     },
@@ -63,13 +74,14 @@
     <div class="root">
       {#each brands as brand}
         <Brand background={brand.color} href={brand.href}>
-          <img alt={brand.name} src={brand.logo} />
+          <ScreenReaderOnly>{Brand.name}</ScreenReaderOnly>
+          <SvgIcon icon={brand.logo} />
         </Brand>
       {/each}
       <div class="plug">
         <div>
           <span class="heavy">Want to join the club?</span>
-          <a class="cta" href="#contact">
+          <a class="cta" href="#contact" rel="noopener">
             <span>Get in touch!</span><SvgIcon icon={ArrowForwardSVG} />
           </a>
         </div>

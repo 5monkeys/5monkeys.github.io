@@ -1,7 +1,10 @@
 <script>
-  import Link from '../../../components/Link.svelte';
+  import Link from '../../components/Link.svelte';
   import { fade } from 'svelte/transition';
-  import Container from '../../../components/Container.svelte';
+  import Container from '../../components/Container.svelte';
+  import SvgIcon from '../../components/SvgIcon.svelte';
+
+  import MonkeyLogo from '../../brands/5m.svg';
 
   let focusedOffice = undefined;
 
@@ -60,7 +63,7 @@
       />
     {/if}
 
-    <img class="watermark" alt="5 monkeys logo with text" src="/img/logo.svg" />
+    <SvgIcon icon={MonkeyLogo} />
   </div>
 </div>
 
@@ -84,6 +87,14 @@
 
     @media (max-width: 900px) {
       display: none;
+    }
+
+    & > :global(svg) {
+      position: absolute;
+      bottom: var(--sideMargin);
+      right: var(--sideMargin);
+      width: 50%;
+      height: auto;
     }
   }
 
@@ -113,12 +124,5 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-  }
-
-  .watermark {
-    position: absolute;
-    bottom: var(--sideMargin);
-    right: var(--sideMargin);
-    width: 50%;
   }
 </style>
