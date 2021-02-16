@@ -2,6 +2,8 @@
   import Article from '../../components/Article.svelte';
   import Block from '../../components/Block.svelte';
   import Container from '../../components/Container.svelte';
+  import SvgIcon from '../../components/SvgIcon.svelte';
+  import DiGasellIcon from '../../brands/di-gasell.svg';
 </script>
 
 <Block background="monkey">
@@ -20,7 +22,9 @@
         </p>
       </Article>
     </Container>
-    <img class="gasell" alt="DI Gasell" src={'/img/brands/di-gasell.svg'} />
+    <span class="gasell">
+      <SvgIcon icon={DiGasellIcon} />
+    </span>
   </Container>
 </Block>
 
@@ -31,11 +35,6 @@
     left: var(--sideMargin);
     bottom: var(--sideMargin);
     mix-blend-mode: multiply;
-
-    /* @media (prefers-color-scheme: dark) {
-      left: 50%;
-      transform: translateX(-50%);
-    } */
 
     @media (max-width: 900px) {
       left: 50%;

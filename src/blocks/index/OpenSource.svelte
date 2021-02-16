@@ -5,60 +5,73 @@
   import Link from '../../components/Link.svelte';
   import LogoGrid from '../../components/LogoGrid.svelte';
 
+  import DjangoLogo from '../../brands/Django_logo.svg';
+  import DockerLogo from '../../brands/docker.svg';
+  import AnsibleLogo from '../../brands/ansible.svg';
+  import PrettierLogo from '../../brands/prettier.svg';
+  import CeleryLogo from '../../brands/celery.svg';
+  import IsortLogo from '../../brands/isort.svg';
+  import HttpxLogo from '../../brands/HTTPX.svg';
+  import KaptenLogo from '../../brands/kapten.svg';
+  import BananasLogo from '../../brands/bananas.svg';
+  import DjediLogo from '../../brands/djedi-portrait.svg';
+  import RespxLogo from '../../brands/RESPX.svg';
+  import SvgIcon from '../../components/SvgIcon.svelte';
+
   const open_source = [
     {
       name: 'Django',
-      href: 'https://www.djangoproject.com/',
-      img: '/img/brands/Django_logo.svg',
+      img: DjangoLogo,
+      href: 'https://djangoproject.com/',
     },
     {
       name: 'Docker',
-      img: '/img/brands/docker.svg',
-      href: 'https://www.docker.com/',
+      img: DockerLogo,
+      href: 'https://docker.com/',
     },
     {
       name: 'Ansible',
-      img: '/img/brands/ansible.svg',
+      img: AnsibleLogo,
       href: 'https://ansible.com',
     },
     {
       name: 'Prettier',
-      img: '/img/brands/prettier.svg',
+      img: PrettierLogo,
       href: 'https://prettier.io',
     },
     {
       name: 'Celery',
-      img: '/img/brands/celery.svg',
+      img: CeleryLogo,
       href: 'https://docs.celeryproject.org',
     },
     {
       name: 'ISORT',
-      img: '/img/brands/isort.svg',
+      img: IsortLogo,
       href: 'https://pycqa.github.io/isort',
     },
     {
       name: 'HTTPX',
-      img: '/img/brands/HTTPX.svg',
+      img: HttpxLogo,
       href: 'https://www.python-httpx.org',
     },
     {
       name: 'Kapten',
-      img: '/img/brands/kapten.svg',
+      img: KaptenLogo,
       href: 'https://github.com/5monkeys/kapten',
     },
     {
       name: 'Django Bananas',
-      img: '/img/brands/bananas.svg',
+      img: BananasLogo,
       href: 'https://github.com/5monkeys/django-bananas',
     },
     {
       name: 'Djedi CMS',
-      img: '/img/brands/djedi-portrait.svg',
+      img: DjediLogo,
       href: 'https://github.com/5monkeys/djedi-cms',
     },
     {
       name: 'RESPX',
-      img: '/img/brands/RESPX.svg',
+      img: RespxLogo,
       href: 'https://lundberg.github.io/respx',
     },
   ];
@@ -93,7 +106,7 @@
       {#each open_source as { img, href, name }}
         <a {href} class="tech">
           {#if img}
-            <img src={img} alt={name} />
+            <SvgIcon icon={img} />
           {:else}
             {name}
           {/if}
@@ -123,7 +136,7 @@
       padding: 0.25rem;
     }
 
-    img {
+    :global(svg) {
       width: 100%;
       height: 100%;
       object-fit: contain;

@@ -25,6 +25,10 @@
     color: white;
     width: 54px;
     height: 54px;
+
+    & :global(svg) {
+      width: 100%;
+    }
   }
 
   .blowout {
