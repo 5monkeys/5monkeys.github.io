@@ -1,6 +1,6 @@
 <script>
-	import Hamburger from './Hamburger.svelte';
-	import MenuItem from './MenuItem.svelte';
+	import Hamburger from '$components/Hamburger.svelte';
+	import MenuItem from '$components/MenuItem.svelte';
 	import { fly } from 'svelte/transition';
 	let open = false;
 

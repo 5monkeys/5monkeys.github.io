@@ -3,7 +3,7 @@ name: Github pages deploy
 on:
   push:
     branches:
-      - master
+      - sveltekit
 
 jobs:
   deploy:
@@ -16,12 +16,12 @@ jobs:
       - name: Install
         run: npm install
 
-      - name: Static export
-        run: npm run export;
+      - name: Static Build
+        run: npm run build;
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           cname: www.5monkeys.se
-          publish_dir: ./__sapper__/export
+          publish_dir: ./build

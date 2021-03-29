@@ -1,5 +1,10 @@
-<script>
-  export let icon;
-</script>
+<svg>
+	<slot />
+</svg>
 
-{@html icon}
+<style>
+	svg {
+		position: relative;
+		display: inline-block;
+	}
+</style>
