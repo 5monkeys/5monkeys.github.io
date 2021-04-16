@@ -1,6 +1,5 @@
 <script>
 	import AnchorTarget from '$components/AnchorTarget.svelte';
-
 	import Clients from '$blocks/Clients.svelte';
 	import OpenSource from '$blocks/OpenSource.svelte';
 	import Offices from '$blocks/Offices.svelte';

@@ -7,6 +7,7 @@
 </script>
 
 <Block background="primary">
+	<h1 class="hide">5 Monkeys Agency: A Digital Agency in Stockholm & Gothenburg.</h1>
 	<Container fullHeight>
 		<div class="blowout" />
 		<a href="#about" class="scrollButton">
@@ -40,5 +41,13 @@
 		background-image: url('/img/monkey.svg');
 		background-position: center;
 		background-size: contain;
+	}
+
+	.hide {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		opacity: 0;
 	}
 </style>

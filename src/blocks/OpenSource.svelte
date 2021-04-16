@@ -82,9 +82,9 @@
 	<Container fullHeight center>
 		<div>
 			<Article>
+				<h2>We contribute to open source.</h2>
 				<p>
-					<strong>We contribute to open source.</strong> You'll find contributions from our
-					engineers in major open source projects such as
+					You'll find contributions from our engineers in major open source projects such as
 					<Link href="https://djangoproject.com/">Django</Link> (used by Instagram, Mozilla, etc.),
 					<Link href="https://ansible.com/">Ansible</Link> and
 					<Link href="https://docker.com/">Docker</Link> (used by everyone!).
@@ -115,6 +115,11 @@
 </Block>
 
 <style lang="scss">
+	h2,
+	p {
+		font-size: inherit;
+		display: inline;
+	}
 	div {
 		margin-bottom: 3rem;
 	}

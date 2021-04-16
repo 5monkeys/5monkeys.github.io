@@ -70,11 +70,11 @@
 
 <Container padding="none" fullWidth center fullHeight>
 	<div class="wrapper">
-		<Article><strong>Some of our clients.</strong></Article>
+		<Article><h2>Some of our clients.</h2></Article>
 		<div class="root">
 			{#each brands as brand}
 				<Brand background={brand.color} href={brand.href}>
-					<ScreenReaderOnly>{Brand.name}</ScreenReaderOnly>
+					<ScreenReaderOnly>{brand.name}</ScreenReaderOnly>
 					<img src={brand.logo} alt={brand.name} />
 				</Brand>
 			{/each}

@@ -17,30 +17,32 @@
 	<div class="offices">
 		<Container fullHeight center>
 			<div class="inner">
-				<p class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
-					<strong>Stockholm office. </strong><br />
-					<Link href="https://goo.gl/maps/rK183Qy6hftXA29B6">
+				<div class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
+					<h2>Stockholm office.</h2>
+
+					<Link href="htdivs://goo.gl/maps/rK183Qy6hftXA29B6">
 						Götgatan 36, 4:th floor<br />
 						Slussen, Stockholm
 					</Link>
 					<br />
 
 					<Link href="tel:+46850006653">+46-8-5000 66 53</Link>
-				</p>
+				</div>
 
-				<p class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
-					<strong>Gothenburg office.</strong><br />
+				<div class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
+					<h2>Gothenburg office.</h2>
+
 					<Link href="https://goo.gl/maps/oNyv3WhEehduf7qz8">
 						Viktor Rydbergsgatan 14<br />
 						Götaplatsen, Göteborg<br />
 					</Link>
 					<Link href="tel:+46317674000">+46-31-76 74 000</Link>
-				</p>
+				</div>
 
-				<p on:mouseenter={() => handleMouseEnter()}>
-					<strong>Get in touch.</strong><br />
+				<div on:mouseenter={() => handleMouseEnter()}>
+					<h2>Get in touch.</h2>
 					<Link href="mailto:hello@5monkeys.se">hello@5monkeys.se</Link><br />
-				</p>
+				</div>
 			</div>
 		</Container>
 	</div>
