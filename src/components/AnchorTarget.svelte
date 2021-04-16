@@ -1,5 +1,5 @@
 <script>
-  export let id;
+	export let id;
 </script>
 
 <!--<script>
@@ -41,9 +41,9 @@
 <slot />
 
 <!-- </div> -->
-<style>
-  span {
-    visibility: hidden;
-    position: absolute;
-  }
+<style lang="scss">
+	span {
+		visibility: hidden;
+		position: absolute;
+	}
 </style>
