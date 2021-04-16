@@ -138,6 +138,7 @@
 		}
 	}
 	.plug-inner {
+		height: 100%;
 		padding: 2rem;
 		border: 0.5rem dashed var(--primary);
 		display: flex;
