@@ -79,11 +79,13 @@
 				</Brand>
 			{/each}
 			<div class="plug">
-				<div>
-					<span class="heavy">Want to join the club?</span>
-					<a class="cta" href="#contact" rel="noopener">
-						<span>Get in touch!</span><ArrowForward />
-					</a>
+				<div class="plug-inner">
+					<div>
+						<span class="heavy">Want to join the club?</span>
+						<a class="cta" href="#contact" rel="noopener">
+							<span>Get in touch!</span><ArrowForward />
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -131,15 +133,16 @@
 	}
 
 	.plug {
+		@media (max-width: 600px) {
+			grid-column: 1/-1;
+		}
+	}
+	.plug-inner {
 		padding: 2rem;
 		border: 0.5rem dashed var(--primary);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
-		@media (max-width: 600px) {
-			grid-column: 1/-1;
-		}
 	}
 
 	.cta {
