@@ -3,7 +3,7 @@ name: Github pages deploy
 on:
   push:
     branches:
-      - sveltekit
+      - master
 
 jobs:
   deploy:
