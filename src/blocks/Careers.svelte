@@ -8,11 +8,11 @@
 <Block background="tertiary">
 	<Container fullHeight center>
 		<Article>
-			<h2>Join us!</h2>
 			<p>
+				<strong>Join us!</strong>
 				We're always looking for talented colleagues who share our love for open source software and
-				our relentless focus on high-quality engineering. Do you wish you had colleagues who cared
-				deeply about open source? Apply now!
+				our relentless focus on high-quality engineering. Do you wish you had colleagues who cared deeply
+				about open source? Apply now!
 			</p>
 
 			<p>
@@ -23,10 +23,3 @@
 		</Article>
 	</Container>
 </Block>
-
-<style>
-	h2 {
-		font-size: inherit;
-		display: inline;
-	}
-</style>
