@@ -1,9 +1,9 @@
 <script>
 	import Article from '$components/Article.svelte';
 	import Container from '$components/Container.svelte';
-	import SvgIcon from '$components/SvgIcon.svelte';
 	import Brand from './Brand.svelte';
 	import ArrowForward from '$icons/arrow_forward.svelte';
+	import ScreenReaderOnly from '$components/ScreenReaderOnly.svelte';
 
 	/** logos */
 	import DNLogo from '$brands/dn.svg';
@@ -14,9 +14,30 @@
 	import PressbyranLogo from '$brands/pressbyran.svg';
 	import ReasonLogo from '$brands/reasonstudios.svg';
 	import SportaMoreLogo from '$brands/sportamore.svg';
-	import ScreenReaderOnly from '$components/ScreenReaderOnly.svelte';
+	import ObayatyLogo from '$brands/obayaty.svg';
+	import XlByggLogo from '$brands/xl-bygg.svg';
+	import ArkivetLogo from '$brands/arkivet.svg';
 
 	const brands = [
+		{
+			href: 'https://obayaty.com',
+			logo: ObayatyLogo,
+			name: 'Obayaty',
+			color: '#f0f0f0'
+		},
+		{
+			href: 'https://xlbygg.se',
+			logo: XlByggLogo,
+			name: 'XL-BYGG',
+			color: '#000000'
+		},
+		{
+			href: 'https://arkivet.com',
+			logo: ArkivetLogo,
+			name: 'Arkivet',
+			color: '#d1dbcb'
+		},
+
 		{
 			href: 'https://ginatricot.com',
 			logo: GinaTricotLogo,
@@ -118,15 +139,6 @@
 
 		@media (max-width: 400px) {
 			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	.root :global(:first-child) {
-		@media (min-width: 900px) {
-			grid-column-start: 1;
-			grid-column-end: 3;
-			grid-row-start: 1;
-			grid-row-end: 3;
 		}
 	}
 
