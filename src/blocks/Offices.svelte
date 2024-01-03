@@ -44,14 +44,6 @@
 				out:fade
 				alt="Stockholm office"
 			/>
-		{:else if focusedOffice === 'gothenburg'}
-			<img
-				class="office-image"
-				src={'/img/5m-gothenburg-office.jpg'}
-				in:fade
-				out:fade
-				alt="Gothenburg office"
-			/>
 		{/if}
 
 		<img class="logo" src={MonkeyLogo} alt="5 monkeys logo" />
