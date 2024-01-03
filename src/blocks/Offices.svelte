@@ -2,7 +2,6 @@
 	import Link from '$components/Link.svelte';
 	import { fade } from 'svelte/transition';
 	import Container from '$components/Container.svelte';
-	import SvgIcon from '$components/SvgIcon.svelte';
 
 	import MonkeyLogo from '$brands/5m.svg';
 
@@ -27,16 +26,6 @@
 					<br />
 
 					<Link href="tel:+46850006653">+46-8-5000 66 53</Link>
-				</div>
-
-				<div class="office" on:mouseenter={() => handleMouseEnter('gothenburg')}>
-					<h2>Gothenburg office.</h2>
-
-					<Link href="https://goo.gl/maps/TXCPt9R1PLw7jTEn6">
-						Stora Nygatan 13,<br/>
-						Göteborg
-					</Link>
-					<Link href="tel:+46317674000">+46-31-76 74 000</Link>
 				</div>
 
 				<div on:mouseenter={() => handleMouseEnter()}>
