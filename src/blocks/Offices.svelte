@@ -2,6 +2,7 @@
 	import Link from '$components/Link.svelte';
 	import { fade } from 'svelte/transition';
 	import Container from '$components/Container.svelte';
+	import SvgIcon from '$components/SvgIcon.svelte';
 
 	import MonkeyLogo from '$brands/5m.svg';
 
@@ -53,6 +54,14 @@
 				in:fade
 				out:fade
 				alt="Stockholm office"
+			/>
+		{:else if focusedOffice === 'gothenburg'}
+			<img
+				class="office-image"
+				src={'/img/5m-gothenburg-office.jpg'}
+				in:fade
+				out:fade
+				alt="Gothenburg office"
 			/>
 		{/if}
 
