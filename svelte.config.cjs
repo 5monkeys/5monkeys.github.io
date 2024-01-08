@@ -16,7 +16,7 @@ module.exports = {
 		adapter: adapter_static(),
 
 		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
+		target: 'body',
 		vite: {
 			ssr: {
 				noExternal: Object.keys(pkg.dependencies || {})
