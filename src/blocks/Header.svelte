@@ -7,7 +7,7 @@
 </script>
 
 <Block background="primary">
-	<h1 class="hide">5 Monkeys Agency: A Digital Agency in Stockholm & Gothenburg.</h1>
+	<h1 class="hide">5 Monkeys Agency: A Digital Agency in Stockholm.</h1>
 	<Container fullHeight>
 		<div class="blowout" />
 		<a href="#about" class="scrollButton">
