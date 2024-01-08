@@ -33,7 +33,7 @@
 					<h2>Gothenburg office.</h2>
 
 					<Link href="https://goo.gl/maps/TXCPt9R1PLw7jTEn6">
-						Stora Nygatan 13,<br/>
+						Stora Nygatan 13,<br />
 						Göteborg
 					</Link>
 					<Link href="tel:+46317674000">+46-31-76 74 000</Link>
