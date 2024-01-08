@@ -4,12 +4,37 @@
 	import SvgIcon from '$components/SvgIcon.svelte';
 	import ArrowDown from '$icons/arrow_down.svelte';
 	import ScreenReaderOnly from '$components/ScreenReaderOnly.svelte';
+	import Bananas from '$components/Bananas.svelte';
+
+	let clickCount = 0;
+	let mouseOver = false;
+	let spawnBananas, recycleBananas;
+
+	$: {
+		recycleBananas = mouseOver;
+
+		if (mouseOver) {
+			if (clickCount >= 5) {
+				clickCount = 0;
+				spawnBananas();
+			}
+		} else {
+			clickCount = 0;
+		}
+	}
 </script>
+
+<Bananas bind:spawnBananas bind:recycleBananas />
 
 <Block background="primary">
 	<h1 class="hide">5 Monkeys Agency: A Digital Agency in Stockholm.</h1>
 	<Container fullHeight>
-		<div class="blowout" />
+		<div
+			class="blowout"
+			on:click={() => clickCount++}
+			on:mouseenter={() => (mouseOver = true)}
+			on:mouseleave={() => (mouseOver = false)}
+		/>
 		<a href="#about" class="scrollButton">
 			<SvgIcon><ArrowDown /></SvgIcon>
 			<ScreenReaderOnly>Go to about us</ScreenReaderOnly>
