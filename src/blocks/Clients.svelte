@@ -13,7 +13,7 @@
 	import MojangLogo from '$brands/mojang.svg';
 	import PressbyranLogo from '$brands/pressbyran.svg';
 	import ReasonLogo from '$brands/reasonstudios.svg';
-	import SportaMoreLogo from '$brands/sportamore.svg';
+	import WallismLogo from '$brands/wallism.svg';
 	import ObayatyLogo from '$brands/obayaty.svg';
 	import XlByggLogo from '$brands/xl-bygg.svg';
 	import ArkivetLogo from '$brands/arkivet.svg';
@@ -81,10 +81,10 @@
 			color: '#F0E8DA'
 		},
 		{
-			href: 'https://sportamore.se/',
-			logo: SportaMoreLogo,
-			name: 'Sportamore',
-			color: '#F470DD'
+			href: 'https://wallism.com/',
+			logo: WallismLogo,
+			name: 'Wallism',
+			color: '#C6C3FF'
 		}
 	].sort(() => (Math.random() > 0.5 ? 1 : -1));
 </script>
