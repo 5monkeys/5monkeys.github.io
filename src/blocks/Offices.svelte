@@ -20,9 +20,9 @@
 				<div class="office" on:mouseenter={() => handleMouseEnter('stockholm')}>
 					<h2>Stockholm office.</h2>
 
-					<Link href="https://goo.gl/maps/rK183Qy6hftXA29B6">
-						Götgatan 36, 4:th floor<br />
-						Slussen, Stockholm
+					<Link href="https://maps.app.goo.gl/Kmv1oZTmEoDC1ccK7">
+						Banérgatan 29<br />
+            Karlaplan, Stockholm
 					</Link>
 					<br />
 
